@@ -1,0 +1,115 @@
+main {
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #F4F8FD;
+}
+
+
+/* Caixa do login */
+.login {
+    width: 590px;
+
+    background-color: white;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    border: 1px solid #D5E1F2;
+}
+
+
+/* Parte azul */
+.topo-login {
+    height: 115px;
+
+    background-color: #2457B5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Logo Porto Digital */
+.topo-login img {
+    width: 200px;
+}
+
+
+/* Conteúdo branco */
+.conteudo-login {
+    padding: 50px;
+
+    text-align: center;
+}
+
+
+/* Título */
+.conteudo-login h1 {
+    margin: 0 0 12px;
+
+    color: #173B78;
+
+    font-size: 42px;
+}
+
+
+/* Texto */
+.conteudo-login p {
+    margin: 0 0 45px;
+
+    color: #6B82A8;
+
+    font-size: 18px;
+}
+
+
+/* Matrícula */
+.conteudo-login input {
+    width: 100%;
+
+    padding: 17px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #D5E1F2;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+}
+
+
+/* Botão */
+.conteudo-login button {
+    width: 100%;
+
+    margin-top: 40px;
+
+    padding: 17px;
+
+    background-color: #2563C7;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* Botão ao passar o mouse */
+.conteudo-login button:hover {
+    background-color: #1E448F;
+}

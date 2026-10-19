@@ -1,0 +1,156 @@
+/* Área principal */
+
+main {
+    flex: 1;
+
+    background-color: #F4F8FD;
+
+    padding: 50px 40px;
+}
+
+
+/* Conteúdo da página */
+
+.ods {
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+/* Título principal */
+
+.ods h1 {
+    color: #173B78;
+
+    margin: 0 0 15px;
+
+    font-size: 32px;
+}
+
+
+/* Texto abaixo do título */
+
+.introducao {
+    color: #6B82A8;
+
+    font-size: 17px;
+
+    max-width: 750px;
+
+    margin: 0 auto 35px;
+
+    line-height: 1.5;
+}
+
+
+/* Área dos dois cards */
+
+.ods-conteudo {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+
+    text-align: left;
+}
+
+
+/* Cards */
+
+.ods-card {
+    background-color: #FFFFFF;
+
+    border: 1px solid #D5E1F2;
+
+    border-radius: 10px;
+
+    padding: 30px;
+
+    box-sizing: border-box;
+}
+
+
+/* Título dos cards */
+
+.ods-card h2 {
+    color: #1E448F;
+
+    margin-top: 0;
+
+    margin-bottom: 15px;
+
+    font-size: 22px;
+}
+
+
+/* Texto dos cards */
+
+.ods-card p {
+    color: #555555;
+
+    line-height: 1.6;
+
+    margin-bottom: 15px;
+}
+
+
+/* Área "Como o sistema ajuda?" */
+
+.ods-relacao {
+    background-color: #FFFFFF;
+
+    border: 1px solid #D5E1F2;
+
+    border-radius: 10px;
+
+    padding: 30px;
+
+    margin-top: 25px;
+
+    text-align: left;
+}
+
+
+/* Título da relação */
+
+.ods-relacao h2 {
+    color: #1E448F;
+
+    margin-top: 0;
+
+    margin-bottom: 20px;
+
+    text-align: center;
+}
+
+
+/* Lista */
+
+.ods-relacao ul {
+    margin: 0;
+
+    padding-left: 25px;
+}
+
+
+/* Itens da lista */
+
+.ods-relacao li {
+    color: #555555;
+
+    margin-bottom: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* Efeito simples nos cards */
+
+.ods-card:hover,
+.ods-relacao:hover {
+    border-color: #1E448F;
+}
