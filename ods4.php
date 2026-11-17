@@ -10,47 +10,16 @@
 
     <title>Agenda - ODS 4</title>
 
-    <link rel="stylesheet" href="CSS/style.css">
-
-    <link rel="stylesheet" href="CSS/ods4.css">
+    <link rel="stylesheet" href="assets/CSS/style.css">
 
 </head>
 
 <body>
 
-    <header>
-
-        <div class="logo">
-
-            <img src="IMG/logoete.png" alt="Logo-Ete">
-
-            <div>
-
-                <h2>Agendamento</h2>
-
-                <p>Salas e Laboratórios</p>
-
-            </div>
-
-        </div>
+    <?php include 'header.php'; ?>
 
 
-        <nav>
-
-            <a href="login.html">Início</a>
-
-            <a href="sobre.html">Sobre</a>
-
-            <a href="contato.html">Contato</a>
-
-            <a href="ods4.html">ODS 4</a>
-
-        </nav>
-
-    </header>
-
-
-    <main>
+    <main class="area-ods">
 
         <div class="ods">
 
@@ -130,17 +99,4 @@
 
     </main>
 
-
-    <footer>
-
-        <p class="copyright">
-            © 2026 - Sistema de Agendamento de Salas e Laboratórios
-        </p>
-
-        <img src="IMG/logoete.png" alt="Logo-Ete">
-
-    </footer>
-
-</body>
-
-</html>
+    <?php include 'footer.php'; ?>
