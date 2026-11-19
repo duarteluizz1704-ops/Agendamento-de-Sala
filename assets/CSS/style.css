@@ -1,495 +1,365 @@
+/* ========================================
+   RESET E BASE
+======================================== */
 
-/* =========================
-   CONFIGURAÇÕES GERAIS
-========================= */
-
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
+html,
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 0;
     min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
     display: flex;
     flex-direction: column;
-    background-color: #9EC6F7;
+    background-color: #9EC2EE;
+    color: #1E293B;
 }
 
-main {
-    flex: 1;
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
-/* =========================
-   CABEÇALHO
-========================= */
 
-header {
+/* ========================================
+   HEADER PADRONIZADO
+======================================== */
+
+.header {
     background-color: #183B78;
-    color: white;
-
-    padding: 10px 60px;
-
+    color: #FFFFFF;
+    padding: 12px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    min-height: 75px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .logo img {
-    width: 110px;
+    width: 115px;
     height: auto;
-    object-fit: contain;
 }
 
 .logo h2 {
     margin: 0;
-    font-size: 22px;
+    font-size: 24px;
 }
 
 .logo p {
-    margin: 2px 0 0;
+    margin: 3px 0 0;
     font-size: 13px;
 }
 
-nav {
+.header nav {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 25px;
 }
 
-nav a {
-    color: white;
+.header nav a {
+    color: #FFFFFF;
     text-decoration: none;
-    font-size: 16px;
-    transition: 0.2s;
-}
-
-nav a:hover {
-    color: #A9CCF5;
-}
-
-/* =========================
-   RODAPÉ
-========================= */
-
-footer {
-    background-color: #183B78;
-    color: white;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 20px 65px;
-    min-height: 95px;
-
-    gap: 20px;
-}
-
-footer img {
-    width: 125px;
-    height: auto;
-    object-fit: contain;
-}
-
-.copyright {
     margin: 0;
-    font-size: 14px;
-    line-height: 1.6;
+    padding: 10px 0;
+    font-size: 15px;
+    transition: 0.3s;
 }
 
-/* =========================
-   PÁGINA DE LOGIN
-========================= */
+.header nav a.ativo {
+    border-bottom: 3px solid #FFFFFF;
+    font-weight: bold;
+}
+
+.header nav a:hover {
+    color: #BBD7FF;
+}
+
+
+/* ========================================
+   ÁREA E CARTÃO DE LOGIN
+======================================== */
 
 .login-area {
     flex: 1;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background-color: #9EC6F7;
     padding: 40px 20px;
 }
 
 .login {
-    width: 550px;
-    max-width: 100%;
-
-    background-color: white;
-
-    border-radius: 12px;
+    width: 100%;
+    max-width: 440px;
+    background-color: #FFFFFF;
+    border-radius: 16px;
     overflow: hidden;
-
-    border: 1px solid #D5E1F2;
-    box-shadow: 0 4px 15px rgba(24, 59, 120, 0.08);
+    box-shadow: 0 12px 30px rgba(15, 39, 82, 0.18);
 }
 
 .topo-login {
-    height: 110px;
-
-    background-color: #2457B5;
-
+    background-color: #1E54A6;
+    padding: 18px 24px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .topo-login img {
-    width: 175px;
-    max-height: 90px;
-    object-fit: contain;
+    max-width: 170px;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .conteudo-login {
-    padding: 45px;
-    text-align: center;
+    padding: 28px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .conteudo-login h1 {
-    margin: 0 0 12px;
-    color: #173B78;
-    font-size: 38px;
-}
-
-.conteudo-login p {
-    margin: 0 0 40px;
-    color: #6B82A8;
-    font-size: 17px;
-}
-
-.conteudo-login input {
-    width: 100%;
-    padding: 15px;
-
-    border: 1px solid #D5E1F2;
-    border-radius: 7px;
-
-    font-size: 16px;
-    outline: none;
-}
-
-.conteudo-login input:focus {
-    border-color: #2563C7;
-}
-
-.conteudo-login button {
-    width: 100%;
-    margin-top: 35px;
-    padding: 15px;
-
-    background-color: #2563C7;
-    color: white;
-
-    border: none;
-    border-radius: 7px;
-
-    font-size: 17px;
-    font-weight: bold;
-
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.conteudo-login button:hover {
-    background-color: #1E448F;
-}
-
-/* =========================
-   PÁGINA SOBRE
-========================= */
-
-.area-sobre {
-    flex: 1;
-    background-color: #9EC6F7;
-    padding: 45px 30px;
-}
-
-.sobre {
-    max-width: 1050px;
-    margin: 0 auto;
+    margin: 0 0 8px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #183B78;
     text-align: center;
 }
 
-.sobre h1 {
-    color: #173B78;
-    margin: 0 0 15px;
-    font-size: 32px;
-}
-
-.introducao {
-    color: #6B82A8;
-    font-size: 17px;
-    max-width: 750px;
-    margin: 0 auto 35px;
-    line-height: 1.6;
-}
-
-.sobre-conteudo {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
-    margin-bottom: 25px;
-}
-
-.sobre-card {
-    background-color: white;
-    border: 1px solid #D5E1F2;
-    border-radius: 10px;
-    padding: 28px;
-    text-align: left;
-    transition: 0.2s;
-}
-
-.sobre-card h2 {
-    color: #1E448F;
-    margin: 0 0 15px;
-    font-size: 21px;
-}
-
-.sobre-card p {
-    color: #555;
-    line-height: 1.7;
-    margin: 0;
-}
-
-.como-funciona {
-    background-color: white;
-    border: 1px solid #D5E1F2;
-    border-radius: 10px;
-    padding: 28px;
-    text-align: left;
-}
-
-.como-funciona h2 {
-    color: #1E448F;
-    margin: 0 0 15px;
-}
-
-.como-funciona p {
-    color: #555;
-    line-height: 1.7;
-}
-
-/* =========================
-   PÁGINA DE CONTATO
-========================= */
-
-.area-contato {
-    flex: 1;
-    background-color: #9EC6F7;
-    padding: 45px 30px;
-}
-
-.contato {
-    max-width: 1050px;
-    margin: 0 auto;
+.subtitulo-login {
+    margin: 0 0 24px;
+    font-size: 14px;
+    color: #5C6F8C;
     text-align: center;
 }
 
-.contato h1 {
-    color: #173B78;
-    margin: 0 0 10px;
-    font-size: 32px;
-}
 
-.texto-contato {
-    color: #6B82A8;
-    font-size: 17px;
-    margin-bottom: 35px;
-}
+/* ========================================
+   FORMULÁRIO DE LOGIN
+======================================== */
 
-.contato-conteudo {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 25px;
-    text-align: left;
-}
-
-.info-contato,
-.form-contato {
-    background-color: white;
-    border: 1px solid #D5E1F2;
-    border-radius: 10px;
-    padding: 30px;
-}
-
-.info-contato h2,
-.form-contato h2 {
-    color: #1E448F;
-    margin: 0 0 20px;
-    font-size: 22px;
-}
-
-.info-contato p {
-    color: #555;
-    line-height: 1.7;
-    margin-bottom: 22px;
-}
-
-.form-contato label {
-    display: block;
-    margin: 15px 0 7px;
-    color: #173B78;
-    font-weight: bold;
-}
-
-.form-contato input,
-.form-contato select,
-.form-contato textarea {
+.conteudo-login form {
     width: 100%;
-    padding: 12px;
+    display: flex;
+    flex-direction: column;
+}
 
-    border: 1px solid #D5E1F2;
-    border-radius: 6px;
-
-    font-family: Arial, sans-serif;
+.conteudo-login input[type="text"],
+.conteudo-login input[type="number"],
+#matricula {
+    width: 100%;
+    padding: 13px 15px;
+    margin-bottom: 8px;
     font-size: 15px;
+    color: #1E293B;
+    background-color: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
     outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.form-contato input:focus,
-.form-contato select:focus,
-.form-contato textarea:focus {
-    border-color: #2563C7;
+.conteudo-login input[type="text"]::placeholder,
+#matricula::placeholder {
+    color: #94A3B8;
 }
 
-.form-contato textarea {
-    height: 120px;
-    resize: vertical;
+.conteudo-login input[type="text"]:focus,
+#matricula:focus {
+    border-color: #1E54A6;
+    box-shadow: 0 0 0 3px rgba(30, 84, 166, 0.15);
 }
 
-.form-contato button {
+.conteudo-login form button,
+.btn-entrar {
     width: 100%;
-    margin-top: 20px;
-    padding: 14px;
-
-    background-color: #1E448F;
-    color: white;
-
+    padding: 12px 18px;
+    margin-top: 14px;
+    margin-bottom: 8px;
+    background-color: #215BB3;
+    color: #FFFFFF;
     border: none;
-    border-radius: 6px;
-
-    font-size: 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
     cursor: pointer;
-    transition: 0.2s;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.form-contato button:hover {
-    background-color: #173B78;
+.conteudo-login form button:hover,
+.btn-entrar:hover {
+    background-color: #183B78;
 }
 
-/* =========================
-   PÁGINA ODS 4
-========================= */
-
-.area-ods {
-    flex: 1;
-    background-color: #9EC6F7;
-    padding: 45px 30px;
+.conteudo-login form button:active,
+.btn-entrar:active {
+    transform: scale(0.99);
 }
 
-.ods {
-    max-width: 1050px;
-    margin: 0 auto;
+
+/* ========================================
+   MENSAGEM DE ERRO / AVISO
+======================================== */
+
+#mensagem-login {
+    font-size: 13px;
+    margin: 8px 0 2px;
     text-align: center;
 }
 
-.ods h1 {
-    color: #173B78;
-    font-size: 32px;
-    margin: 0 0 15px;
+#mensagem-login:empty {
+    display: none;
 }
 
-.ods-conteudo {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
-    text-align: left;
+#mensagem-login.erro-login {
+    color: #B42318;
+    background-color: #FDECEC;
+    border: 1px solid #F5C2C2;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    line-height: 1.5;
 }
 
-.ods-card {
-    background-color: white;
+
+/* ========================================
+   MATRÍCULAS DE TESTE
+======================================== */
+
+.matriculas-teste {
+    width: 100%;
+    margin-top: 22px;
+    padding: 16px;
+    background-color: #F4F8FD;
     border: 1px solid #D5E1F2;
-    border-radius: 10px;
-    padding: 28px;
+    border-radius: 12px;
 }
 
-.ods-card h2 {
-    color: #1E448F;
-    margin: 0 0 15px;
-    font-size: 21px;
-}
-
-.ods-card p {
-    color: #555;
-    line-height: 1.7;
-}
-
-.ods-relacao {
-    background-color: white;
-    border: 1px solid #D5E1F2;
-    border-radius: 10px;
-    padding: 28px;
-    margin-top: 25px;
-    text-align: left;
-}
-
-.ods-relacao h2 {
-    color: #1E448F;
-    margin: 0 0 20px;
+.titulo-teste {
+    color: #183B78;
+    font-size: 15px;
+    font-weight: 700;
     text-align: center;
+    margin: 0 0 14px;
 }
 
-.ods-relacao ul {
-    margin: 0;
-    padding-left: 25px;
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 8px;
 }
 
-.ods-relacao li {
-    color: #555;
-    margin-bottom: 12px;
-    line-height: 1.6;
+.tabela-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #FFFFFF;
+    font-size: 13px;
+    table-layout: auto;
 }
 
-/* =========================
-   EFEITOS DOS CARDS
-========================= */
-
-.sobre-card:hover,
-.como-funciona:hover,
-.ods-card:hover,
-.ods-relacao:hover,
-.info-contato:hover,
-.form-contato:hover {
-    border-color: #A9C6ED;
+.tabela-usuarios thead {
+    background-color: #183B78;
+    color: #FFFFFF;
 }
 
-/* =========================
-   PÁGINA INÍCIO DO ALUNO
-========================= */
+.tabela-usuarios th {
+    padding: 10px 8px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.tabela-usuarios td {
+    padding: 10px 8px;
+    text-align: center;
+    border-bottom: 1px solid #D5E1F2;
+    color: #1E293B;
+}
+
+.tabela-usuarios tbody tr:nth-child(even) {
+    background-color: #EBF2FC;
+}
+
+.tabela-usuarios tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tabela-usuarios tbody tr:hover {
+    background-color: #DCE8F9;
+}
+
+.tabela-usuarios tbody td.matricula-codigo,
+.tabela-usuarios tbody td:last-child {
+    color: #183B78;
+    font-weight: 700;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.footer {
+    background-color: #183B78;
+    color: #FFFFFF;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    min-height: 90px;
+}
+
+.footer-info p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.footer-logo img {
+    width: 120px;
+    height: auto;
+}
+
+
+/* ========================================
+   INÍCIO DO ALUNO
+======================================== */
 
 .area-aluno {
+    flex: 1;
     padding: 25px 35px;
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
-    background-color: #9EC6F7;
 }
 
 
-/* =========================
+/* ========================================
    BOAS-VINDAS
-========================= */
+======================================== */
 
 .boas-vindas {
     display: flex;
@@ -503,30 +373,32 @@ footer img {
     height: 55px;
     border-radius: 50%;
     background-color: #2457B5;
-    color: white;
-
+    color: #FFFFFF;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    font-size: 28px;
+    font-size: 24px;
+    font-weight: bold;
+    flex-shrink: 0;
 }
 
 .boas-vindas h1 {
     margin: 0 0 5px;
     font-size: 23px;
+    color: #173B78;
 }
 
 .boas-vindas p {
     margin: 0;
-    color: #58749B;
+    color: #24426E;
     font-size: 15px;
+    line-height: 1.45;
 }
 
 
-/* =========================
+/* ========================================
    PAINEL GERAL
-========================= */
+======================================== */
 
 .painel-aluno {
     display: grid;
@@ -536,12 +408,13 @@ footer img {
 }
 
 
-/* =========================
-   MINHA SEMANA
-========================= */
+/* ========================================
+   SEMANA
+======================================== */
 
 .semana {
-    background-color: white;
+    min-width: 0;
+    background-color: #FFFFFF;
     border: 1px solid #D5E1F2;
     border-radius: 9px;
     padding: 20px;
@@ -553,11 +426,13 @@ footer img {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    gap: 10px;
 }
 
 .titulo-semana h2 {
     margin: 0;
     font-size: 23px;
+    color: #173B78;
 }
 
 .titulo-semana a {
@@ -568,6 +443,8 @@ footer img {
     border-radius: 7px;
     font-size: 14px;
     font-weight: bold;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
 }
 
 .titulo-semana a:hover {
@@ -575,9 +452,9 @@ footer img {
 }
 
 
-/* =========================
-   TABELA DE HORÁRIOS
-========================= */
+/* ========================================
+   TABELA
+======================================== */
 
 .tabela-container {
     width: 100%;
@@ -593,19 +470,23 @@ footer img {
 .tabela-horarios th,
 .tabela-horarios td {
     border: 1px solid #D5E1F2;
-    padding: 10px 7px;
+    padding: 8px;
     text-align: center;
+    vertical-align: middle;
 }
 
 .tabela-horarios th {
     background-color: #E8F2FC;
     color: #173B78;
-    height: 65px;
+    height: 60px;
     font-size: 14px;
 }
 
+.tabela-horarios tbody tr {
+    height: 82px;
+}
+
 .tabela-horarios td {
-    height: 95px;
     background-color: #FBFDFF;
 }
 
@@ -619,18 +500,21 @@ footer img {
 }
 
 
-/* =========================
-   CARDS DAS AULAS
-========================= */
+/* ========================================
+   AULAS
+======================================== */
 
 .aula {
+    width: 100%;
+    height: 100%;
+    min-height: 64px;
     border-radius: 7px;
-    padding: 12px 7px;
-    min-height: 60px;
+    padding: 10px 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 6px;
+    align-items: center;
+    gap: 4px;
     font-size: 13px;
 }
 
@@ -638,14 +522,17 @@ footer img {
     font-size: 13px;
 }
 
-.aula small {
-    font-size: 11px;
+.aula span {
+    font-size: 12px;
+    font-weight: 600;
 }
 
+.aula small {
+    font-size: 11px;
+    line-height: 1.35;
+}
 
-/* Cores das disciplinas */
-
-.aula-segunda {
+.aula-pi {
     background-color: #DDEBFC;
     color: #2457A0;
 }
@@ -665,15 +552,20 @@ footer img {
     color: #8B6421;
 }
 
+.aula-livre {
+    background-color: #EDF1F6;
+    color: #718198;
+}
+
 .sem-aula {
     color: #8294AC;
     font-size: 18px;
 }
 
 
-/* =========================
-   AVISO DO REVEZAMENTO
-========================= */
+/* ========================================
+   INFORMAÇÃO DA GRADE
+======================================== */
 
 .aviso-segunda {
     margin-top: 18px;
@@ -686,19 +578,24 @@ footer img {
     line-height: 1.6;
 }
 
+.aviso-segunda p {
+    margin: 5px 0 0;
+}
 
-/* =========================
+
+/* ========================================
    PAINEL LATERAL
-========================= */
+======================================== */
 
 .painel-lateral {
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
 .card-lateral {
-    background-color: white;
+    background-color: #FFFFFF;
     border: 1px solid #D5E1F2;
     border-radius: 9px;
     padding: 18px;
@@ -708,12 +605,13 @@ footer img {
 .card-lateral h2 {
     margin: 0 0 18px;
     font-size: 18px;
+    color: #173B78;
 }
 
 
-/* =========================
-   RESUMO DA SEMANA
-========================= */
+/* ========================================
+   RESUMO
+======================================== */
 
 .resumo-item {
     display: flex;
@@ -726,6 +624,7 @@ footer img {
 
 .resumo-item:last-child {
     border-bottom: none;
+    padding-bottom: 0;
 }
 
 .resumo-item span {
@@ -736,10 +635,15 @@ footer img {
     color: #2457A0;
 }
 
+.resumo-item small {
+    color: #7185A2;
+    font-size: 12px;
+}
 
-/* =========================
+
+/* ========================================
    LEGENDA
-========================= */
+======================================== */
 
 .legenda-item {
     display: flex;
@@ -758,9 +662,10 @@ footer img {
     width: 12px;
     height: 12px;
     border-radius: 50%;
+    flex-shrink: 0;
 }
 
-.cor-segunda {
+.cor-pi {
     background-color: #A8C8F0;
 }
 
@@ -781,9 +686,9 @@ footer img {
 }
 
 
-/* =========================
+/* ========================================
    AVISOS
-========================= */
+======================================== */
 
 .aviso {
     padding: 13px;
@@ -791,6 +696,10 @@ footer img {
     margin-bottom: 10px;
     font-size: 13px;
     line-height: 1.5;
+}
+
+.aviso:last-child {
+    margin-bottom: 0;
 }
 
 .aviso p {
@@ -814,12 +723,38 @@ footer img {
 
 
 /* ========================================
+   RESPONSIVIDADE - INÍCIO DO ALUNO
+======================================== */
+
+@media (max-width: 992px) {
+    .painel-aluno {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .header,
+    .footer {
+        padding: 16px 20px;
+    }
+
+    .area-aluno {
+        padding: 20px 15px;
+    }
+
+    .titulo-semana {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+/* ========================================
    PÁGINA PERFIL DO ALUNO
 ======================================== */
 
 .area-perfil {
     flex: 1;
-    background-color: #9EC6F7;
     padding: 40px 30px;
 }
 
@@ -827,8 +762,6 @@ footer img {
     max-width: 1100px;
     margin: 0 auto;
 }
-
-/* Título */
 
 .titulo-perfil {
     margin-bottom: 25px;
@@ -841,41 +774,35 @@ footer img {
 }
 
 .titulo-perfil p {
-    color: #58749B;
+    color: #24426E;
     font-size: 16px;
     margin: 0;
 }
 
-/* Identificação do aluno */
-
 .perfil-principal {
-    background-color: white;
+    background-color: #FFFFFF;
     border: 1px solid #D5E1F2;
     border-radius: 10px;
-
     padding: 25px;
-
     display: flex;
     align-items: center;
     gap: 22px;
-
     margin-bottom: 22px;
+    box-shadow: 0 2px 7px rgba(23, 59, 120, 0.05);
 }
 
 .perfil-avatar {
     width: 85px;
     height: 85px;
-
     border-radius: 50%;
-
     background-color: #2457B5;
-    color: white;
-
+    color: #FFFFFF;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    font-size: 42px;
+    font-size: 36px;
+    font-weight: bold;
+    flex-shrink: 0;
 }
 
 .perfil-identificacao h2 {
@@ -890,32 +817,24 @@ footer img {
 }
 
 .perfil-identificacao span {
-    color: #8294AC;
+    color: #6E84A3;
     font-size: 14px;
 }
 
-/* Cards gerais */
-
 .perfil-card {
-    background-color: white;
+    background-color: #FFFFFF;
     border: 1px solid #D5E1F2;
     border-radius: 10px;
-
     padding: 25px;
-
     margin-bottom: 22px;
-
     box-shadow: 0 2px 7px rgba(23, 59, 120, 0.05);
 }
 
 .perfil-card h2 {
     color: #1E448F;
     font-size: 21px;
-
     margin: 0 0 22px;
 }
-
-/* Informações acadêmicas */
 
 .dados-grid {
     display: grid;
@@ -927,14 +846,12 @@ footer img {
     display: flex;
     flex-direction: column;
     gap: 7px;
-
     padding-bottom: 12px;
-
     border-bottom: 1px solid #EDF2F8;
 }
 
 .dado span {
-    color: #8294AC;
+    color: #6E84A3;
     font-size: 14px;
 }
 
@@ -943,7 +860,9 @@ footer img {
     font-size: 16px;
 }
 
-/* Acessos importantes */
+.dado-instituicao {
+    grid-column: 1 / -1;
+}
 
 .acessos-grid {
     display: flex;
@@ -955,16 +874,11 @@ footer img {
     display: flex;
     align-items: center;
     gap: 16px;
-
     background-color: #F4F8FD;
-
     border: 1px solid #D5E1F2;
     border-radius: 8px;
-
     padding: 16px;
-
     text-decoration: none;
-
     transition: 0.2s;
 }
 
@@ -976,15 +890,16 @@ footer img {
 .acesso-icone {
     min-width: 48px;
     height: 48px;
-
     background-color: #DCEBFC;
     border-radius: 8px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 25px;
+}
+
+.acesso-conteudo {
+    min-width: 0;
 }
 
 .acesso-item h3 {
@@ -1004,34 +919,1367 @@ footer img {
     margin-left: auto;
     color: #2457B5;
     font-size: 23px;
+    flex-shrink: 0;
 }
-
-/* Ajuda */
 
 .perfil-ajuda p {
     color: #58749B;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
 }
 
 .botao-contato {
     display: inline-block;
-
     background-color: #2563C7;
-    color: white;
-
+    color: #FFFFFF;
     padding: 12px 22px;
-
     border-radius: 7px;
-
     text-decoration: none;
     font-weight: bold;
-
     transition: 0.2s;
 }
 
 .botao-contato:hover {
     background-color: #1E448F;
+}
+
+
+/* ========================================
+   RESPONSIVIDADE - PERFIL DO ALUNO
+======================================== */
+
+@media (max-width: 700px) {
+    .area-perfil {
+        padding: 25px 15px;
+    }
+
+    .titulo-perfil h1 {
+        font-size: 25px;
+    }
+
+    .titulo-perfil p {
+        font-size: 14px;
+    }
+
+    .perfil-principal {
+        padding: 18px;
+        gap: 15px;
+    }
+
+    .perfil-avatar {
+        width: 65px;
+        height: 65px;
+        font-size: 28px;
+    }
+
+    .perfil-identificacao h2 {
+        font-size: 19px;
+    }
+
+    .perfil-identificacao p {
+        font-size: 13px;
+    }
+
+    .perfil-identificacao span {
+        font-size: 12px;
+    }
+
+    .perfil-card {
+        padding: 18px;
+    }
+
+    .perfil-card h2 {
+        font-size: 19px;
+    }
+
+    .dados-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .dado-instituicao {
+        grid-column: auto;
+    }
+
+    .dado strong {
+        font-size: 14px;
+    }
+
+    .acesso-item {
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .acesso-icone {
+        min-width: 40px;
+        height: 40px;
+        font-size: 21px;
+    }
+
+    .acesso-item h3 {
+        font-size: 15px;
+    }
+
+    .acesso-item p {
+        font-size: 12px;
+    }
+
+    .seta-acesso {
+        font-size: 18px;
+    }
+}
+
+
+/* ========================================
+   CALENDÁRIO DO ALUNO
+======================================== */
+
+.area-calendario {
+    flex: 1;
+    background-color: #9EC2EE;
+    padding: 40px 30px;
+}
+
+.calendario-container {
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+/* TÍTULO */
+
+.titulo-calendario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.titulo-calendario h1 {
+    color: #173B78;
+    font-size: 30px;
+    margin: 0 0 8px;
+}
+
+.titulo-calendario p {
+    color: #24426E;
+    margin: 0;
+    font-size: 16px;
+}
+
+.acoes-topo-calendario {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.data-hoje {
+    background-color: #FFFFFF;
+    border: 1px solid #D5E1F2;
+    border-radius: 8px;
+    padding: 8px 14px;
+    text-align: right;
+}
+
+.data-hoje span {
+    display: block;
+    font-size: 12px;
+    color: #6E84A3;
+}
+
+.data-hoje strong {
+    font-size: 14px;
+    color: #173B78;
+}
+
+.botao-voltar-calendario {
+    display: inline-block;
+    background-color: #2457B5;
+    color: #FFFFFF;
+    padding: 11px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+.botao-voltar-calendario:hover {
+    background-color: #173B78;
+}
+
+/* RESUMO */
+
+.resumo-calendario {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.resumo-cal-card {
+    background-color: #FFFFFF;
+    border: 1px solid #D5E1F2;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.resumo-cal-icone {
+    width: 50px;
+    height: 50px;
+    background-color: #E4F0FC;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.resumo-cal-card div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.resumo-cal-card span {
+    color: #6E84A3;
+    font-size: 14px;
+}
+
+.resumo-cal-card strong {
+    color: #2457A0;
+    font-size: 18px;
+}
+
+/* CARDS PRINCIPAIS */
+
+.calendario-card {
+    background-color: #FFFFFF;
+    border: 1px solid #D5E1F2;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 7px rgba(23, 59, 120, 0.05);
+}
+
+.cabecalho-card-calendario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.cabecalho-card-calendario h2 {
+    color: #1E448F;
+    font-size: 21px;
+    margin: 0 0 7px;
+}
+
+.cabecalho-card-calendario p {
+    color: #58749B;
+    font-size: 14px;
+    margin: 0;
+}
+
+.badge-horario {
+    background-color: #E4F0FC;
+    color: #2457B5;
+    padding: 8px 13px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* TABELA */
+
+.calendario-tabela-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabela-calendario {
+    width: 100%;
+    min-width: 880px;
+    border-collapse: separate;
+    border-spacing: 6px;
+    text-align: center;
+}
+
+.tabela-calendario th {
+    background-color: #2457B5;
+    color: #FFFFFF;
+    padding: 15px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.tabela-calendario tbody tr {
+    height: 82px;
+}
+
+.tabela-calendario td {
+    padding: 6px;
+    background-color: #F4F8FD;
+    border-radius: 7px;
+    vertical-align: stretch;
+}
+
+.tabela-calendario .coluna-horario {
+    background-color: #E4F0FC;
+    color: #1E448F;
+    font-weight: bold;
+    width: 100px;
+    min-width: 100px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.coluna-horario span {
+    color: #58749B;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+/* EVENTOS / AULAS */
+
+.evento-cal {
+    height: 100%;
+    min-height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 8px;
+    border-radius: 7px;
+    gap: 5px;
+    box-sizing: border-box;
+}
+
+.evento-cal strong {
+    font-size: 15px;
+}
+
+.evento-cal span {
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+.evento-cal small {
+    font-size: 11px;
+    line-height: 1.35;
+    opacity: 0.92;
+}
+
+/* PROJETO INTEGRADOR */
+
+.pi {
+    background-color: #DCE8F8;
+    border-left: 5px solid #477ECA;
+    color: #1E448F;
+}
+
+/* PROGRAMAÇÃO WEB */
+
+.pnt {
+    background-color: #D9F0E3;
+    border-left: 5px solid #43A477;
+    color: #226C4B;
+}
+
+/* ENGENHARIA DE SOFTWARE */
+
+.eng {
+    background-color: #FCE6D7;
+    border-left: 5px solid #E58C48;
+    color: #99531D;
+}
+
+/* CULTURA DO MUNDO DIGITAL */
+
+.cdm {
+    background-color: #E9DDFC;
+    border-left: 5px solid #9470D6;
+    color: #6242A0;
+}
+
+/* DIA LIVRE */
+
+.livre {
+    background-color: #F0F2F5;
+    border-left: 5px solid #9AA8B8;
+    color: #526477;
+}
+
+/* LEGENDA */
+
+.legenda-calendario {
+    border-top: 1px solid #E5EDF6;
+    margin-top: 25px;
+    padding-top: 20px;
+}
+
+.legenda-calendario h3 {
+    color: #1E448F;
+    font-size: 16px;
+    margin: 0 0 15px;
+}
+
+.legenda-cal-itens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 25px;
+}
+
+.legenda-cal-itens div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #58749B;
+    font-size: 13px;
+}
+
+.legenda-cor {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.cor-pi-cal {
+    background-color: #477ECA;
+}
+
+.cor-pnt-cal {
+    background-color: #43A477;
+}
+
+.cor-eng-cal {
+    background-color: #E58C48;
+}
+
+.cor-cdm-cal {
+    background-color: #9470D6;
+}
+
+.cor-livre-cal {
+    background-color: #9AA8B8;
+}
+
+/* EVENTOS E AVISOS */
+
+.eventos-card {
+    margin-top: 5px;
+}
+
+.aviso-calendario-vazio {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px;
+    background-color: #F4F8FD;
+    border: 1px dashed #B7CDE8;
+    border-radius: 8px;
+}
+
+.aviso-cal-icone {
+    width: 55px;
+    height: 55px;
+    background-color: #E4F0FC;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    flex-shrink: 0;
+}
+
+.aviso-calendario-vazio strong {
+    color: #2457A0;
+    font-size: 16px;
+}
+
+.aviso-calendario-vazio p {
+    color: #58749B;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 7px 0 0;
+}
+
+/* INFORMAÇÃO FINAL */
+
+.informacao-calendario {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background-color: #E4F0FC;
+    border: 1px solid #B7CDE8;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 20px;
+}
+
+.icone-informacao-cal {
+    font-size: 22px;
+}
+
+.informacao-calendario strong {
+    color: #1E448F;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.informacao-calendario p {
+    color: #45658F;
+    margin: 0;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 900px) {
+
+    .resumo-calendario {
+        grid-template-columns: 1fr;
+    }
+
+    .resumo-cal-card {
+        padding: 16px;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .area-calendario {
+        padding: 25px 15px;
+    }
+
+    .titulo-calendario {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .titulo-calendario h1 {
+        font-size: 25px;
+    }
+
+    .titulo-calendario p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .botao-voltar-calendario {
+        font-size: 14px;
+    }
+
+    .calendario-card {
+        padding: 18px;
+    }
+
+    .cabecalho-card-calendario {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cabecalho-card-calendario h2 {
+        font-size: 19px;
+    }
+
+    .badge-horario {
+        font-size: 12px;
+    }
+
+    .legenda-cal-itens {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .aviso-calendario-vazio {
+        align-items: flex-start;
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .aviso-cal-icone {
+        width: 42px;
+        height: 42px;
+        font-size: 20px;
+    }
+
+    .aviso-calendario-vazio strong {
+        font-size: 14px;
+    }
+
+    .aviso-calendario-vazio p {
+        font-size: 13px;
+    }
+
+    .informacao-calendario {
+        padding: 15px;
+    }
+
+}
+
+
+/* ========================================
+   PÁGINA SOBRE / ODS 4
+======================================== */
+
+.area-sobre {
+    flex: 1;
+    background-color: #9EC6F7;
+    padding: 40px 30px;
+}
+
+.sobre-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* INTRODUÇÃO */
+
+.sobre-introducao {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.sobre-etiqueta {
+    display: inline-block;
+    background-color: #DCEBFC;
+    color: #2457B5;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.sobre-introducao h1 {
+    color: #173B78;
+    font-size: 32px;
+    margin: 0 0 18px;
+}
+
+.sobre-introducao .introducao {
+    max-width: 750px;
+    margin: 0 auto;
+    color: #45658F;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* CARDS */
+
+.sobre-conteudo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.sobre-card {
+    background-color: white;
+    border: 1px solid #D5E1F2;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 7px rgba(23, 59, 120, 0.05);
+    transition: 0.2s;
+}
+
+.sobre-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(23, 59, 120, 0.10);
+}
+
+.sobre-icone {
+    width: 48px;
+    height: 48px;
+    background-color: #E4F0FC;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.sobre-card h2 {
+    color: #1E448F;
+    font-size: 20px;
+    margin: 0 0 12px;
+}
+
+.sobre-card p {
+    color: #58749B;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* COMO FUNCIONA */
+
+.como-funciona {
+    background-color: white;
+    border: 1px solid #D5E1F2;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.como-funciona-titulo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.como-funciona-titulo .sobre-icone {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.como-funciona h2 {
+    color: #1E448F;
+    font-size: 22px;
+    margin: 0;
+}
+
+.como-funciona p {
+    color: #58749B;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0 0 15px;
+}
+
+.como-funciona p:last-child {
+    margin-bottom: 0;
+}
+
+/* ODS 4 */
+
+.ods4 {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #D5E1F2;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 10px rgba(23, 59, 120, 0.07);
+}
+
+.ods4-cabecalho {
+    background-color: #2075B8;
+    color: white;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.ods4-numero {
+    background-color: #FFFFFF;
+    color: #2075B8;
+    min-width: 105px;
+    height: 105px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.ods4-numero span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.ods4-numero strong {
+    font-size: 48px;
+    line-height: 1;
+}
+
+.ods4-etiqueta {
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.ods4-cabecalho h2 {
+    font-size: 27px;
+    margin: 8px 0 12px;
+}
+
+.ods4-cabecalho p {
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+    max-width: 750px;
+}
+
+/* TEXTO ODS */
+
+.ods4-conteudo {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+    padding: 30px;
+}
+
+.ods4-texto h3 {
+    color: #1E448F;
+    font-size: 19px;
+    margin: 0 0 12px;
+}
+
+.ods4-texto p {
+    color: #58749B;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0 0 22px;
+}
+
+.ods4-texto p:last-child {
+    margin-bottom: 0;
+}
+
+/* DESTAQUE ODS */
+
+.ods4-destaque {
+    background-color: #EAF4FC;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ods4-simbolo {
+    font-size: 45px;
+    margin-bottom: 12px;
+}
+
+.ods4-destaque h3 {
+    color: #1E448F;
+    font-size: 19px;
+    margin: 0 0 12px;
+}
+
+.ods4-destaque p {
+    color: #58749B;
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* META / FRASE FINAL */
+
+.ods4-meta {
+    background-color: #F3F8FD;
+    border-top: 1px solid #D5E1F2;
+    padding: 25px 30px;
+    text-align: center;
+}
+
+.ods4-meta h3 {
+    color: #1E448F;
+    font-size: 19px;
+    margin: 0 0 10px;
+}
+
+.ods4-meta p {
+    color: #58749B;
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* OBJETIVO DO PROJETO */
+
+.sobre-objetivo {
+    background-color: #E4F0FC;
+    border: 1px solid #B7CDE8;
+    border-radius: 10px;
+    padding: 25px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.objetivo-icone {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    flex-shrink: 0;
+}
+
+.sobre-objetivo h2 {
+    color: #1E448F;
+    font-size: 21px;
+    margin: 0 0 10px;
+}
+
+.sobre-objetivo p {
+    color: #58749B;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 750px) {
+
+    .area-sobre {
+        padding: 25px 15px;
+    }
+
+    .sobre-introducao h1 {
+        font-size: 26px;
+    }
+
+    .sobre-introducao .introducao {
+        font-size: 14px;
+    }
+
+    .sobre-conteudo {
+        grid-template-columns: 1fr;
+    }
+
+    .sobre-card {
+        padding: 20px;
+    }
+
+    .sobre-card h2 {
+        font-size: 18px;
+    }
+
+    .sobre-card p {
+        font-size: 14px;
+    }
+
+    .como-funciona {
+        padding: 20px;
+    }
+
+    .como-funciona h2 {
+        font-size: 19px;
+    }
+
+    .como-funciona p {
+        font-size: 14px;
+    }
+
+    .ods4-cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 22px;
+        gap: 18px;
+    }
+
+    .ods4-numero {
+        width: 85px;
+        min-width: 85px;
+        height: 85px;
+    }
+
+    .ods4-numero strong {
+        font-size: 38px;
+    }
+
+    .ods4-cabecalho h2 {
+        font-size: 23px;
+    }
+
+    .ods4-cabecalho p {
+        font-size: 14px;
+    }
+
+    .ods4-conteudo {
+        grid-template-columns: 1fr;
+        padding: 22px;
+        gap: 20px;
+    }
+
+    .ods4-texto h3 {
+        font-size: 17px;
+    }
+
+    .ods4-texto p {
+        font-size: 14px;
+    }
+
+    .ods4-destaque {
+        padding: 20px;
+    }
+
+    .ods4-meta {
+        padding: 22px;
+    }
+
+    .ods4-meta h3 {
+        font-size: 17px;
+    }
+
+    .sobre-objetivo {
+        padding: 20px;
+        gap: 12px;
+    }
+
+    .objetivo-icone {
+        width: 42px;
+        height: 42px;
+        font-size: 21px;
+    }
+
+    .sobre-objetivo h2 {
+        font-size: 18px;
+    }
+
+    .sobre-objetivo p {
+        font-size: 14px;
+    }
+
+}
+
+/* ========================================
+   PÁGINA CONTATO
+======================================== */
+
+.area-contato {
+    flex: 1;
+    background-color: #9EC6F7;
+    padding: 40px 30px;
+}
+
+.contato-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* TÍTULO */
+
+.titulo-contato {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.etiqueta-contato {
+    display: inline-block;
+    background-color: #DCEBFC;
+    color: #2457B5;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.titulo-contato h1 {
+    color: #173B78;
+    font-size: 32px;
+    margin: 0 0 12px;
+}
+
+.texto-contato {
+    color: #58749B;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* CONTEÚDO PRINCIPAL */
+
+.contato-conteudo {
+    display: grid;
+    grid-template-columns: 0.9fr 1.3fr;
+    gap: 22px;
+    align-items: stretch;
+}
+
+/* INFORMAÇÕES */
+
+.info-contato {
+    background-color: #173B78;
+    color: white;
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.icone-contato-principal {
+    width: 55px;
+    height: 55px;
+    background-color: #28569A;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+    margin-bottom: 20px;
+}
+
+.info-contato h2 {
+    font-size: 24px;
+    margin: 0 0 12px;
+}
+
+.descricao-info-contato {
+    color: #D5E5FA;
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0 0 25px;
+}
+
+/* INFORMAÇÕES DE CONTATO */
+
+.item-info-contato {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-bottom: 22px;
+}
+
+.icone-info {
+    width: 40px;
+    height: 40px;
+    background-color: #28569A;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+}
+
+.item-info-contato div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.item-info-contato strong {
+    color: white;
+    font-size: 14px;
+}
+
+.item-info-contato span {
+    color: #D5E5FA;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+/* AVISO */
+
+.aviso-info-contato {
+    background-color: #28569A;
+    border: 1px solid #4474B3;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: auto;
+}
+
+.aviso-info-contato strong {
+    color: white;
+    font-size: 14px;
+}
+
+.aviso-info-contato p {
+    color: #D5E5FA;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 8px 0 0;
+}
+
+/* FORMULÁRIO */
+
+.form-contato {
+    background-color: white;
+    border: 1px solid #D5E1F2;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 3px 10px rgba(23, 59, 120, 0.06);
+}
+
+.form-contato h2 {
+    color: #1E448F;
+    font-size: 23px;
+    margin: 0 0 8px;
+}
+
+.subtitulo-form-contato {
+    color: #8294AC;
+    font-size: 14px;
+    margin: 0 0 25px;
+}
+
+/* CAMPOS */
+
+.campo-contato {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.campo-contato label {
+    color: #2457A0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.campo-contato input,
+.campo-contato select,
+.campo-contato textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #C9D9EC;
+    border-radius: 7px;
+    background-color: #F8FBFF;
+    color: #2457A0;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.campo-contato input:focus,
+.campo-contato select:focus,
+.campo-contato textarea:focus {
+    border-color: #3B75C8;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(59, 117, 200, 0.12);
+}
+
+.campo-contato input::placeholder,
+.campo-contato textarea::placeholder {
+    color: #9AAEC6;
+}
+
+.campo-contato textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* BOTÃO */
+
+.botao-enviar-contato {
+    width: 100%;
+    border: none;
+    border-radius: 7px;
+    background-color: #2457B5;
+    color: white;
+    padding: 14px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: 0.2s;
+}
+
+.botao-enviar-contato:hover {
+    background-color: #173B78;
+}
+
+.botao-enviar-contato span {
+    font-size: 20px;
+}
+
+/* MENSAGEM */
+
+.mensagem-contato {
+    display: none;
+    padding: 13px;
+    margin-top: 15px;
+    border-radius: 7px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.mensagem-contato.sucesso {
+    display: block;
+    background-color: #E4F5EA;
+    color: #247348;
+    border: 1px solid #B9E1C8;
+}
+
+.mensagem-contato.erro {
+    display: block;
+    background-color: #FCE8E8;
+    color: #A13232;
+    border: 1px solid #EBC1C1;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 850px) {
+
+    .contato-conteudo {
+        grid-template-columns: 1fr;
+    }
+
+    .info-contato {
+        padding: 25px;
+    }
+
+    .aviso-info-contato {
+        margin-top: 10px;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .area-contato {
+        padding: 25px 15px;
+    }
+
+    .titulo-contato h1 {
+        font-size: 26px;
+    }
+
+    .texto-contato {
+        font-size: 14px;
+    }
+
+    .info-contato,
+    .form-contato {
+        padding: 20px;
+    }
+
+    .info-contato h2 {
+        font-size: 21px;
+    }
+
+    .form-contato h2 {
+        font-size: 20px;
+    }
+
+    .campo-contato input,
+    .campo-contato select,
+    .campo-contato textarea {
+        font-size: 14px;
+    }
+
 }
 
 
@@ -1042,113 +2290,121 @@ footer img {
 .area-prof {
     flex: 1;
     background-color: #9EC6F7;
-    padding: 35px 5%;
+    padding: 35px 30px;
 }
 
-/* Saudação */
+.container-prof {
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+/* SAUDAÇÃO */
 
 .saudacao-prof {
     display: flex;
     align-items: center;
     gap: 20px;
-    margin-bottom: 30px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #D5E1F2;
+    margin-bottom: 25px;
 }
 
 .icone-prof {
-    width: 60px;
-    height: 60px;
-    background-color: #1E448F;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
+    background-color: #2457B5;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 30px;
+    font-size: 32px;
+    font-weight: bold;
+    flex-shrink: 0;
 }
 
-.saudacao-prof h1 {
+.texto-saudacao-prof h1 {
     color: #173B78;
-    font-size: 26px;
+    font-size: 27px;
     margin: 0 0 8px;
 }
 
-.saudacao-prof p {
-    color: #6B82A8;
-    font-size: 16px;
+.texto-saudacao-prof p {
+    color: #58749B;
+    font-size: 15px;
     margin: 0;
+    line-height: 1.6;
 }
 
-
-/* ========================================
-   DIAS DA SEMANA
-======================================== */
+/* DIAS DA SEMANA */
 
 .dias-prof {
+    background-color: white;
+    border: 1px solid #D5E1F2;
+    border-radius: 10px;
+    padding: 18px;
     display: flex;
     align-items: center;
     gap: 12px;
-    background-color: white;
-    border: 1px solid #D5E1F2;
-    border-radius: 12px;
-    padding: 10px;
     margin-bottom: 25px;
 }
 
 .dia-prof {
     flex: 1;
-    min-width: 0;
-    padding: 12px;
+    background-color: #F2F7FD;
     border: 1px solid #D5E1F2;
-    border-radius: 10px;
-    text-align: center;
-    color: #173B78;
+    border-radius: 8px;
+    padding: 13px 8px;
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    align-items: center;
+    gap: 6px;
+    transition: 0.2s;
+}
+
+.dia-prof:hover {
+    background-color: #E4F0FC;
+    border-color: #9ABBE8;
 }
 
 .dia-prof strong {
-    font-size: 16px;
+    color: #2457A0;
+    font-size: 13px;
 }
 
 .dia-prof span {
-    font-size: 15px;
-}
-
-.dia-prof.ativo {
-    background-color: #1E448F;
-    color: white;
-    border-color: #1E448F;
+    color: #8294AC;
+    font-size: 12px;
 }
 
 .ver-calendario {
+    background-color: #2457B5;
+    color: white;
+    padding: 13px 17px;
+    border-radius: 8px;
     text-decoration: none;
-    color: #1E448F;
     font-weight: bold;
-    padding: 12px;
+    text-align: center;
+    transition: 0.2s;
     white-space: nowrap;
 }
 
 .ver-calendario:hover {
-    color: #2563C7;
+    background-color: #173B78;
 }
 
-
-/* ========================================
-   CONTEÚDO PRINCIPAL
-======================================== */
+/* CONTEÚDO */
 
 .conteudo-prof {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: start;
     gap: 25px;
-    align-items: stretch;
 }
 
-
-/* ========================================
-   SALAS E LABORATÓRIOS
-======================================== */
+/* SALAS */
 
 .salas-prof {
     background-color: white;
@@ -1157,470 +2413,794 @@ footer img {
     padding: 25px;
 }
 
-.salas-prof h2 {
-    color: #173B78;
-    font-size: 24px;
-    margin: 0 0 22px;
+.titulo-salas-prof {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 22px;
 }
+
+.titulo-salas-prof h2 {
+    color: #173B78;
+    font-size: 22px;
+    margin: 0 0 7px;
+}
+
+.titulo-salas-prof p {
+    color: #6B82A8;
+    font-size: 14px;
+    margin: 0;
+}
+
+.quantidade-espacos {
+    background-color: #E4F0FC;
+    color: #2457B5;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* GRID DE SALAS */
 
 .salas-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
 }
 
-
-/* Cards */
-
 .sala-card {
-    background-color: #F8FAFD;
+    background-color: #F6F9FD;
     border: 1px solid #D5E1F2;
-    border-radius: 12px;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 25px;
+    border-radius: 9px;
+    padding: 18px;
     transition: 0.2s;
 }
 
 .sala-card:hover {
-    border-color: #2563C7;
+    border-color: #8CB4E8;
     transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(23, 59, 120, 0.07);
 }
-
-.sala-card.selecionada {
-    background-color: #E8F2FF;
-    border: 1px solid #2563C7;
-}
-
-
-/* Informações do card */
 
 .sala-info {
     display: flex;
     align-items: center;
-    gap: 22px;
+    gap: 12px;
+    margin-bottom: 15px;
 }
 
 .icone-sala {
-    font-size: 45px;
-    color: #1E448F;
+    width: 45px;
+    height: 45px;
+    background-color: #E4F0FC;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    flex-shrink: 0;
 }
 
 .sala-info h3 {
     color: #173B78;
-    font-size: 20px;
-    margin: 0 0 10px;
+    font-size: 16px;
+    margin: 0 0 5px;
 }
 
 .sala-info p {
-    color: #6B82A8;
-    font-size: 15px;
+    color: #8294AC;
+    font-size: 12px;
     margin: 0;
+    line-height: 1.4;
 }
 
+.tipo-espaco {
+    display: inline-block;
+    background-color: #E4F0FC;
+    color: #2457B5;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 14px;
+}
 
-/* Botões dos cards */
+.tipo-espaco.lab {
+    background-color: #DDF5E8;
+    color: #23834E;
+}
+
+/* BOTÃO RESERVA */
 
 .botao-reserva {
     width: 100%;
-    padding: 14px;
     background-color: #2563C7;
     color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 15px;
+    border-radius: 7px;
+    padding: 11px;
+    font-size: 13px;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 .botao-reserva:hover {
-    background-color: #1E448F;
+    background-color: #183B78;
 }
 
 .botao-reserva.secundario {
-    background-color: transparent;
-    border: 1px solid #B9C9DC;
-    color: #173B78;
+    background-color: white;
+    color: #2457B5;
+    border: 1px solid #B7CDE8;
 }
 
 .botao-reserva.secundario:hover {
-    background-color: #E8F2FF;
-    border-color: #2563C7;
+    background-color: #E4F0FC;
 }
 
-
-/* ========================================
-   FORMULÁRIO DE RESERVA
-======================================== */
+/* FORMULÁRIO */
 
 .form-reserva-prof {
     background-color: white;
     border: 1px solid #D5E1F2;
     border-radius: 12px;
     padding: 25px;
+    scroll-margin-top: 30px;
 }
 
-.form-reserva-prof h2 {
+.titulo-form-reserva {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 20px;
+}
+
+.icone-form-reserva {
+    width: 48px;
+    height: 48px;
+    background-color: #E4F0FC;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+    flex-shrink: 0;
+}
+
+.titulo-form-reserva h2 {
     color: #173B78;
     font-size: 21px;
-    margin: 0 0 20px;
+    margin: 0 0 6px;
 }
 
-
-/* Aviso */
-
-.aviso-reserva {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    background-color: #E8F2FF;
-    border-radius: 8px;
-    padding: 13px;
-    margin-bottom: 20px;
-    color: #1E448F;
-}
-
-.aviso-reserva span {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.aviso-reserva p {
-    font-size: 14px;
-    line-height: 1.5;
+.titulo-form-reserva p {
+    color: #8294AC;
+    font-size: 13px;
     margin: 0;
 }
 
+/* AVISO */
 
-/* Campos */
+.aviso-reserva {
+    background-color: #EAF4FC;
+    border: 1px solid #C5DDF5;
+    border-radius: 8px;
+    padding: 13px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.aviso-reserva span {
+    font-size: 18px;
+}
+
+.aviso-reserva p {
+    color: #45658F;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* CAMPOS */
+
+.form-reserva-prof form {
+    display: flex;
+    flex-direction: column;
+}
 
 .form-reserva-prof label {
-    display: block;
-    color: #173B78;
+    color: #2457A0;
     font-size: 14px;
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 7px;
 }
 
 .form-reserva-prof input,
-.form-reserva-prof select {
+.form-reserva-prof select,
+.form-reserva-prof textarea {
     width: 100%;
+    box-sizing: border-box;
+    background-color: #F8FAFD;
+    border: 1px solid #D5E1F2;
+    border-radius: 7px;
     padding: 12px;
-    margin-bottom: 17px;
-    border: 1px solid #C8D5E5;
-    border-radius: 8px;
-    background-color: white;
-    color: #173B78;
+    font-family: inherit;
     font-size: 14px;
-    font-family: Arial, sans-serif;
+    color: #45658F;
     outline: none;
+    margin-bottom: 17px;
+    transition: 0.2s;
 }
 
 .form-reserva-prof input:focus,
-.form-reserva-prof select:focus {
-    border-color: #2563C7;
+.form-reserva-prof select:focus,
+.form-reserva-prof textarea:focus {
+    border-color: #5790D8;
+    box-shadow: 0 0 0 3px rgba(87, 144, 216, 0.12);
 }
 
+.form-reserva-prof textarea {
+    resize: vertical;
+    min-height: 90px;
+}
 
-/* Botão enviar */
+.form-reserva-prof input::placeholder,
+.form-reserva-prof textarea::placeholder {
+    color: #A0AEC0;
+}
+
+/* ENVIAR */
 
 .enviar-reserva {
     width: 100%;
-    padding: 15px;
     background-color: #2563C7;
     color: white;
     border: none;
     border-radius: 8px;
+    padding: 14px;
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 5px;
-}
-
-.enviar-reserva:hover {
-    background-color: #1E448F;
-}
-
-
-
-/* ========================================
-   PÁGINA DE RESERVAS DO PROFESSOR
-======================================== */
-
-.area-reservas-prof {
-    flex: 1;
-    background-color: #9EC6F7;
-    padding: 40px 50px;
-}
-
-.reservas-container {
-    max-width: 1250px;
-    margin: 0 auto;
-}
-
-/* APRESENTAÇÃO */
-
-.reservas-intro {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.reservas-intro h1 {
-    color: #173B78;
-    font-size: 30px;
-    margin: 0 0 8px;
-}
-
-.reservas-intro p {
-    color: #6B82A8;
-    font-size: 16px;
-    margin: 0;
-}
-
-.btn-nova-reserva {
-    background-color: #2563C7;
-    color: white;
-    text-decoration: none;
-    padding: 13px 22px;
-    border-radius: 8px;
-    font-weight: bold;
     transition: 0.2s;
 }
 
-.btn-nova-reserva:hover {
+.enviar-reserva:hover {
+    background-color: #183B78;
+}
+
+/* MENSAGEM DEMONSTRATIVA */
+
+.mensagem-reserva {
+    display: none;
+    background-color: #E2F5E9;
+    border: 1px solid #A8D8B9;
+    color: #267346;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 18px;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.mensagem-reserva strong {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.mensagem-reserva p {
+    margin: 0 0 8px;
+}
+
+.mensagem-reserva small {
+    color: #547C62;
+}
+
+/* INFORMAÇÕES */
+
+.informacoes-prof {
+    margin-top: 25px;
+}
+
+.informacao-prof-item {
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
+    background-color: #E4F0FC;
+    border: 1px solid #B7CDE8;
+    border-radius: 9px;
+    padding: 20px;
+}
+
+.informacao-prof-item > span {
+    font-size: 23px;
+}
+
+.informacao-prof-item strong {
+    color: #1E448F;
+    display: block;
+    margin-bottom: 7px;
+}
+
+.informacao-prof-item p {
+    color: #58749B;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1050px) {
+
+    .conteudo-prof {
+        grid-template-columns: 1fr;
+    }
+
+    .salas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 750px) {
+
+    .area-prof {
+        padding: 25px 15px;
+    }
+
+    .saudacao-prof {
+        padding: 18px;
+        gap: 14px;
+    }
+
+    .icone-prof {
+        width: 60px;
+        height: 60px;
+        font-size: 26px;
+    }
+
+    .texto-saudacao-prof h1 {
+        font-size: 22px;
+    }
+
+    .texto-saudacao-prof p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .dias-prof {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .dia-prof {
+        padding: 11px 5px;
+    }
+
+    .dia-prof strong {
+        font-size: 11px;
+    }
+
+    .ver-calendario {
+        grid-column: 1 / -1;
+        font-size: 14px;
+    }
+
+    .salas-prof {
+        padding: 18px;
+    }
+
+    .titulo-salas-prof h2 {
+        font-size: 19px;
+    }
+
+    .titulo-salas-prof p {
+        font-size: 12px;
+    }
+
+    .salas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sala-card {
+        padding: 15px;
+    }
+
+    .form-reserva-prof {
+        padding: 18px;
+    }
+
+    .titulo-form-reserva h2 {
+        font-size: 19px;
+    }
+
+    .titulo-form-reserva p {
+        font-size: 12px;
+    }
+
+    .aviso-reserva p {
+        font-size: 12px;
+    }
+
+    .form-reserva-prof input,
+    .form-reserva-prof select,
+    .form-reserva-prof textarea {
+        font-size: 14px;
+    }
+
+    .informacao-prof-item {
+        padding: 16px;
+    }
+
+    .informacao-prof-item p {
+        font-size: 13px;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .dias-prof {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+
+/* ========================================
+   PÁGINA DE RESERVAS (PROFESSOR)
+======================================== */
+
+.pagina-reservas {
+    flex: 1;
+    background-color: #9EC2EE;
+    padding: 35px 30px;
+}
+
+.container-reservas {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+
+/* CABEÇALHO */
+
+.topo-reservas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.titulo-reservas {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.icone-titulo-reservas {
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    background-color: #183B78;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    flex-shrink: 0;
+}
+
+.titulo-reservas h1 {
+    margin: 0 0 5px;
+    font-size: 28px;
+    color: #173B78;
+}
+
+.titulo-reservas p {
+    margin: 0;
+    font-size: 15px;
+    color: #24426E;
+}
+
+.voltar-reservas {
+    background-color: #2457B5;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 11px 18px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.voltar-reservas:hover {
     background-color: #183B78;
 }
 
 
-/* RESUMO DAS RESERVAS */
+/* RESUMO DAS SOLICITAÇÕES */
 
 .resumo-reservas {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
-    margin-bottom: 30px;
 }
 
-.resumo-card {
-    background-color: white;
+.card-resumo-reservas {
+    background-color: #FFFFFF;
     border: 1px solid #D5E1F2;
     border-radius: 10px;
-    padding: 22px;
+    padding: 18px 20px;
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 15px;
+    box-shadow: 0 2px 7px rgba(23, 59, 120, 0.05);
 }
 
-.resumo-icone {
+.icone-resumo {
     width: 48px;
     height: 48px;
     border-radius: 10px;
-    background-color: #E8F1FC;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 23px;
+    font-size: 22px;
+    font-weight: bold;
+    flex-shrink: 0;
 }
 
-.resumo-card h3 {
-    color: #173B78;
-    font-size: 26px;
-    margin: 0 0 5px;
+.icone-resumo.pendente {
+    background-color: #FFF3D9;
+    color: #87621F;
 }
 
-.resumo-card p {
-    color: #6B82A8;
-    font-size: 14px;
+.icone-resumo.aprovada {
+    background-color: #E0F5E9;
+    color: #286B4C;
+}
+
+.icone-resumo.recusada {
+    background-color: #FDECEC;
+    color: #B42318;
+}
+
+.card-resumo-reservas span {
+    display: block;
+    font-size: 13px;
+    color: #6E84A3;
+    margin-bottom: 4px;
+}
+
+.card-resumo-reservas h2 {
     margin: 0;
+    font-size: 24px;
+    color: #173B78;
+}
+
+
+/* FORMULÁRIO DE NOVA SOLICITAÇÃO */
+
+.formulario-reserva,
+.lista-reservas {
+    background-color: #FFFFFF;
+    border: 1px solid #D5E1F2;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 7px rgba(23, 59, 120, 0.05);
+}
+
+.titulo-formulario-reserva {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.icone-formulario-reserva {
+    width: 44px;
+    height: 44px;
+    border-radius: 9px;
+    background-color: #E4F0FC;
+    color: #2457B5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.titulo-formulario-reserva h2,
+.topo-lista-reservas h2 {
+    margin: 0 0 4px;
+    font-size: 20px;
+    color: #1E448F;
+}
+
+.titulo-formulario-reserva p,
+.topo-lista-reservas p {
+    margin: 0;
+    font-size: 14px;
+    color: #58749B;
+}
+
+.campos-reserva {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 20px;
+}
+
+.campo-reserva {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo-reserva-completo {
+    grid-column: 1 / -1;
+}
+
+.campo-reserva label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #183B78;
+}
+
+.campo-reserva input,
+.campo-reserva select,
+.campo-reserva textarea {
+    width: 100%;
+    padding: 11px 13px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1E293B;
+    background-color: #FBFDFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo-reserva input:focus,
+.campo-reserva select:focus,
+.campo-reserva textarea:focus {
+    border-color: #2457B5;
+    box-shadow: 0 0 0 3px rgba(36, 87, 181, 0.14);
+    background-color: #FFFFFF;
+}
+
+.aviso-formulario-reserva {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+    padding: 12px 14px;
+    background-color: #EAF3FD;
+    border-left: 4px solid #2457B5;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #3D5B84;
+}
+
+.aviso-formulario-reserva p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.botao-enviar-reserva {
+    margin-top: 18px;
+    background-color: #2457B5;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.botao-enviar-reserva:hover {
+    background-color: #183B78;
 }
 
 
 /* LISTA DE RESERVAS */
 
-.lista-reservas {
-    background-color: white;
-    border: 1px solid #D5E1F2;
-    border-radius: 12px;
-    padding: 30px;
-}
-
-.titulo-reservas {
-    margin-bottom: 25px;
-}
-
-.titulo-reservas h2 {
-    color: #173B78;
-    font-size: 23px;
-    margin: 0 0 8px;
-}
-
-.titulo-reservas p {
-    color: #6B82A8;
-    margin: 0;
-    font-size: 15px;
-}
-
-
-/* ITEM DA RESERVA */
-
-.reserva-item {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    padding: 22px;
-    border: 1px solid #D5E1F2;
-    border-radius: 10px;
-    margin-bottom: 16px;
-    transition: 0.2s;
-}
-
-.reserva-item:last-child {
-    margin-bottom: 0;
-}
-
-.reserva-item:hover {
-    border-color: #7CA9E6;
-    background-color: #FAFCFF;
-}
-
-
-/* DATA */
-
-.reserva-data {
-    min-width: 65px;
-    height: 75px;
-    background-color: #E8F1FC;
-    border-radius: 9px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #1E448F;
-}
-
-.reserva-data span {
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.reserva-data strong {
-    font-size: 25px;
-}
-
-.reserva-data small {
-    font-size: 11px;
-}
-
-
-/* INFORMAÇÕES */
-
-.reserva-info {
-    flex: 1;
-}
-
-.reserva-info h3 {
-    color: #173B78;
-    font-size: 19px;
-    margin: 0 0 10px;
-}
-
-.reserva-info p {
-    color: #555;
-    font-size: 14px;
-    margin: 5px 0;
-}
-
-.reserva-detalhes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 12px;
-    color: #6B82A8;
-    font-size: 13px;
-}
-
-
-/* STATUS */
-
-.reserva-status {
-    min-width: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 8px;
-}
-
-.status {
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-.status.pendente {
-    background-color: #FFF2D6;
-    color: #A36B00;
-}
-
-.status.confirmada {
-    background-color: #DDF5E8;
-    color: #23834E;
-}
-
-.status.recusada {
-    background-color: #FCE2E2;
-    color: #C43B3B;
-}
-
-.reserva-status small {
-    color: #8795A8;
-    font-size: 12px;
-}
-
-
-/* ACESSO AO SIEPE */
-
-.siepe-prof {
-    margin-top: 25px;
-    padding: 25px 30px;
-    background-color: #E5F0FD;
-    border: 1px solid #C8DCF5;
-    border-radius: 12px;
+.topo-lista-reservas {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 18px;
 }
 
-.siepe-texto h2 {
-    color: #173B78;
-    font-size: 20px;
-    margin: 0 0 8px;
+.filtro-reservas {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.siepe-texto p {
-    color: #536B8E;
+.filtro-reservas label {
     font-size: 14px;
-    line-height: 1.5;
-    margin: 0;
-}
-
-.btn-siepe-prof {
-    background-color: #1E448F;
-    color: white;
-    text-decoration: none;
-    padding: 13px 22px;
-    border-radius: 8px;
     font-weight: bold;
-    white-space: nowrap;
-    transition: 0.2s;
+    color: #183B78;
 }
 
-.btn-siepe-prof:hover {
-    background-color: #2563C7;
+.filtro-reservas select {
+    padding: 8px 12px;
+    border: 1px solid #CBD5E1;
+    border-radius: 7px;
+    font-size: 14px;
+    color: #1E293B;
+    background-color: #F4F8FD;
 }
 
+.reservas-listagem {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+/* AVISO FINAL */
+
+.aviso-final-reservas {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #E4F0FC;
+    border: 1px solid #B7CDE8;
+    border-radius: 8px;
+    padding: 16px 18px;
+    font-size: 14px;
+    color: #24426E;
+}
+
+.aviso-final-reservas p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+
+/* RESPONSIVIDADE RESERVAS */
+
+@media (max-width: 900px) {
+    .resumo-reservas {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .pagina-reservas {
+        padding: 22px 15px;
+    }
+
+    .campos-reserva {
+        grid-template-columns: 1fr;
+    }
+
+    .campo-reserva-completo {
+        grid-column: auto;
+    }
+
+    .formulario-reserva,
+    .lista-reservas {
+        padding: 18px;
+    }
+}

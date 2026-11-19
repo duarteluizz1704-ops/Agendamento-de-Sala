@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -8,45 +7,46 @@
 
     <title>Agenda - Início do Aluno</title>
 
-    <link rel="stylesheet" href="assets/CSS/style.css">
-
+    <link rel="stylesheet" href="assets/CSS/style.css?v=2">
 </head>
 
 <body>
 
-    <?php include 'header-aluno.php'?>
+    <?php include "header-aluno.php"?>
 
-
-    <!-- CONTEÚDO PRINCIPAL -->
     <main class="area-aluno">
 
         <!-- BOAS-VINDAS -->
         <section class="boas-vindas">
 
-            <div class="icone-aluno">A</div>
+            <div class="icone-aluno">
+                A
+            </div>
 
             <div>
-                <h1>Olá, Aluno(a)!</h1>
-                <p>Confira sua grade de aulas da semana e fique por dentro dos seus horários.</p>
+                <h1>Olá, Luiz Arthur!</h1>
+
+                <p>
+                    Consulte sua grade semanal, acompanhe os avisos
+                    e fique por dentro das atividades da escola.
+                </p>
             </div>
 
         </section>
 
-
+        <!-- PAINEL PRINCIPAL -->
         <div class="painel-aluno">
 
-            <!-- CRONOGRAMA -->
+            <!-- CALENDÁRIO SEMANAL -->
             <section class="semana">
 
                 <div class="titulo-semana">
 
                     <h2>📅 Minha Semana</h2>
 
-                    <a href="calendario-aluno.php">Ver calendário</a>
-
                 </div>
 
-
+                <!-- TABELA -->
                 <div class="tabela-container">
 
                     <table class="tabela-horarios">
@@ -66,153 +66,162 @@
 
                         <tbody>
 
+                            <!-- 18:30 - 19:10 -->
                             <tr>
-                                <td class="horario">17:50<br>18:30</td>
 
-                                <td>
-                                    <div class="aula aula-segunda">
-                                        <strong>ATC</strong>
-                                        <small>Revezamento A/B</small>
-                                    </div>
+                                <td class="horario">
+                                    18:30<br>19:10
                                 </td>
 
-                                <td>
+                                <!-- SEGUNDA -->
+                                <td rowspan="2" class="celula-aula">
+
+                                    <div class="aula aula-pi">
+                                        <strong>PI</strong>
+                                        <small>Projeto Integrador</small>
+                                    </div>
+
+                                </td>
+
+                                <!-- TERÇA -->
+                                <td class="celula-aula">
+
                                     <div class="aula aula-pnt">
                                         <strong>PNT-WEB</strong>
+                                        <small>Programação</small>
                                     </div>
+
                                 </td>
 
-                                <td>
+                                <!-- QUARTA -->
+                                <td class="celula-aula">
+
                                     <div class="aula aula-eng">
                                         <strong>ENG-SOF</strong>
+                                        <small>Engenharia de Software</small>
                                     </div>
+
                                 </td>
 
-                                <td>
-                                    <div class="aula aula-eng">
-                                        <strong>ENG-SOF</strong>
+                                <!-- QUINTA -->
+                                <td rowspan="2" class="celula-aula">
+
+                                    <div class="aula aula-pnt">
+                                        <strong>PNT-WEB</strong>
+                                        <small>Programação</small>
                                     </div>
+
                                 </td>
 
-                                <td class="sem-aula">—</td>
+                                <!-- SEXTA -->
+                                <td rowspan="4" class="celula-aula">
+
+                                    <div class="aula aula-livre">
+                                        <strong>Sem aula</strong>
+                                        <small>Dia livre</small>
+                                    </div>
+
+                                </td>
+
                             </tr>
 
-
+                            <!-- 19:10 - 19:50 -->
                             <tr>
-                                <td class="horario">18:30<br>19:10</td>
 
-                                <td>
-                                    <div class="aula aula-segunda">
-                                        <strong>PI2</strong>
-                                        <small>Revezamento A/B</small>
-                                    </div>
+                                <td class="horario">
+                                    19:10<br>19:50
                                 </td>
 
-                                <td>
+                                <td class="celula-aula">
+
                                     <div class="aula aula-pnt">
                                         <strong>PNT-WEB</strong>
                                     </div>
+
                                 </td>
 
-                                <td>
+                                <td class="celula-aula">
+
                                     <div class="aula aula-eng">
                                         <strong>ENG-SOF</strong>
                                     </div>
+
                                 </td>
 
-                                <td>
-                                    <div class="aula aula-eng">
-                                        <strong>ENG-SOF</strong>
-                                    </div>
-                                </td>
-
-                                <td class="sem-aula">—</td>
                             </tr>
 
-
+                            <!-- 19:50 - 20:30 -->
                             <tr>
-                                <td class="horario">19:10<br>19:50</td>
 
-                                <td>
-                                    <div class="aula aula-segunda">
-                                        <strong>PI2</strong>
-                                        <small>Revezamento A/B</small>
-                                    </div>
+                                <td class="horario">
+                                    19:50<br>20:30
                                 </td>
 
-                                <td>
+                                <!-- SEGUNDA -->
+                                <td class="sem-aula">
+                                    —
+                                </td>
+
+                                <!-- TERÇA -->
+                                <td class="celula-aula">
+
                                     <div class="aula aula-pnt">
                                         <strong>PNT-WEB</strong>
                                     </div>
+
                                 </td>
 
-                                <td>
+                                <!-- QUARTA -->
+                                <td class="celula-aula">
+
                                     <div class="aula aula-eng">
                                         <strong>ENG-SOF</strong>
                                     </div>
+
                                 </td>
 
-                                <td>
-                                    <div class="aula aula-eng">
-                                        <strong>ENG-SOF</strong>
-                                    </div>
-                                </td>
+                                <!-- QUINTA -->
+                                <td rowspan="2" class="celula-aula">
 
-                                <td class="sem-aula">—</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="horario">19:50<br>20:30</td>
-
-                                <td class="sem-aula">—</td>
-
-                                <td>
-                                    <div class="aula aula-pnt">
-                                        <strong>PNT-WEB</strong>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    <div class="aula aula-eng">
-                                        <strong>ENG-SOF</strong>
-                                    </div>
-                                </td>
-
-                                <td>
                                     <div class="aula aula-cdm">
                                         <strong>CDM</strong>
+                                        <small>Cultura do Mundo Digital</small>
                                     </div>
+
                                 </td>
 
-                                <td class="sem-aula">—</td>
                             </tr>
 
-
+                            <!-- 20:30 - 20:50 -->
                             <tr>
-                                <td class="horario">20:30<br>21:10</td>
 
-                                <td class="sem-aula">—</td>
+                                <td class="horario">
+                                    20:30<br>20:50
+                                </td>
 
-                                <td>
+                                <!-- SEGUNDA -->
+                                <td class="sem-aula">
+                                    —
+                                </td>
+
+                                <!-- TERÇA -->
+                                <td class="celula-aula">
+
                                     <div class="aula aula-pnt">
                                         <strong>PNT-WEB</strong>
                                     </div>
+
                                 </td>
 
-                                <td>
+                                <!-- QUARTA -->
+                                <td class="celula-aula">
+
                                     <div class="aula aula-eng">
                                         <strong>ENG-SOF</strong>
                                     </div>
+
                                 </td>
 
-                                <td>
-                                    <div class="aula aula-cdm">
-                                        <strong>CDM</strong>
-                                    </div>
-                                </td>
-
-                                <td class="sem-aula">—</td>
                             </tr>
 
                         </tbody>
@@ -221,42 +230,38 @@
 
                 </div>
 
-                <div class="aviso-segunda">
-                    <strong> Atenção:</strong>
-                    As aulas de segunda-feira seguem um revezamento entre as turmas A e B.
-                    Quando uma turma tem aula, a outra não tem. Na segunda seguinte, o revezamento se inverte.
-                </div>
-
             </section>
-
 
             <!-- PAINEL LATERAL -->
             <aside class="painel-lateral">
 
-
-                <!-- RESUMO DA SEMANA -->
+                <!-- RESUMO -->
                 <section class="card-lateral">
 
                     <h2>📚 Resumo da Semana</h2>
 
                     <div class="resumo-item">
                         <span>Segunda-feira</span>
-                        <strong>Revezamento A/B</strong>
+                        <strong>PI — Projeto Integrador</strong>
+                        <small>18:30 às 19:50</small>
                     </div>
 
                     <div class="resumo-item">
                         <span>Terça-feira</span>
                         <strong>PNT-WEB</strong>
+                        <small>18:30 às 20:50</small>
                     </div>
 
                     <div class="resumo-item">
                         <span>Quarta-feira</span>
                         <strong>ENG-SOF</strong>
+                        <small>18:30 às 20:50</small>
                     </div>
 
                     <div class="resumo-item">
                         <span>Quinta-feira</span>
-                        <strong>ENG-SOF / CDM</strong>
+                        <strong>PNT-WEB / CDM</strong>
+                        <small>18:30 às 19:50 / 19:50 às 20:50</small>
                     </div>
 
                     <div class="resumo-item">
@@ -266,15 +271,14 @@
 
                 </section>
 
-
                 <!-- LEGENDA -->
                 <section class="card-lateral">
 
                     <h2>🎨 Legenda</h2>
 
                     <div class="legenda-item">
-                        <span class="cor cor-segunda"></span>
-                        ATC / PI2
+                        <span class="cor cor-pi"></span>
+                        Projeto Integrador
                     </div>
 
                     <div class="legenda-item">
@@ -299,29 +303,6 @@
 
                 </section>
 
-
-                <!-- AVISOS -->
-                <section class="card-lateral eventos">
-
-                    <h2>📢 Avisos e Informações</h2>
-
-                    <div class="aviso aviso-azul">
-                        <strong>Organização das aulas</strong>
-                        <p>Consulte sua grade semanal para acompanhar os horários.</p>
-                    </div>
-
-                    <div class="aviso aviso-amarelo">
-                        <strong>Revezamento de segunda</strong>
-                        <p>Confira se sua turma terá aula na próxima segunda-feira.</p>
-                    </div>
-
-                    <div class="aviso aviso-verde">
-                        <strong>Sexta-feira</strong>
-                        <p>Não temos aula devido à atividade de Projeto de Vida.</p>
-                    </div>
-
-                </section>
-
             </aside>
 
         </div>
@@ -329,3 +310,10 @@
     </main>
 
     <?php include 'footer.php'; ?>
+
+</body>
+</html>
+
+</body>
+
+</html>

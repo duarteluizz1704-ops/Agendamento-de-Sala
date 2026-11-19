@@ -1,29 +1,28 @@
-    <header>
+<header class="header">
 
-        <div class="logo">
+    <div class="logo">
 
-            <img src="assets/IMG/logoete.png" alt="LogoSite">
+        <img src="assets/IMG/logosite.png" alt="Logo Site">
 
-            <div>
-                <h2>Agendamento</h2>
-
-                <p>Salas e Laboratórios</p>
-            </div>
-
+        <div>
+            <h2>Agendamento</h2>
+            <p>Salas e Laboratórios</p>
         </div>
 
-        <nav>
+    </div>
 
-            <a href="inicio-prof.php">Início</a>
+    <nav>
 
-            <a href="reservas-prof.php" class="ativo">Reservas</a>
+        <a href="inicio-prof.php">Início</a>
 
-            <a href="sobre-prof.php">Sobre</a>
+        <a href="reservas-prof.php">Reservas</a>
 
-            <a href="contato-prof.php">Contato</a>
-
-            <a href="logout.php">Sair</a>
-
-        </nav>
+        <a href="sobre.php?perfil=professor">Sobre</a>
         
-    </header>
+        <a href="contato.php?perfil=professor">Contato</a>
+
+        <a href="sair.php">Sair</a>
+        
+    </nav>
+
+</header>

@@ -1,12 +1,21 @@
+    <footer class="footer">
 
-<footer>
+        <div class="footer-info">
 
-    <p class="copyright">
-        © 2026 - Sistema de Agendamento de Salas e Laboratórios
-        <br>
-        ETE - Escola Técnica Estadual
-    </p>
+            <p>
+                © 2026 - Sistema de Agendamento de Salas e Laboratórios
+            </p>
 
-    <img src="assets/IMG/logoete.png" alt="Logo ETE">
+            <p>
+                ETE - Escola Técnica Estadual
+            </p>
 
-</footer>
+        </div>
+
+        <div class="footer-logo">
+
+            <img src="assets/IMG/logoete.png" alt="Logo ETE">
+
+        </div>
+
+    </footer>

@@ -1,249 +1,206 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Agendamento - Minhas Reservas</title>
+    <title>Agenda - Reservas</title>
 
-    <link rel="stylesheet" href="assets/CSS/style.css">
+    <link rel="stylesheet" href="assets/CSS/style.css?v=8">
 </head>
 
 <body>
 
-    <?php include 'header-prof.php'; ?>
+    <?php include "header-prof.php"?>
 
-    <main class="area-reservas-prof">
+    <main class="pagina-reservas">
 
-        <div class="reservas-container">
+        <div class="container-reservas">
 
-            <!-- Apresentação -->
-            <div class="reservas-intro">
-
-                <div>
-                    <h1>Minhas Reservas</h1>
-
-                    <p>
-                        Acompanhe suas solicitações e consulte
-                        as reservas de salas e laboratórios.
-                    </p>
-                </div>
-
-                <a href="inicio-prof.php" class="btn-nova-reserva">
-                    + Nova Reserva
-                </a>
-
-            </div>
-
-
-            <!-- Resumo -->
-            <section class="resumo-reservas">
-
-                <div class="resumo-card">
-                    <span class="resumo-icone">📋</span>
-
-                    <div>
-                        <h3>03</h3>
-                        <p>Total de solicitações</p>
-                    </div>
-                </div>
-
-                <div class="resumo-card pendente-card">
-                    <span class="resumo-icone">⏳</span>
-
-                    <div>
-                        <h3>01</h3>
-                        <p>Pendentes</p>
-                    </div>
-                </div>
-
-                <div class="resumo-card confirmada-card">
-                    <span class="resumo-icone">✓</span>
-
-                    <div>
-                        <h3>01</h3>
-                        <p>Confirmadas</p>
-                    </div>
-                </div>
-
-                <div class="resumo-card recusada-card">
-                    <span class="resumo-icone">✕</span>
-
-                    <div>
-                        <h3>01</h3>
-                        <p>Recusadas</p>
-                    </div>
-                </div>
-
-            </section>
-
-
-            <!-- Lista de reservas -->
-            <section class="lista-reservas">
+            <!-- CABEÇALHO DA PÁGINA -->
+            <section class="topo-reservas">
 
                 <div class="titulo-reservas">
+                    <span class="icone-titulo-reservas">📅</span>
+
                     <div>
-                        <h2>Histórico de solicitações</h2>
-
-                        <p>
-                            Confira os detalhes e o andamento das suas reservas.
-                        </p>
+                        <h1>Minhas Reservas</h1>
+                        <p>Solicite salas e laboratórios e acompanhe suas reservas.</p>
                     </div>
                 </div>
 
-
-                <!-- Reserva 1 -->
-                <div class="reserva-item">
-
-                    <div class="reserva-data">
-                        <span>TER</span>
-                        <strong>18</strong>
-                        <small>NOV</small>
-                    </div>
-
-                    <div class="reserva-info">
-
-                        <h3>Laboratório 1</h3>
-
-                        <p>
-                            <strong>Disciplina:</strong> PNT-WEB
-                        </p>
-
-                        <p>
-                            <strong>Turma:</strong> Mod 2A
-                        </p>
-
-                        <div class="reserva-detalhes">
-                            <span>🕒 18h30 - 20h50</span>
-                            <span>📍 Laboratório de Informática</span>
-                        </div>
-
-                    </div>
-
-                    <div class="reserva-status">
-                        <span class="status pendente">
-                            Pendente
-                        </span>
-
-                        <small>Aguardando aprovação</small>
-                    </div>
-
-                </div>
-
-
-                <!-- Reserva 2 -->
-                <div class="reserva-item">
-
-                    <div class="reserva-data">
-                        <span>QUA</span>
-                        <strong>19</strong>
-                        <small>NOV</small>
-                    </div>
-
-                    <div class="reserva-info">
-
-                        <h3>Sala 1</h3>
-
-                        <p>
-                            <strong>Disciplina:</strong> Engenharia de Software
-                        </p>
-
-                        <p>
-                            <strong>Turma:</strong> Mod 2A
-                        </p>
-
-                        <div class="reserva-detalhes">
-                            <span>🕒 18h30 - 20h50</span>
-                            <span>📍 Sala de Aula</span>
-                        </div>
-
-                    </div>
-
-                    <div class="reserva-status">
-                        <span class="status confirmada">
-                            Confirmada
-                        </span>
-
-                        <small>Reserva aprovada</small>
-                    </div>
-
-                </div>
-
-
-                <!-- Reserva 3 -->
-                <div class="reserva-item">
-
-                    <div class="reserva-data">
-                        <span>QUI</span>
-                        <strong>20</strong>
-                        <small>NOV</small>
-                    </div>
-
-                    <div class="reserva-info">
-
-                        <h3>Laboratório 2</h3>
-
-                        <p>
-                            <strong>Disciplina:</strong> PNT-WEB
-                        </p>
-
-                        <p>
-                            <strong>Turma:</strong> Mod 2A
-                        </p>
-
-                        <div class="reserva-detalhes">
-                            <span>🕒 19h50 - 20h50</span>
-                            <span>📍 Laboratório de Informática</span>
-                        </div>
-
-                    </div>
-
-                    <div class="reserva-status">
-                        <span class="status recusada">
-                            Recusada
-                        </span>
-
-                        <small>Horário indisponível</small>
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- Acesso ao SIEPE -->
-            <section class="siepe-prof">
-
-                <div class="siepe-texto">
-
-                    <h2>Precisa acessar o SIEPE?</h2>
-
-                    <p>
-                        Consulte suas informações acadêmicas,
-                        notas, frequência e outros dados escolares
-                        diretamente pelo sistema oficial.
-                    </p>
-
-                </div>
-
-                <a
-                    href="https://www.siepe.educacao.pe.gov.br/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-siepe-prof"
-                >
-                    Acessar SIEPE ↗
+                <a href="inicio-prof.php" class="voltar-reservas">
+                    ← Voltar ao início
                 </a>
 
             </section>
+
+            <!-- RESUMO DAS SOLICITAÇÕES -->
+            <section class="resumo-reservas">
+
+                <div class="card-resumo-reservas">
+                    <div class="icone-resumo pendente">⏳</div>
+                    <div>
+                        <span>Solicitações pendentes</span>
+                        <h2 id="totalPendentes">0</h2>
+                    </div>
+                </div>
+
+                <div class="card-resumo-reservas">
+                    <div class="icone-resumo aprovada">✓</div>
+                    <div>
+                        <span>Reservas aprovadas</span>
+                        <h2 id="totalAprovadas">0</h2>
+                    </div>
+                </div>
+
+                <div class="card-resumo-reservas">
+                    <div class="icone-resumo recusada">✕</div>
+                    <div>
+                        <span>Reservas recusadas</span>
+                        <h2 id="totalRecusadas">0</h2>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- FORMULÁRIO -->
+            <section class="formulario-reserva">
+
+                <div class="titulo-formulario-reserva">
+                    <div class="icone-formulario-reserva">+</div>
+                    <div>
+                        <h2>Nova solicitação</h2>
+                        <p>Preencha os dados para solicitar um espaço à coordenação.</p>
+                    </div>
+                </div>
+
+                <form id="formReserva">
+
+                    <div class="campos-reserva">
+
+                        <div class="campo-reserva">
+                            <label for="diaReserva">Dia da reserva</label>
+                            <select id="diaReserva" required>
+                                <option value="">Selecione o dia</option>
+                                <option value="Segunda-feira">Segunda-feira</option>
+                                <option value="Terça-feira">Terça-feira</option>
+                                <option value="Quarta-feira">Quarta-feira</option>
+                                <option value="Quinta-feira">Quinta-feira</option>
+                                <option value="Sexta-feira">Sexta-feira</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-reserva">
+                            <label for="horarioReserva">Horário</label>
+                            <select id="horarioReserva" required>
+                                <option value="">Selecione o horário</option>
+                                <option value="18:30 às 19:50">18:30 às 19:50</option>
+                                <option value="19:50 às 20:50">19:50 às 20:50</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-reserva">
+                            <label for="espacoReserva">Espaço desejado</label>
+                            <select id="espacoReserva" required>
+                                <option value="">Selecione o espaço</option>
+                                <option value="Sala 1">Sala 1</option>
+                                <option value="Sala 2">Sala 2</option>
+                                <option value="Laboratório 1">Laboratório 1</option>
+                                <option value="Laboratório 2">Laboratório 2</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-reserva">
+                            <label for="turmaReserva">Turma</label>
+                            <input
+                                type="text"
+                                id="turmaReserva"
+                                placeholder="Ex: Módulo 2 - Turma A"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo-reserva campo-reserva-completo">
+                            <label for="disciplinaReserva">Disciplina</label>
+                            <input
+                                type="text"
+                                id="disciplinaReserva"
+                                placeholder="Ex: PNT-WEB, ENG-SOF, CDM ou PI"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo-reserva campo-reserva-completo">
+                            <label for="motivoReserva">Mensagem / Necessidade da reserva</label>
+                            <textarea
+                                id="motivoReserva"
+                                placeholder="Descreva a necessidade da sala ou laboratório..."
+                                rows="4"
+                            ></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="aviso-formulario-reserva">
+                        <span>ℹ️</span>
+                        <p>
+                            A solicitação será encaminhada para análise da coordenação (Aline Chagas).
+                            O espaço só estará reservado após a aprovação.
+                        </p>
+                    </div>
+
+                    <button type="submit" class="botao-enviar-reserva">
+                        Solicitar reserva
+                    </button>
+
+                </form>
+
+            </section>
+
+            <!-- LISTA DE RESERVAS -->
+            <section class="lista-reservas">
+
+                <div class="topo-lista-reservas">
+                    <div>
+                        <h2>Minhas solicitações</h2>
+                        <p>Consulte o andamento dos seus pedidos e justificativas da coordenação.</p>
+                    </div>
+
+                    <div class="filtro-reservas">
+                        <label for="filtroStatus">Filtrar:</label>
+                        <select id="filtroStatus">
+                            <option value="Todas">Todas</option>
+                            <option value="Pendente">Pendentes</option>
+                            <option value="Aprovada">Aprovadas</option>
+                            <option value="Recusada">Recusadas</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="listaReservas" class="reservas-listagem">
+                    <!-- Reservas carregadas pelo JavaScript -->
+                </div>
+
+            </section>
+
+            <!-- AVISO -->
+            <div class="aviso-final-reservas">
+                <span>🔔</span>
+                <p>
+                    <strong>Importante:</strong>
+                    suas solicitações dependem da aprovação da coordenação.
+                    Quando aprovadas, passam a constar no calendário de professores e alunos.
+                </p>
+            </div>
 
         </div>
 
     </main>
 
-    <?php include 'footer.php'; ?>
+    <?php include "footer.php"?>
+
+    <script src="assets/JS/reservas-prof.js"></script>
 
 </body>
 </html>

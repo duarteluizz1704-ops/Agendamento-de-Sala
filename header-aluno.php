@@ -1,29 +1,24 @@
-    <header>
-
-        <div class="logo">
-
-            <img src="assets/IMG/logoete.png" alt="LogoSite">
-
-            <div>
-                <h2>Agendamento</h2>
-
-                <p>Salas e Laboratórios</p>
-            </div>
-
+<header class="header">
+    <div class="logo">
+        <img src="assets/IMG/logoete.png" alt="Logo ETE">
+        <div>
+            <h2>Agendamento</h2>
+            <p>Salas e Laboratórios • Portal do Aluno</p>
         </div>
+    </div>
 
-        <nav>
+    <nav>
 
-            <a href="inicio-aluno.php" class="ativo">Início</a>
+        <a href="inicio-aluno.php">Início</a>
 
-            <a href="sobre-aluno.php">Sobre</a>
+        <a href="perfil-aluno.php">Perfil</a>
 
-            <a href="contato-aluno.php">Contato</a>
+        <a href="sobre.php?perfil=aluno">Sobre</a>
 
-            <a href="perfil-aluno.php">Perfil</a>
-            
-            <a href="logout.php">Sair</a>
+        <a href="contato.php?perfil=aluno">Contato</a>
+        
+        <a href="sair.php">Sair</a>
 
-        </nav>
-
-    </header>
+    </nav>
+    
+</header>

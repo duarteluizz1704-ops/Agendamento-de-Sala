@@ -1,117 +1,253 @@
-<!DOCTYPE html>
+<?php
 
+$perfil = $_GET['perfil'] ?? 'aluno';
+
+?>
+
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Agenda - Sobre</title>
+    <title>Agenda - Sobre e ODS 4</title>
 
     <link rel="stylesheet" href="assets/CSS/style.css">
-
 </head>
 
-<body>
+    <body>
+        
+    <?php
 
-    <?php include 'header.php'; ?>
+    if ($perfil === 'professor') {
+        include 'header-prof.php';
 
+    } elseif ($perfil === 'coordenacao') {
+        include 'header-coord.php';
+
+    } else {
+        include 'header-aluno.php';
+    }
+
+    ?>
 
     <main class="area-sobre">
 
-        <div class="sobre">
+        <div class="sobre-container">
 
-            <h1>Sobre o Sistema</h1>
+            <!-- APRESENTAÇÃO -->
+            <section class="sobre-introducao">
 
-            <p class="introducao">
-                O Sistema de Agendamento de Salas e Laboratórios
-                foi desenvolvido para facilitar a organização e o
-                controle dos espaços utilizados pelos alunos e professores.
-            </p>
+                <span class="sobre-etiqueta">Conheça nosso projeto</span>
 
+                <h1>Sobre o Sistema</h1>
 
-            <div class="sobre-conteudo">
+                <p class="introducao">
+                    O Sistema de Agendamento de Salas e Laboratórios foi
+                    desenvolvido para facilitar a organização e o controle
+                    dos espaços utilizados por alunos e professores,
+                    contribuindo para uma melhor organização do ambiente escolar.
+                </p>
+
+            </section>
+
+            <!-- FUNCIONALIDADES -->
+            <section class="sobre-conteudo">
 
                 <div class="sobre-card">
 
-                    <h2>📅 O que é?</h2>
+                    <div class="sobre-icone">📅</div>
+
+                    <h2>O que é?</h2>
 
                     <p>
-                        O sistema permite consultar e organizar o uso
-                        das salas e laboratórios da instituição,
-                        facilitando o agendamento e evitando conflitos
-                        de horários.
+                        O sistema permite consultar e organizar o uso das
+                        salas e laboratórios da instituição, facilitando
+                        os agendamentos e evitando conflitos de horários.
                     </p>
 
                 </div>
 
-
                 <div class="sobre-card">
 
-                    <h2>👨‍🏫 Professores</h2>
+                    <div class="sobre-icone">👨‍🏫</div>
+
+                    <h2>Professores</h2>
 
                     <p>
-                        Os professores podem solicitar o uso de uma
-                        sala ou laboratório informando o dia, horário
-                        e espaço desejado.
+                        Os professores podem solicitar o uso de salas ou
+                        laboratórios, informando o dia, horário e espaço
+                        desejado para suas atividades.
                     </p>
 
                 </div>
 
-
                 <div class="sobre-card">
 
-                    <h2>👨‍🎓 Alunos</h2>
+                    <div class="sobre-icone">👨‍🎓</div>
+
+                    <h2>Alunos</h2>
 
                     <p>
                         Os alunos podem consultar os horários das aulas,
-                        professores, matérias e salas onde as aulas
-                        acontecerão.
+                        matérias, professores, eventos e informações
+                        relacionadas à rotina escolar.
                     </p>
 
                 </div>
-
 
                 <div class="sobre-card">
 
-                    <h2>🏢 Coordenação</h2>
+                    <div class="sobre-icone">🏢</div>
+
+                    <h2>Coordenação</h2>
 
                     <p>
-                        A coordenação pode analisar as solicitações,
+                        A coordenação pode analisar solicitações,
                         confirmar ou rejeitar reservas e acompanhar
-                        a utilização das salas e laboratórios.
+                        a utilização dos espaços da instituição.
                     </p>
 
                 </div>
 
-            </div>
+            </section>
 
+            <!-- COMO FUNCIONA -->
+            <section class="como-funciona">
 
-            <div class="como-funciona">
+                <div class="como-funciona-titulo">
+                    <span class="sobre-icone">⚙️</span>
 
-                <h2>Como funciona?</h2>
+                    <h2>Como funciona?</h2>
+                </div>
 
                 <p>
-                    O sistema organiza as reservas de forma simples.
-                    O professor solicita uma sala ou laboratório,
-                    a coordenação analisa a solicitação e, após a
-                    confirmação, o espaço fica reservado para o
-                    horário escolhido.
+                    O sistema organiza as solicitações de utilização
+                    dos espaços escolares. O professor solicita uma
+                    sala ou laboratório, a coordenação analisa o pedido
+                    e, após a aprovação, o espaço fica reservado para
+                    o horário escolhido.
                 </p>
 
                 <p>
-                    Os alunos podem acompanhar as reservas confirmadas
-                    através do calendário e consultar onde suas aulas
-                    irão acontecer.
+                    Os alunos podem acompanhar as informações
+                    disponibilizadas, consultar seus horários e verificar
+                    onde suas aulas acontecerão por meio do calendário.
                 </p>
 
-            </div>
+            </section>
+
+            <!-- ODS 4 -->
+            <section class="ods4">
+
+                <div class="ods4-cabecalho">
+
+                    <div class="ods4-numero">
+                        <span>ODS</span>
+                        <strong>4</strong>
+                    </div>
+
+                    <div>
+                        <span class="ods4-etiqueta">Objetivos de Desenvolvimento Sustentável</span>
+
+                        <h2>Educação de Qualidade</h2>
+
+                        <p>
+                            Assegurar a educação inclusiva, equitativa e de qualidade,
+                            e promover oportunidades de aprendizagem ao longo da vida para todos.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="ods4-conteudo">
+
+                    <div class="ods4-texto">
+
+                        <h3>O que é o ODS 4?</h3>
+
+                        <p>
+                            O Objetivo de Desenvolvimento Sustentável 4 (ODS 4),
+                            estabelecido pela Organização das Nações Unidas (ONU),
+                            busca garantir uma educação de qualidade para todos,
+                            promovendo oportunidades de aprendizagem e o acesso
+                            igualitário à educação.
+                        </p>
+
+                        <h3>Como nosso sistema se relaciona com esse objetivo?</h3>
+
+                        <p>
+                            Nosso sistema contribui com a organização do ambiente
+                            educacional por meio do gerenciamento de salas e
+                            laboratórios, facilitando o planejamento das aulas,
+                            o acesso às informações e a utilização dos espaços
+                            disponíveis na instituição.
+                        </p>
+
+                        <p>
+                            Dessa forma, a proposta busca apoiar a organização
+                            escolar e contribuir para um ambiente de aprendizagem
+                            mais eficiente.
+                        </p>
+
+                    </div>
+
+                    <div class="ods4-destaque">
+
+                        <div class="ods4-simbolo">📚</div>
+
+                        <h3>Educação para todos</h3>
+
+                        <p>
+                            A educação é essencial para o desenvolvimento
+                            das pessoas, para a construção de oportunidades
+                            e para uma sociedade mais justa.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="ods4-meta">
+
+                    <h3>Uma educação melhor começa com organização e oportunidades.</h3>
+
+                    <p>
+                        Nosso projeto busca contribuir com o ambiente escolar,
+                        utilizando a tecnologia para facilitar processos e
+                        apoiar a rotina educacional.
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- OBJETIVO DO PROJETO -->
+            <section class="sobre-objetivo">
+
+                <div class="objetivo-icone">💡</div>
+
+                <div>
+                    <h2>Nosso objetivo</h2>
+
+                    <p>
+                        Desenvolver uma solução simples e acessível que
+                        auxilie na organização dos espaços escolares,
+                        facilite o agendamento de salas e laboratórios
+                        e melhore a comunicação entre alunos,
+                        professores e coordenação.
+                    </p>
+                </div>
+
+            </section>
 
         </div>
 
     </main>
 
-
     <?php include 'footer.php'; ?>
+
+</body>
+
+</html>

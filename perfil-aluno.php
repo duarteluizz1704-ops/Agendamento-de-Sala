@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -8,53 +7,47 @@
 
     <title>Agenda - Perfil do Aluno</title>
 
-    <link rel="stylesheet" href="assets/CSS/style.css">
+    <link rel="stylesheet" href="assets/CSS/style.css?v=6">
 </head>
 
 <body>
 
-    <?php include 'header-aluno.php'; ?>
+    <?php include "header-aluno.php"?>
 
     <main class="area-perfil">
 
         <div class="perfil-container">
 
-            <!-- Título -->
+            <!-- TÍTULO -->
             <div class="titulo-perfil">
                 <h1>Meu Perfil</h1>
                 <p>Consulte suas informações pessoais e acadêmicas.</p>
             </div>
 
-            <!-- Informações principais -->
+            <!-- IDENTIFICAÇÃO -->
             <section class="perfil-principal">
-
-                <div class="perfil-avatar">
-                    A
-                </div>
+                <div class="perfil-avatar" aria-hidden="true">LA</div>
 
                 <div class="perfil-identificacao">
-                    <h2>Nome do Aluno</h2>
+                    <h2>Luiz Arthur</h2>
                     <p>Estudante - Desenvolvimento de Sistemas</p>
                     <span>ETE - Escola Técnica Estadual</span>
                 </div>
-
             </section>
 
-            <!-- Dados acadêmicos -->
+            <!-- INFORMAÇÕES ACADÊMICAS -->
             <section class="perfil-card">
-
                 <h2>📋 Informações Acadêmicas</h2>
 
                 <div class="dados-grid">
-
                     <div class="dado">
                         <span>Nome completo</span>
-                        <strong>Nome do Aluno</strong>
+                        <strong>Luiz Arthur</strong>
                     </div>
 
                     <div class="dado">
                         <span>Matrícula</span>
-                        <strong>000000</strong>
+                        <strong>1001</strong>
                     </div>
 
                     <div class="dado">
@@ -63,13 +56,13 @@
                     </div>
 
                     <div class="dado">
-                        <span>Turma</span>
-                        <strong>Mod 2A</strong>
+                        <span>Módulo</span>
+                        <strong>Módulo 2</strong>
                     </div>
 
                     <div class="dado">
-                        <span>Instituição</span>
-                        <strong>ETE - Escola Técnica Estadual</strong>
+                        <span>Turma</span>
+                        <strong>Turma A</strong>
                     </div>
 
                     <div class="dado">
@@ -77,81 +70,50 @@
                         <strong>Noite</strong>
                     </div>
 
+                    <div class="dado dado-instituicao">
+                        <span>Instituição</span>
+                        <strong>ETE - Escola Técnica Estadual</strong>
+                    </div>
                 </div>
-
             </section>
 
-            <!-- Acessos importantes -->
+            <!-- ACESSOS IMPORTANTES -->
             <section class="perfil-card">
-
                 <h2>🔗 Acessos importantes</h2>
 
                 <div class="acessos-grid">
-
-                    <a href="#" target="_blank" class="acesso-item">
-
-                        <div class="acesso-icone">
-                            📚
+                    <a href="https://siepe.educacao.pe.gov.br/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="acesso-item">
+                        <div class="acesso-icone">📚</div>
+                        <div class="acesso-conteudo">
+                            <h3>SIEPE</h3>
+                            <p>Acesse o sistema de informações educacionais para consultar boletim, frequência e informações escolares.</p>
                         </div>
-
-                        <div>
-                            <h3>SIEP</h3>
-                            <p>Acesse o sistema de informações educacionais para consultar seus dados escolares.</p>
-                        </div>
-
                         <span class="seta-acesso">↗</span>
-
                     </a>
 
-                    <a href="inicio-aluno.php" class="acesso-item">
-
-                        <div class="acesso-icone">
-                            📅
+                    <a href="sobre.php" class="acesso-item">
+                        <div class="acesso-icone">🏫</div>
+                        <div class="acesso-conteudo">
+                            <h3>Sobre o Sistema e ODS 4</h3>
+                            <p>Saiba mais sobre o agendamento de salas, a escola e o objetivo de Educação de Qualidade (ODS 4).</p>
                         </div>
-
-                        <div>
-                            <h3>Minha Semana</h3>
-                            <p>Consulte seus horários de aulas e disciplinas.</p>
-                        </div>
-
                         <span class="seta-acesso">→</span>
-
                     </a>
-
-                    <a href="#" class="acesso-item">
-
-                        <div class="acesso-icone">
-                            🏫
-                        </div>
-
-                        <div>
-                            <h3>Informações da Instituição</h3>
-                            <p>Consulte informações e orientações da escola.</p>
-                        </div>
-
-                        <span class="seta-acesso">→</span>
-
-                    </a>
-
                 </div>
-
             </section>
 
-            <!-- Informações adicionais -->
+            <!-- AJUDA E CONTATO -->
             <section class="perfil-card perfil-ajuda">
-
                 <h2>Precisa de ajuda?</h2>
-
                 <p>
-                    Caso encontre algum erro em suas informações acadêmicas
-                    ou precise atualizar seus dados, procure a secretaria
-                    ou a coordenação da instituição.
+                    Caso encontre algum erro em suas informações acadêmicas, tenha dúvidas sobre o sistema,
+                    queira enviar elogios ou sugestões, ou comunicar um problema à coordenação (Aline Chagas)
+                    ou aos desenvolvedores, entre em contato.
                 </p>
-
-                <a href="contato-aluno.php" class="botao-contato">
-                    Entrar em contato
-                </a>
-
+                <a href="contato.php" class="botao-contato">Entrar em contato</a>
             </section>
 
         </div>
@@ -161,4 +123,8 @@
     <?php include 'footer.php'; ?>
 
 </body>
+</html>
+
+</body>
+
 </html>

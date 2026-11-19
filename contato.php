@@ -1,128 +1,210 @@
-<!DOCTYPE html>
+<?php
 
+$perfil = $_GET['perfil'] ?? 'aluno';
+
+?>
+
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Agenda - Contato</title>
 
     <link rel="stylesheet" href="assets/CSS/style.css">
-
 </head>
 
 <body>
 
-    <?php include 'header.php'; ?>
+    <?php
+    if ($perfil === 'professor') {
+        include 'header-prof.php';
+    } elseif ($perfil === 'coordenacao') {
+        include 'header-coord.php';
+    } else {
+        include 'header-aluno.php';
+    }
+    ?>
 
     <main class="area-contato">
 
-        <div class="contato">
+        <div class="contato-container">
 
-            <h1>Entre em contato</h1>
+            <!-- CABEÇALHO -->
+            <section class="titulo-contato">
 
-            <p class="texto-contato">
-                Tem alguma dúvida ou precisa de ajuda?
-                Entre em contato conosco.
-            </p>
+                <span class="etiqueta-contato">Estamos aqui para ajudar</span>
 
+                <h1>Entre em contato</h1>
 
-            <div class="contato-conteudo">
+                <p class="texto-contato">
+                    Tem alguma dúvida, sugestão ou precisa de ajuda?
+                    Envie uma mensagem para nossa equipe.
+                </p>
 
+            </section>
 
-                <!-- Informações -->
+            <!-- CONTEÚDO -->
+            <section class="contato-conteudo">
 
+                <!-- INFORMAÇÕES -->
                 <div class="info-contato">
+
+                    <div class="icone-contato-principal">
+                        💬
+                    </div>
 
                     <h2>Fale conosco</h2>
 
-                    <p>
-                        Caso tenha alguma dúvida sobre o sistema
-                        de agendamento, entre em contato com a
-                        coordenação.
+                    <p class="descricao-info-contato">
+                        Caso tenha alguma dúvida sobre o sistema de
+                        agendamento, precise comunicar um problema
+                        ou enviar uma sugestão, entre em contato.
                     </p>
 
-                    <p>
-                        <strong>E-mail:</strong><br>
-                        agendamento@portodigital.com.br
-                    </p>
+                    <div class="item-info-contato">
 
-                    <p>
-                        <strong>Telefone:</strong><br>
-                        (81) 0000-0000
-                    </p>
+                        <div class="icone-info">✉️</div>
 
-                    <p>
-                        <strong>Horário de atendimento:</strong><br>
-                        Segunda a sexta, das 08:00 às 21:00.
-                    </p>
+                        <div>
+                            <strong>E-mail</strong>
+                            <span>agendamento@portodigital.com.br</span>
+                        </div>
+
+                    </div>
+
+                    <div class="item-info-contato">
+
+                        <div class="icone-info">📞</div>
+
+                        <div>
+                            <strong>Telefone</strong>
+                            <span>(81) 0000-0000</span>
+                        </div>
+
+                    </div>
+
+                    <div class="item-info-contato">
+
+                        <div class="icone-info">🕒</div>
+
+                        <div>
+                            <strong>Horário de atendimento</strong>
+                            <span>Segunda a sexta, das 08:00 às 21:00</span>
+                        </div>
+
+                    </div>
+
+                    <div class="aviso-info-contato">
+
+                        <strong>📌 Atendimento</strong>
+
+                        <p>
+                            As mensagens serão direcionadas à equipe
+                            responsável pelo sistema e à coordenação.
+                        </p>
+
+                    </div>
 
                 </div>
 
-
-                <!-- Formulário -->
-
+                <!-- FORMULÁRIO -->
                 <div class="form-contato">
 
                     <h2>Envie uma mensagem</h2>
 
-                    <label for="nome">Nome</label>
+                    <p class="subtitulo-form-contato">
+                        Preencha os campos abaixo para entrar em contato.
+                    </p>
 
-                    <input
-                        type="text"
-                        id="nome"
-                        placeholder="Digite seu nome"
-                    >
+                    <form id="formContato">
 
+                        <div class="campo-contato">
 
-                    <label for="email">E-mail</label>
+                            <label for="nome">Nome completo</label>
 
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="Digite seu e-mail"
-                    >
+                            <input
+                                type="text"
+                                id="nome"
+                                name="nome"
+                                placeholder="Digite seu nome"
+                                required
+                            >
 
+                        </div>
 
-                    <label for="assunto">Assunto</label>
+                        <div class="campo-contato">
 
-                    <select id="assunto">
+                            <label for="email">E-mail</label>
 
-                        <option value="">Selecione um assunto</option>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Digite seu e-mail"
+                                required
+                            >
 
-                        <option value="duvida">Dúvida</option>
+                        </div>
 
-                        <option value="reserva">Reserva</option>
+                        <div class="campo-contato">
 
-                        <option value="problema">Problema</option>
+                            <label for="assunto">Assunto</label>
 
-                        <option value="outro">Outro</option>
+                            <select id="assunto" name="assunto" required>
 
-                    </select>
+                                <option value="">Selecione um assunto</option>
 
+                                <option value="duvida">Dúvida</option>
 
-                    <label for="mensagem">Mensagem</label>
+                                <option value="reserva">Agendamento de sala</option>
 
-                    <textarea
-                        id="mensagem"
-                        placeholder="Digite sua mensagem"
-                    ></textarea>
+                                <option value="problema">Problema no sistema</option>
 
+                                <option value="sugestao">Sugestão</option>
 
-                    <button type="button">
-                        Enviar mensagem
-                    </button>
+                                <option value="outro">Outro</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="campo-contato">
+
+                            <label for="mensagem">Mensagem</label>
+
+                            <textarea
+                                id="mensagem"
+                                name="mensagem"
+                                placeholder="Descreva como podemos ajudar..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+                        <button type="submit" class="botao-enviar-contato">
+                            Enviar mensagem
+                            <span>→</span>
+                        </button>
+
+                        <div id="mensagem-contato" class="mensagem-contato"></div>
+
+                    </form>
 
                 </div>
 
-            </div>
+            </section>
 
         </div>
 
     </main>
 
-
     <?php include 'footer.php'; ?>
+
+    <script src="assets/JS/contato.js"></script>
+
+</body>
+
+</html>
