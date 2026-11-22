@@ -17,7 +17,7 @@
             <img src="assets/IMG/logoete.png" alt="Logo ETE">
             <div>
                 <h2>Agendamento</h2>
-                <p>Salas e Laboratórios • Portal do Aluno</p>
+                <p>Salas e Laboratórios • Área do Aluno</p>
             </div>
         </div>
 
@@ -49,10 +49,12 @@
 
             <!-- IDENTIFICAÇÃO -->
             <section class="perfil-principal">
-                <div class="perfil-avatar" aria-hidden="true">LA</div>
+                <div class="perfil-avatar" id="perfilAvatar" aria-hidden="true">
+                    LA
+                </div>
 
                 <div class="perfil-identificacao">
-                    <h2>Luiz Arthur</h2>
+                    <h2 id="perfilNome">Luiz Arthur</h2>
                     <p>Estudante - Desenvolvimento de Sistemas</p>
                     <span>ETE - Escola Técnica Estadual</span>
                 </div>
@@ -65,12 +67,12 @@
                 <div class="dados-grid">
                     <div class="dado">
                         <span>Nome completo</span>
-                        <strong>Luiz Arthur</strong>
+                        <strong id="perfilNomeCompleto">Luiz Arthur</strong>
                     </div>
 
                     <div class="dado">
                         <span>Matrícula</span>
-                        <strong>1001</strong>
+                        <strong id="perfilMatricula">1001</strong>
                     </div>
 
                     <div class="dado">
@@ -164,6 +166,9 @@
         </div>
 
     </footer>
+
+    <script src="assets/JS/perfil-aluno.js"></script>
+    
 </body>
 </html>
 

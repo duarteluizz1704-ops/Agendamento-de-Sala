@@ -1,7 +1,43 @@
-// Usuário atualmente logado
+
+/* ==========================================
+   USUÁRIO LOGADO
+========================================== */
+
 const usuarioLogado = JSON.parse(
     localStorage.getItem("usuario") || "null"
 );
+
+
+// ==========================================
+// PERSONALIZAR SAUDAÇÃO DO PROFESSOR
+// ==========================================
+
+if (usuarioLogado && usuarioLogado.tipo === "professor") {
+
+    const saudacaoProfessor = document.getElementById(
+        "saudacaoProfessor"
+    );
+
+    const letraProfessor = document.getElementById(
+        "letraProfessor"
+    );
+
+    if (saudacaoProfessor) {
+        saudacaoProfessor.textContent =
+            "Olá, " + usuarioLogado.nome + "!";
+    }
+
+    if (letraProfessor) {
+        letraProfessor.textContent =
+            usuarioLogado.nome.charAt(0).toUpperCase();
+    }
+
+}
+
+
+// ==========================================
+// ELEMENTOS DO FORMULÁRIO
+// ==========================================
 
 const formulario = document.getElementById("formReservaProf");
 
@@ -36,6 +72,7 @@ dias.forEach(function(dia) {
         selectDia.value = dia.dataset.dia;
 
     });
+
 
     // Permite selecionar usando Enter ou espaço
     dia.addEventListener("keydown", function(event) {
@@ -154,6 +191,18 @@ formulario.addEventListener("submit", function(event) {
 
     event.preventDefault();
 
+    // Verifica o login
+    if (!usuarioLogado || usuarioLogado.tipo !== "professor") {
+
+        alert("Faça login como professor para solicitar uma reserva.");
+
+        window.location.href = "login.html";
+
+        return;
+
+    }
+
+
     // Guarda os dados antes de limpar o formulário
     const dia = selectDia.value;
 
@@ -167,35 +216,37 @@ formulario.addEventListener("submit", function(event) {
 
     const motivo = document.getElementById("motivo").value.trim();
 
-    if (!usuarioLogado || usuarioLogado.tipo !== "professor") {
-        alert("Faça login como professor para solicitar uma reserva.");
-        window.location.href = "login.html";
-        return;
-    }
-
 
     // ==========================================
     // CONVERTER OS VALORES PARA EXIBIÇÃO
     // ==========================================
 
     const diasFormatados = {
+
         segunda: "Segunda-feira",
         terca: "Terça-feira",
         quarta: "Quarta-feira",
         quinta: "Quinta-feira",
         sexta: "Sexta-feira"
+
     };
+
 
     const horariosFormatados = {
+
         "18:30-19:50": "18:30 às 19:50",
         "19:50-20:50": "19:50 às 20:50"
+
     };
 
+
     const espacosFormatados = {
+
         sala1: "Sala 1",
         sala2: "Sala 2",
         lab1: "Laboratório 1",
         lab2: "Laboratório 2"
+
     };
 
 
@@ -204,7 +255,9 @@ formulario.addEventListener("submit", function(event) {
     // ==========================================
 
     const reservasSalvas = JSON.parse(
+
         localStorage.getItem("reservasAgenda") || "[]"
+
     );
 
 
@@ -215,10 +268,15 @@ formulario.addEventListener("submit", function(event) {
     const conflito = reservasSalvas.some(function(reserva) {
 
         return (
+
             reserva.dia === diasFormatados[dia] &&
+
             reserva.horario === horariosFormatados[horario] &&
+
             reserva.espaco === espacosFormatados[espaco] &&
+
             reserva.status !== "Recusada"
+
         );
 
     });
@@ -274,22 +332,27 @@ formulario.addEventListener("submit", function(event) {
     reservasSalvas.unshift(novaReserva);
 
     localStorage.setItem(
+
         "reservasAgenda",
+
         JSON.stringify(reservasSalvas)
+
     );
+
 
     // ==========================================
     // MOSTRAR MENSAGEM DE SUCESSO
     // ==========================================
 
     mensagem.innerHTML = `
+
         <strong>✓ Solicitação preenchida com sucesso!</strong>
 
         <p>
             ${disciplina} - Turma ${turma}<br>
-            Dia: ${dia}<br>
-            Horário: ${horario}<br>
-            Espaço: ${espaco}<br>
+            Dia: ${diasFormatados[dia]}<br>
+            Horário: ${horariosFormatados[horario]}<br>
+            Espaço: ${espacosFormatados[espaco]}<br>
             ${motivo ? "Observação: " + motivo : ""}
         </p>
 
@@ -297,6 +360,7 @@ formulario.addEventListener("submit", function(event) {
             Sua solicitação foi enviada
             para a coordenação.
         </small>
+
     `;
 
     mensagem.style.display = "block";
@@ -356,10 +420,12 @@ function formularioAlterado() {
 
     botaoEnviar.innerHTML = "➤ Enviar Solicitação";
 
+
     // Esconde a mensagem anterior
     mensagem.style.display = "none";
 
 }
+
 
 formulario.addEventListener("input", formularioAlterado);
 

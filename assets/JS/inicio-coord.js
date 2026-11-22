@@ -1,8 +1,6 @@
-
 /* =========================================
    INÍCIO DA COORDENAÇÃO
 ========================================= */
-
 
 // =========================================
 // USUÁRIO LOGADO
@@ -12,14 +10,9 @@ const usuarioLogado = JSON.parse(
     localStorage.getItem("usuario") || "null"
 );
 
-
-// Verifica se o usuário é coordenador
 if (!usuarioLogado || usuarioLogado.tipo !== "coordenacao") {
-
     alert("Faça login como coordenação.");
-
     window.location.href = "login.html";
-
 }
 
 
@@ -42,10 +35,7 @@ const listaRecentesCoord = document.getElementById("listaRecentesCoord");
 // =========================================
 
 if (usuarioLogado) {
-
-    tituloBoasVindas.textContent =
-        "Olá, " + usuarioLogado.nome + "!";
-
+    tituloBoasVindas.textContent = "Olá, " + usuarioLogado.nome + "!";
 }
 
 
@@ -80,13 +70,9 @@ function atualizarResumoCoord(reservas) {
         return reserva.status === "Recusada";
     });
 
-
     totalPendentesCoord.textContent = pendentes.length;
-
     totalAprovadasCoord.textContent = aprovadas.length;
-
     totalRecusadasCoord.textContent = recusadas.length;
-
     totalReservasCoord.textContent = reservas.length;
 
 }
@@ -114,19 +100,15 @@ function escaparHTMLCoord(texto) {
 
 function exibirRecentesCoord(reservas) {
 
-    // Ordena pelas mais recentes
+    // Ordenar pelas mais recentes
     const reservasOrdenadas = [...reservas].sort(function(a, b) {
-
         return Number(b.id) - Number(a.id);
-
     });
 
-
-    // Mostra as 5 mais recentes
+    // Mostrar as 5 mais recentes
     const recentes = reservasOrdenadas.slice(0, 5);
 
-
-    // Se não houver reservas
+    // Se não houver solicitações
     if (recentes.length === 0) {
 
         listaRecentesCoord.innerHTML = `
@@ -145,23 +127,22 @@ function exibirRecentesCoord(reservas) {
         `;
 
         return;
-
     }
 
-
-    // Cria os cards
+    // Criar cards
     listaRecentesCoord.innerHTML = recentes.map(function(reserva) {
 
         let statusClasse = "";
 
         if (reserva.status === "Pendente") {
             statusClasse = "pendente";
-        } else if (reserva.status === "Aprovada") {
+        }
+        else if (reserva.status === "Aprovada") {
             statusClasse = "aprovada";
-        } else if (reserva.status === "Recusada") {
+        }
+        else if (reserva.status === "Recusada") {
             statusClasse = "recusada";
         }
-
 
         return `
             <article class="card-recente-coord">
@@ -180,12 +161,10 @@ function exibirRecentesCoord(reservas) {
 
                     </div>
 
-
                     <p class="professor-recente">
                         Professor:
                         ${escaparHTMLCoord(reserva.professor || "Não identificado")}
                     </p>
-
 
                     <div class="detalhes-recente-coord">
 
@@ -203,13 +182,20 @@ function exibirRecentesCoord(reservas) {
 
                     </div>
 
-
                     <p class="disciplina-recente">
                         Disciplina:
                         ${escaparHTMLCoord(reserva.disciplina)}
                     </p>
 
                 </div>
+
+                <button
+                    type="button"
+                    class="botao-descartar-recente-coord"
+                    data-id="${escaparHTMLCoord(reserva.id)}"
+                >
+                    🗑 Descartar
+                </button>
 
             </article>
         `;
@@ -235,26 +221,77 @@ function atualizarPainelCoord() {
 
 
 // =========================================
+// DESCARTAR SOLICITAÇÃO DOS RECENTES
+// =========================================
+
+listaRecentesCoord.addEventListener("click", function(event) {
+
+    const botao = event.target.closest(
+        ".botao-descartar-recente-coord"
+    );
+
+    if (!botao) {
+        return;
+    }
+
+    const id = botao.dataset.id;
+
+    const reservas = carregarReservasCoord();
+
+    const reserva = reservas.find(function(item) {
+        return String(item.id) === String(id);
+    });
+
+    if (!reserva) {
+        alert("Solicitação não encontrada.");
+        return;
+    }
+
+    const confirmar = confirm(
+        "Deseja descartar esta solicitação do histórico?\n\n" +
+        "Espaço: " + reserva.espaco + "\n" +
+        "Professor: " + reserva.professor + "\n" +
+        "Status: " + reserva.status + "\n\n" +
+        "Esta ação não poderá ser desfeita."
+    );
+
+    if (!confirmar) {
+        return;
+    }
+
+    const reservasAtualizadas = reservas.filter(function(item) {
+        return String(item.id) !== String(id);
+    });
+
+    localStorage.setItem(
+        "reservasAgenda",
+        JSON.stringify(reservasAtualizadas)
+    );
+
+    atualizarPainelCoord();
+
+    alert("Solicitação descartada do histórico.");
+
+});
+
+
+// =========================================
 // ATUALIZAÇÃO AUTOMÁTICA
 // =========================================
 
 // Ao abrir a página
 atualizarPainelCoord();
 
-
-// Ao mudar reservas em outra aba
+// Quando as reservas mudarem em outra aba
 window.addEventListener("storage", function(event) {
 
     if (event.key === "reservasAgenda") {
-
         atualizarPainelCoord();
-
     }
 
 });
 
-
-// Atualiza ao voltar para a página
+// Ao voltar para a página
 window.addEventListener("pageshow", function() {
 
     atualizarPainelCoord();

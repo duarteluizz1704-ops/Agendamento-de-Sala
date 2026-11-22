@@ -1,14 +1,27 @@
-// Matrículas fictícias dos usuários
+
+ // Matrículas fictícias dos usuários
 const usuarios = {
 
     "1001": {
-        nome: "Luiz Arthur",
+        nome: "Luiz Arthur Duarte Silva",
         tipo: "aluno",
         destino: "inicio-aluno.html"
     },
 
     "2001": {
         nome: "Pedro Albino",
+        tipo: "professor",
+        destino: "inicio-prof.html"
+    },
+
+    "2002": {
+        nome: "Luiz Carlos",
+        tipo: "professor",
+        destino: "inicio-prof.html"
+    },
+
+    "2003": {
+        nome: "Dulce Araújo",
         tipo: "professor",
         destino: "inicio-prof.html"
     },
@@ -29,7 +42,7 @@ const mensagemLogin = document.getElementById("mensagem-login");
 
 
 // Quando o formulário for enviado
-formLogin.addEventListener("submit", function (event) {
+formLogin.addEventListener("submit", function(event) {
 
     // Evita que a página recarregue
     event.preventDefault();
@@ -55,8 +68,12 @@ formLogin.addEventListener("submit", function (event) {
         window.location.href = usuario.destino;
 
     } else {
-        mensagemLogin.textContent = "Matrícula inválida. Confira o número e tente novamente.";
+
+        mensagemLogin.textContent =
+            "Matrícula inválida. Confira o número e tente novamente.";
+
         mensagemLogin.className = "erro-login";
+
     }
 
 });

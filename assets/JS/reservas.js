@@ -1,4 +1,3 @@
-
 const formulario = document.getElementById("formReserva");
 const listaReservas = document.getElementById("listaReservas");
 const filtroStatus = document.getElementById("filtroStatus");
@@ -6,6 +5,11 @@ const filtroStatus = document.getElementById("filtroStatus");
 const totalPendentes = document.getElementById("totalPendentes");
 const totalAprovadas = document.getElementById("totalAprovadas");
 const totalRecusadas = document.getElementById("totalRecusadas");
+
+// Usuário atualmente logado
+const usuarioLogadoReserva = JSON.parse(
+    localStorage.getItem("usuario") || "null"
+);
 
 
 // ==========================================
@@ -263,6 +267,14 @@ function exibirReservas() {
                     ""
                 }
 
+                <button
+                    type="button"
+                    class="botao-descartar-prof"
+                    data-id="${escaparHTML(reserva.id)}"
+                >
+                    🗑 Descartar do histórico
+                </button>
+
             </article>
         `;
 
@@ -280,7 +292,27 @@ formulario.addEventListener("submit", function(event) {
     event.preventDefault();
 
 
+    // ==========================================
+    // VERIFICAR LOGIN DO PROFESSOR
+    // ==========================================
+
+    if (
+        !usuarioLogadoReserva ||
+        usuarioLogadoReserva.tipo !== "professor"
+    ) {
+
+        alert("Faça login como professor para realizar uma reserva.");
+
+        window.location.href = "login.html";
+
+        return;
+
+    }
+
+
+    // ==========================================
     // PEGAR OS DADOS DO FORMULÁRIO
+    // ==========================================
 
     const dia = document.getElementById("diaReserva").value;
 
@@ -339,7 +371,8 @@ formulario.addEventListener("submit", function(event) {
 
         id: Date.now(),
 
-        professor: "Professor",
+        // Salva o nome do professor que está logado
+        professor: usuarioLogadoReserva.nome,
 
         dia: dia,
 
@@ -362,27 +395,37 @@ formulario.addEventListener("submit", function(event) {
     };
 
 
+    // ==========================================
     // ADICIONAR AO ARRAY
+    // ==========================================
 
     reservas.unshift(novaReserva);
 
 
+    // ==========================================
     // SALVAR NO LOCALSTORAGE
+    // ==========================================
 
     salvarReservas(reservas);
 
 
+    // ==========================================
     // ATUALIZAR A LISTAGEM
+    // ==========================================
 
     exibirReservas();
 
 
+    // ==========================================
     // LIMPAR FORMULÁRIO
+    // ==========================================
 
     formulario.reset();
 
 
+    // ==========================================
     // MENSAGEM
+    // ==========================================
 
     alert(
         "Solicitação registrada com sucesso!\n\n" +
@@ -390,7 +433,9 @@ formulario.addEventListener("submit", function(event) {
     );
 
 
+    // ==========================================
     // LEVAR ATÉ A LISTAGEM
+    // ==========================================
 
     document.querySelector(".lista-reservas").scrollIntoView({
 
@@ -419,16 +464,20 @@ function cancelarReserva(id) {
     const reservas = carregarReservas();
 
 
+    // ==========================================
     // LOCALIZAR A SOLICITAÇÃO
+    // ==========================================
 
     const reserva = reservas.find(function(item) {
 
-        return item.id === id;
+        return String(item.id) === String(id);
 
     });
 
 
-    // VERIFICAR SE EXISTE E SE ESTÁ PENDENTE
+    // ==========================================
+    // VERIFICAR SE EXISTE
+    // ==========================================
 
     if (!reserva) {
 
@@ -439,6 +488,10 @@ function cancelarReserva(id) {
     }
 
 
+    // ==========================================
+    // VERIFICAR SE ESTÁ PENDENTE
+    // ==========================================
+
     if (reserva.status !== "Pendente") {
 
         alert("Só é possível cancelar solicitações pendentes.");
@@ -448,21 +501,27 @@ function cancelarReserva(id) {
     }
 
 
+    // ==========================================
     // REMOVER A SOLICITAÇÃO
+    // ==========================================
 
     const novasReservas = reservas.filter(function(item) {
 
-        return item.id !== id;
+        return String(item.id) !== String(id);
 
     });
 
 
+    // ==========================================
     // SALVAR
+    // ==========================================
 
     salvarReservas(novasReservas);
 
 
+    // ==========================================
     // ATUALIZAR TELA
+    // ==========================================
 
     exibirReservas();
 
@@ -495,6 +554,75 @@ window.addEventListener("storage", function(event) {
         exibirReservas();
 
     }
+
+});
+
+
+// ==========================================
+// DESCARTAR DO HISTÓRICO - PROFESSOR
+// ==========================================
+
+listaReservas.addEventListener("click", function(event) {
+
+    const botao = event.target.closest(
+        ".botao-descartar-prof"
+    );
+
+    if (!botao) {
+        return;
+    }
+
+    const id = botao.dataset.id;
+
+    const reservas = carregarReservas();
+
+    const reserva = reservas.find(function(item) {
+        return String(item.id) === String(id);
+    });
+
+    if (!reserva) {
+
+        alert("Reserva não encontrada.");
+
+        return;
+
+    }
+
+
+    const confirmar = confirm(
+        "Deseja remover esta solicitação do seu histórico?\n\n" +
+        reserva.espaco + "\n" +
+        reserva.dia + "\n" +
+        reserva.horario + "\n" +
+        reserva.status
+    );
+
+    if (!confirmar) {
+        return;
+    }
+
+
+    // ==========================================
+    // REMOVER RESERVA
+    // ==========================================
+
+    const reservasAtualizadas = reservas.filter(function(item) {
+
+        return String(item.id) !== String(id);
+
+    });
+
+
+    // ==========================================
+    // SALVAR E ATUALIZAR
+    // ==========================================
+
+    salvarReservas(reservasAtualizadas);
+
+    exibirReservas();
+
+
+    alert("Solicitação descartada do histórico.");
 
 });
 

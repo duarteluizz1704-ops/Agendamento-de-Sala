@@ -222,6 +222,16 @@ function filtrarReservasCoord(reservas) {
 
 }
 
+// Pesquisa enquanto digita
+pesquisaReservaCoord.addEventListener("input", function() {
+    exibirReservasCoord();
+});
+
+// Filtro por status
+filtroStatusCoord.addEventListener("change", function() {
+    exibirReservasCoord();
+});
+
 
 // =========================================
 // EXIBIR RESERVAS
@@ -467,6 +477,19 @@ function exibirReservasCoord() {
 
                 ${botoes}
 
+                <div class="acoes-descartar-coord">
+
+                    <button
+                        type="button"
+                        class="botao-descartar-coord"
+                        data-acao="descartar"
+                        data-id="${escaparHTMLCoord(reserva.id)}"
+                    >
+                        🗑 Descartar do histórico
+                    </button>
+
+                </div>
+
             </article>
         `;
 
@@ -641,37 +664,72 @@ function recusarReservaCoord(id) {
 
 }
 
+// =========================================
+// DESCARTAR SOLICITAÇÃO DO HISTÓRICO
+// =========================================
+
+function descartarReservaCoord(id) {
+
+    const reservas = carregarReservasCoord();
+
+    const reserva = reservas.find(function(item) {
+        return String(item.id) === String(id);
+    });
+
+    if (!reserva) {
+        alert("Solicitação não encontrada.");
+        return;
+    }
+
+    const confirmar = confirm(
+        "Deseja descartar esta solicitação do histórico?\n\n" +
+        "Espaço: " + reserva.espaco + "\n" +
+        "Professor: " + reserva.professor + "\n" +
+        "Status: " + reserva.status + "\n\n" +
+        "Esta ação não poderá ser desfeita."
+    );
+
+    if (!confirmar) {
+        return;
+    }
+
+    const reservasAtualizadas = reservas.filter(function(item) {
+        return String(item.id) !== String(id);
+    });
+
+    salvarReservasCoord(reservasAtualizadas);
+
+    exibirReservasCoord();
+
+    alert("Solicitação removida do histórico.");
+}
+
 
 // =========================================
-// BOTÕES DE APROVAR E RECUSAR
+// AÇÕES DOS CARDS
 // =========================================
 
 listaReservasCoord.addEventListener("click", function(event) {
 
     const botao = event.target.closest("button[data-acao]");
 
-
     if (!botao) {
         return;
     }
 
-
     const acao = botao.dataset.acao;
-
     const id = botao.dataset.id;
 
-
     if (acao === "aprovar") {
-
         aprovarReservaCoord(id);
-
     }
 
-
-    if (acao === "recusar") {
-
+    else if (acao === "recusar") {
         recusarReservaCoord(id);
+    }
 
+    else if (acao === "descartar") {
+        descartarReservaCoord(id);
     }
 
 });
