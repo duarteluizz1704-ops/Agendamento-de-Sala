@@ -2007,7 +2007,7 @@ body {
     display: grid;
     grid-template-columns: 0.9fr 1.3fr;
     gap: 22px;
-    align-items: stretch;
+    align-items: start;
 }
 
 /* INFORMAÇÕES */
@@ -2091,7 +2091,7 @@ body {
     border: 1px solid #4474B3;
     border-radius: 8px;
     padding: 15px;
-    margin-top: auto;
+    margin-top: 20px;
 }
 
 .aviso-info-contato strong {
@@ -2377,6 +2377,90 @@ body {
 .dia-prof span {
     color: #8294AC;
     font-size: 12px;
+}
+
+/* ========================================
+   SELEÇÃO DOS DIAS DA SEMANA
+======================================== */
+
+.dia-prof {
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Dia selecionado */
+
+.dia-prof.selecionado {
+    background-color: #2457B5;
+    border-color: #2457B5;
+    box-shadow: 0 3px 8px rgba(36, 87, 181, 0.2);
+}
+
+.dia-prof.selecionado strong {
+    color: white;
+}
+
+.dia-prof.selecionado span {
+    color: #DCEBFC;
+}
+
+
+/* ========================================
+   SELEÇÃO DOS ESPAÇOS
+======================================== */
+
+/* Todos os botões inicialmente brancos */
+
+.botao-reserva {
+    background-color: white;
+    color: #2457B5;
+    border: 1px solid #B7CDE8;
+}
+
+/* Hover dos botões não selecionados */
+
+.botao-reserva:hover {
+    background-color: #E4F0FC;
+    color: #2457B5;
+}
+
+/* Espaço selecionado */
+
+.botao-reserva.selecionado {
+    background-color: #022b79;
+    color: white;
+    border-color: #2457B5;
+}
+
+/* Hover do espaço selecionado */
+
+.botao-reserva.selecionado:hover {
+    background-color: #183B78;
+    color: white;
+}
+
+
+/* ========================================
+   BOTÃO ENVIAR SOLICITAÇÃO
+======================================== */
+
+.enviar-reserva {
+    background-color: #2457B5;
+    color: white;
+    transition: 0.2s;
+}
+
+/* Após clicar/enviar */
+
+.enviar-reserva.enviado {
+    background-color: #183B78;
+    border: 1px solid #183B78;
+}
+
+/* Hover */
+
+.enviar-reserva:hover {
+    background-color: #183B78;
 }
 
 .ver-calendario {
@@ -3178,6 +3262,162 @@ body {
 }
 
 
+/* ========================================
+   CARDS DAS SOLICITAÇÕES
+======================================== */
+
+.reserva-item {
+    background-color: #F8FBFF;
+    border: 1px solid #D5E1F2;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.reserva-item-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.reserva-item-topo h3 {
+    margin: 0;
+    color: #183B78;
+    font-size: 18px;
+}
+
+.status-reserva {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status-reserva.Pendente {
+    background-color: #FFF3D9;
+    color: #87621F;
+}
+
+.status-reserva.Aprovada {
+    background-color: #E0F5E9;
+    color: #286B4C;
+}
+
+.status-reserva.Recusada {
+    background-color: #FDECEC;
+    color: #B42318;
+}
+
+
+/* DADOS DA RESERVA */
+
+.dados-reserva {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.dado-reserva {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #FFFFFF;
+    border: 1px solid #E1EAF5;
+    padding: 12px;
+    border-radius: 7px;
+}
+
+.dado-reserva span {
+    font-size: 12px;
+    color: #6E84A3;
+}
+
+.dado-reserva strong {
+    font-size: 14px;
+    color: #183B78;
+}
+
+
+/* OBSERVAÇÕES E RESPOSTA */
+
+.motivo-reserva-exibido {
+    font-size: 14px;
+    color: #405A7C;
+    line-height: 1.6;
+    padding: 12px;
+    background-color: #FFFFFF;
+    border-radius: 7px;
+    border: 1px solid #E1EAF5;
+    overflow-wrap: anywhere;
+}
+
+.data-reserva {
+    color: #6E84A3;
+    font-size: 12px;
+}
+
+
+/* CANCELAR */
+
+.botao-cancelar-reserva {
+    align-self: flex-start;
+    padding: 10px 16px;
+    border: 1px solid #DCB7B7;
+    background-color: #FFFFFF;
+    color: #B42318;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.botao-cancelar-reserva:hover {
+    background-color: #FDECEC;
+}
+
+
+/* LISTA VAZIA */
+
+.reservas-vazias {
+    text-align: center;
+    padding: 40px 20px;
+    color: #58749B;
+}
+
+.icone-reservas-vazias {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.reservas-vazias h3 {
+    color: #183B78;
+    margin-bottom: 8px;
+}
+
+.reservas-vazias p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 500px) {
+
+    .dados-reserva {
+        grid-template-columns: 1fr;
+    }
+
+    .reserva-item {
+        padding: 15px;
+    }
+
+}
+
 /* RESPONSIVIDADE RESERVAS */
 
 @media (max-width: 900px) {
@@ -3203,4 +3443,949 @@ body {
     .lista-reservas {
         padding: 18px;
     }
+}
+
+
+/* =========================================
+   INÍCIO DA COORDENAÇÃO
+========================================= */
+
+.header-coord {
+    background-color: #183B78;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 5%;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.logo-coord h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.nav-coord {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-coord a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-coord a:hover {
+    color: #9EC6F7;
+}
+
+.nav-coord a.ativo {
+    color: #9EC6F7;
+    border-bottom: 2px solid #9EC6F7;
+    padding-bottom: 5px;
+}
+
+.usuario-coord {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.botao-sair-coord {
+    background-color: white;
+    color: #183B78;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.botao-sair-coord:hover {
+    background-color: #9EC6F7;
+}
+
+
+/* =========================================
+   CONTEÚDO PRINCIPAL
+========================================= */
+
+.inicio-coord {
+    width: 90%;
+    max-width: 1200px;
+    margin: 35px auto;
+}
+
+
+/* BOAS-VINDAS */
+
+.boas-vindas-coord {
+    background-color: #E4F0FC;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.boas-vindas-coord h1 {
+    color: #183B78;
+    margin: 0 0 12px;
+    font-size: 30px;
+}
+
+.boas-vindas-coord p {
+    color: #444;
+    margin: 0;
+    font-size: 16px;
+}
+
+
+/* =========================================
+   CARDS DE RESUMO
+========================================= */
+
+.resumo-coord {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.card-resumo-coord {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    border-left: 5px solid #2457B5;
+}
+
+.card-resumo-coord h3 {
+    color: #555;
+    font-size: 14px;
+    margin: 0 0 8px;
+}
+
+.card-resumo-coord p {
+    color: #183B78;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.icone-resumo {
+    font-size: 28px;
+}
+
+.card-resumo-coord.pendentes {
+    border-left-color: #E5A000;
+}
+
+.card-resumo-coord.aprovadas {
+    border-left-color: #2E9D62;
+}
+
+.card-resumo-coord.recusadas {
+    border-left-color: #D94B4B;
+}
+
+.card-resumo-coord.total {
+    border-left-color: #2457B5;
+}
+
+
+/* =========================================
+   TÍTULOS DE SEÇÃO
+========================================= */
+
+.titulo-secao-coord {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.titulo-secao-coord h2,
+.atalhos-coord > h2 {
+    color: #183B78;
+    margin: 0 0 8px;
+}
+
+.titulo-secao-coord p {
+    color: #666;
+    margin: 0;
+}
+
+.botao-ver-todas {
+    text-decoration: none;
+    color: #2457B5;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.botao-ver-todas:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   SOLICITAÇÕES RECENTES
+========================================= */
+
+.lista-recentes-coord {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card-recente-coord {
+    background-color: white;
+    border-radius: 10px;
+    padding: 22px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+    border: 1px solid #DCE8F8;
+}
+
+.recente-topo-coord {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.recente-topo-coord h3 {
+    margin: 0;
+    color: #183B78;
+    font-size: 18px;
+}
+
+.professor-recente {
+    color: #444;
+    margin: 12px 0;
+}
+
+.detalhes-recente-coord {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    color: #555;
+    font-size: 14px;
+}
+
+.disciplina-recente {
+    color: #555;
+    margin-bottom: 0;
+}
+
+
+/* STATUS */
+
+.status-coord {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.status-coord.pendente {
+    background-color: #FFF1CC;
+    color: #8A5A00;
+}
+
+.status-coord.aprovada {
+    background-color: #DDF3E5;
+    color: #247444;
+}
+
+.status-coord.recusada {
+    background-color: #FCE0E0;
+    color: #A52D2D;
+}
+
+
+/* VAZIO */
+
+.vazio-recentes-coord {
+    text-align: center;
+    background-color: white;
+    padding: 40px 20px;
+    border-radius: 12px;
+    border: 1px dashed #9EC6F7;
+}
+
+.vazio-recentes-coord > span {
+    font-size: 40px;
+}
+
+.vazio-recentes-coord h3 {
+    color: #183B78;
+}
+
+.vazio-recentes-coord p {
+    color: #666;
+}
+
+
+/* =========================================
+   ATALHOS
+========================================= */
+
+.atalhos-coord {
+    margin: 40px 0;
+}
+
+.cards-atalhos-coord {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.atalho-coord {
+    background-color: white;
+    border: 1px solid #DCE8F8;
+    border-radius: 12px;
+    padding: 25px;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.atalho-coord:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(36, 87, 181, 0.15);
+    border-color: #9EC6F7;
+}
+
+.icone-atalho {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.atalho-coord h3 {
+    color: #183B78;
+    margin: 0 0 10px;
+}
+
+.atalho-coord p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.atalho-coord > span {
+    color: #2457B5;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   ESPAÇOS
+========================================= */
+
+.espacos-coord {
+    margin-bottom: 40px;
+}
+
+.cards-espacos-coord {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.card-espaco-coord {
+    background-color: white;
+    border: 1px solid #DCE8F8;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icone-espaco {
+    font-size: 30px;
+}
+
+.card-espaco-coord h3 {
+    color: #183B78;
+    margin: 0 0 6px;
+    font-size: 16px;
+}
+
+.card-espaco-coord p {
+    color: #666;
+    margin: 0;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   RODAPÉ
+========================================= */
+
+.footer-coord {
+    background-color: #183B78;
+    color: white;
+    text-align: center;
+    padding: 22px;
+    margin-top: 40px;
+}
+
+.footer-coord p {
+    margin: 5px;
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .resumo-coord {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards-espacos-coord {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header-coord {
+        justify-content: center;
+    }
+
+    .nav-coord {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .header-coord {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-coord {
+        gap: 15px;
+    }
+
+    .usuario-coord {
+        flex-direction: column;
+    }
+
+    .inicio-coord {
+        width: 92%;
+    }
+
+    .resumo-coord {
+        grid-template-columns: 1fr;
+    }
+
+    .cards-atalhos-coord {
+        grid-template-columns: 1fr;
+    }
+
+    .cards-espacos-coord {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo-secao-coord {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .boas-vindas-coord h1 {
+        font-size: 24px;
+    }
+
+    .detalhes-recente-coord {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+}
+
+
+/* =========================================
+   RESERVAS - COORDENAÇÃO
+========================================= */
+
+.pagina-reservas-coord {
+    min-height: 70vh;
+    padding: 35px 0;
+}
+
+.container-reservas-coord {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+/* =========================================
+   TOPO
+========================================= */
+
+.topo-reservas-coord {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.topo-reservas-coord h1 {
+    color: #183B78;
+    margin: 0 0 10px;
+    font-size: 30px;
+}
+
+.topo-reservas-coord p {
+    color: #666;
+    margin: 0;
+}
+
+.voltar-coord {
+    text-decoration: none;
+    color: #2457B5;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.voltar-coord:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   RESUMO
+========================================= */
+
+.resumo-reservas-coord {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.resumo-reserva-coord {
+    background-color: white;
+    padding: 22px;
+    border-radius: 10px;
+    border-left: 5px solid #2457B5;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+}
+
+.resumo-reserva-coord h3 {
+    color: #555;
+    font-size: 15px;
+    margin: 0 0 10px;
+}
+
+.resumo-reserva-coord p {
+    color: #183B78;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.resumo-reserva-coord.pendentes {
+    border-left-color: #E5A000;
+}
+
+.resumo-reserva-coord.aprovadas {
+    border-left-color: #2E9D62;
+}
+
+.resumo-reserva-coord.recusadas {
+    border-left-color: #D94B4B;
+}
+
+.resumo-reserva-coord.total {
+    border-left-color: #2457B5;
+}
+
+
+/* =========================================
+   FILTROS
+========================================= */
+
+.filtros-reservas-coord {
+    background-color: #E4F0FC;
+    padding: 22px;
+    border-radius: 10px;
+    display: flex;
+    gap: 20px;
+    align-items: end;
+    margin-bottom: 35px;
+}
+
+.campo-filtro-coord {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo-filtro-coord label {
+    color: #183B78;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.campo-filtro-coord select,
+.campo-filtro-coord input {
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid #B6CDE9;
+    border-radius: 6px;
+    background-color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+.campo-filtro-coord select:focus,
+.campo-filtro-coord input:focus {
+    border-color: #2457B5;
+    box-shadow: 0 0 0 2px rgba(36, 87, 181, 0.12);
+}
+
+.campo-filtro-coord.pesquisa {
+    flex: 1;
+}
+
+
+/* =========================================
+   LISTA
+========================================= */
+
+.titulo-lista-coord {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.titulo-lista-coord h2 {
+    color: #183B78;
+    margin: 0;
+}
+
+.titulo-lista-coord span {
+    color: #666;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   CARDS
+========================================= */
+
+#listaReservasCoord {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-reserva-coord {
+    background-color: white;
+    border: 1px solid #DCE8F8;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    transition: 0.2s;
+}
+
+.card-reserva-coord:hover {
+    box-shadow: 0 5px 14px rgba(36, 87, 181, 0.12);
+}
+
+.topo-card-reserva-coord {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #E4F0FC;
+}
+
+.topo-card-reserva-coord h3 {
+    color: #183B78;
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.professor-card-coord {
+    color: #555;
+    margin: 0;
+}
+
+.status-reserva-coord {
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.status-reserva-coord.pendente {
+    background-color: #FFF1CC;
+    color: #8A5A00;
+}
+
+.status-reserva-coord.aprovada {
+    background-color: #DDF3E5;
+    color: #247444;
+}
+
+.status-reserva-coord.recusada {
+    background-color: #FCE0E0;
+    color: #A52D2D;
+}
+
+
+/* =========================================
+   INFORMAÇÕES DA RESERVA
+========================================= */
+
+.informacoes-reserva-coord {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 22px 0;
+}
+
+.info-reserva-coord {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.info-reserva-coord > span {
+    font-size: 20px;
+}
+
+.info-reserva-coord strong {
+    color: #183B78;
+    font-size: 14px;
+}
+
+.info-reserva-coord p {
+    color: #555;
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   MOTIVO
+========================================= */
+
+.motivo-solicitacao-coord {
+    background-color: #F5F9FE;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.motivo-solicitacao-coord strong {
+    color: #183B78;
+}
+
+.motivo-solicitacao-coord p {
+    color: #555;
+    margin: 8px 0 0;
+    line-height: 1.6;
+}
+
+.data-solicitacao-coord,
+.data-analise-coord {
+    color: #666;
+    font-size: 13px;
+    margin: 10px 0;
+}
+
+
+/* =========================================
+   JUSTIFICATIVA
+========================================= */
+
+.justificativa-coord {
+    background-color: #FCE8E8;
+    border-left: 4px solid #D94B4B;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 15px 0;
+}
+
+.justificativa-coord strong {
+    color: #A52D2D;
+}
+
+.justificativa-coord p {
+    color: #555;
+    margin: 8px 0 0;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   BOTÕES DE AÇÃO
+========================================= */
+
+.acoes-reserva-coord {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid #E4F0FC;
+}
+
+.botao-aprovar-coord,
+.botao-recusar-coord {
+    border: none;
+    padding: 11px 22px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botao-aprovar-coord {
+    background-color: #2E9D62;
+    color: white;
+}
+
+.botao-aprovar-coord:hover {
+    background-color: #247444;
+}
+
+.botao-recusar-coord {
+    background-color: #D94B4B;
+    color: white;
+}
+
+.botao-recusar-coord:hover {
+    background-color: #A52D2D;
+}
+
+.header nav .botao-sair {
+    background: transparent;
+    color: white;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    padding: 8px 12px;
+}
+
+.header nav .botao-sair:hover {
+    color: #9EC6F7;
+}
+
+/* =========================================
+   LISTA VAZIA
+========================================= */
+
+.reservas-vazias-coord {
+    background-color: white;
+    border: 1px dashed #9EC6F7;
+    border-radius: 12px;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.icone-vazio-coord {
+    font-size: 45px;
+}
+
+.reservas-vazias-coord h3 {
+    color: #183B78;
+    margin: 15px 0 10px;
+}
+
+.reservas-vazias-coord p {
+    color: #666;
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .resumo-reservas-coord {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .informacoes-reserva-coord {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .container-reservas-coord {
+        width: 92%;
+    }
+
+    .topo-reservas-coord {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .topo-reservas-coord h1 {
+        font-size: 25px;
+    }
+
+    .resumo-reservas-coord {
+        grid-template-columns: 1fr;
+    }
+
+    .filtros-reservas-coord {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .campo-filtro-coord.pesquisa {
+        flex: auto;
+    }
+
+    .informacoes-reserva-coord {
+        grid-template-columns: 1fr;
+    }
+
+    .card-reserva-coord {
+        padding: 18px;
+    }
+
+    .acoes-reserva-coord {
+        flex-direction: column;
+    }
+
+    .botao-aprovar-coord,
+    .botao-recusar-coord {
+        width: 100%;
+    }
+
+    .titulo-lista-coord {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
 }

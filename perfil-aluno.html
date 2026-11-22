@@ -12,7 +12,30 @@
 
 <body>
 
-    <?php include "header-aluno.php"?>
+    <header class="header">
+        <div class="logo">
+            <img src="assets/IMG/logoete.png" alt="Logo ETE">
+            <div>
+                <h2>Agendamento</h2>
+                <p>Salas e Laboratórios • Portal do Aluno</p>
+            </div>
+        </div>
+
+        <nav>
+
+            <a href="inicio-aluno.html">Início</a>
+
+            <a href="perfil-aluno.html" class="ativo">Perfil</a>
+
+            <a href="sobre-aluno.html">Sobre</a>
+
+            <a href="contato-aluno.html">Contato</a>
+            
+            <a href="login.html">Sair</a>
+
+        </nav>
+        
+    </header>
 
     <main class="area-perfil">
 
@@ -94,7 +117,7 @@
                         <span class="seta-acesso">↗</span>
                     </a>
 
-                    <a href="sobre.php" class="acesso-item">
+                    <a href="sobre-aluno.html" class="acesso-item">
                         <div class="acesso-icone">🏫</div>
                         <div class="acesso-conteudo">
                             <h3>Sobre o Sistema e ODS 4</h3>
@@ -113,15 +136,34 @@
                     queira enviar elogios ou sugestões, ou comunicar um problema à coordenação (Aline Chagas)
                     ou aos desenvolvedores, entre em contato.
                 </p>
-                <a href="contato.php" class="botao-contato">Entrar em contato</a>
+                <a href="contato-aluno.html" class="botao-contato">Entrar em contato</a>
             </section>
 
         </div>
 
     </main>
 
-    <?php include 'footer.php'; ?>
+    <footer class="footer">
 
+        <div class="footer-info">
+
+            <p>
+                © 2026 - Sistema de Agendamento de Salas e Laboratórios
+            </p>
+
+            <p>
+                ETE - Escola Técnica Estadual
+            </p>
+
+        </div>
+
+        <div class="footer-logo">
+
+            <img src="assets/IMG/logoete.png" alt="Logo ETE">
+
+        </div>
+
+    </footer>
 </body>
 </html>
 

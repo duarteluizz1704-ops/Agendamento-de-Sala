@@ -14,7 +14,7 @@ const totalRecusadas = document.getElementById("totalRecusadas");
 
 function carregarReservas() {
 
-    const reservasSalvas = localStorage.getItem("reservasProfessor");
+    const reservasSalvas = localStorage.getItem("reservasAgenda");
 
     return reservasSalvas ? JSON.parse(reservasSalvas) : [];
 
@@ -28,7 +28,7 @@ function carregarReservas() {
 function salvarReservas(reservas) {
 
     localStorage.setItem(
-        "reservasProfessor",
+        "reservasAgenda",
         JSON.stringify(reservas)
     );
 
@@ -36,12 +36,12 @@ function salvarReservas(reservas) {
 
 
 // ==========================================
-// PROTEGER TEXTO INSERIDO
+// PROTEGER TEXTOS
 // ==========================================
 
 function escaparHTML(texto) {
 
-    return String(texto).replace(/[&<>"']/g, function (caractere) {
+    return String(texto ?? "").replace(/[&<>"']/g, function(caractere) {
 
         const caracteres = {
             "&": "&amp;",
@@ -76,7 +76,6 @@ function atualizarContadores(reservas) {
         reserva => reserva.status === "Recusada"
     ).length;
 
-
     totalPendentes.textContent = pendentes;
     totalAprovadas.textContent = aprovadas;
     totalRecusadas.textContent = recusadas;
@@ -96,7 +95,7 @@ function exibirReservas() {
 
     const filtro = filtroStatus.value;
 
-    const reservasFiltradas = reservas.filter(reserva => {
+    const reservasFiltradas = reservas.filter(function(reserva) {
 
         if (filtro === "Todas") {
             return true;
@@ -107,7 +106,9 @@ function exibirReservas() {
     });
 
 
-    // CASO NÃO EXISTAM RESERVAS
+    // ==========================================
+    // NENHUMA RESERVA ENCONTRADA
+    // ==========================================
 
     if (reservasFiltradas.length === 0) {
 
@@ -133,26 +134,40 @@ function exibirReservas() {
     }
 
 
-    // MONTAR OS CARDS
+    // ==========================================
+    // MONTAR CARDS DAS RESERVAS
+    // ==========================================
 
-    listaReservas.innerHTML = reservasFiltradas.map(reserva => {
+    listaReservas.innerHTML = reservasFiltradas.map(function(reserva) {
 
         const motivo = reserva.motivo
             ? escaparHTML(reserva.motivo)
             : "Nenhuma observação informada.";
 
+        const justificativa = reserva.justificativa
+            ? escaparHTML(reserva.justificativa)
+            : "";
+
         const podeCancelar = reserva.status === "Pendente";
 
-        return `
+        const classeStatus = {
+            "Pendente": "Pendente",
+            "Aprovada": "Aprovada",
+            "Recusada": "Recusada"
+        };
 
+        const status = classeStatus[reserva.status] || "Pendente";
+
+
+        return `
             <article class="reserva-item">
 
                 <div class="reserva-item-topo">
 
                     <h3>${escaparHTML(reserva.espaco)}</h3>
 
-                    <span class="status-reserva ${reserva.status}">
-                        ${escaparHTML(reserva.status)}
+                    <span class="status-reserva ${status}">
+                        ${escaparHTML(status)}
                     </span>
 
                 </div>
@@ -161,46 +176,38 @@ function exibirReservas() {
                 <div class="dados-reserva">
 
                     <div class="dado-reserva">
-
                         <span>Dia</span>
 
                         <strong>
                             ${escaparHTML(reserva.dia)}
                         </strong>
-
                     </div>
 
 
                     <div class="dado-reserva">
-
                         <span>Horário</span>
 
                         <strong>
                             ${escaparHTML(reserva.horario)}
                         </strong>
-
                     </div>
 
 
                     <div class="dado-reserva">
-
                         <span>Turma</span>
 
                         <strong>
                             ${escaparHTML(reserva.turma)}
                         </strong>
-
                     </div>
 
 
                     <div class="dado-reserva">
-
                         <span>Disciplina</span>
 
                         <strong>
                             ${escaparHTML(reserva.disciplina)}
                         </strong>
-
                     </div>
 
                 </div>
@@ -208,10 +215,35 @@ function exibirReservas() {
 
                 <div class="motivo-reserva-exibido">
 
-                    <strong>Motivo:</strong>
+                    <strong>Observações:</strong>
 
                     ${motivo}
 
+                </div>
+
+
+                ${
+                    justificativa
+                    ?
+                    `
+                    <div class="motivo-reserva-exibido">
+
+                        <strong>Resposta da coordenação:</strong>
+
+                        ${justificativa}
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+
+                <div class="data-reserva">
+                    <small>
+                        Solicitação realizada em:
+                        ${escaparHTML(reserva.dataSolicitacao || "Não informada")}
+                    </small>
                 </div>
 
 
@@ -220,8 +252,9 @@ function exibirReservas() {
                     ?
                     `
                     <button
+                        type="button"
                         class="botao-cancelar-reserva"
-                        onclick="cancelarReserva(${reserva.id})"
+                        onclick="cancelarReserva(${Number(reserva.id)})"
                     >
                         Cancelar solicitação
                     </button>
@@ -231,7 +264,6 @@ function exibirReservas() {
                 }
 
             </article>
-
         `;
 
     }).join("");
@@ -247,6 +279,8 @@ formulario.addEventListener("submit", function(event) {
 
     event.preventDefault();
 
+
+    // PEGAR OS DADOS DO FORMULÁRIO
 
     const dia = document.getElementById("diaReserva").value;
 
@@ -264,10 +298,11 @@ formulario.addEventListener("submit", function(event) {
     const reservas = carregarReservas();
 
 
-    // VERIFICAR SE JÁ EXISTE UMA SOLICITAÇÃO
-    // PARA O MESMO ESPAÇO, DIA E HORÁRIO
+    // ==========================================
+    // VERIFICAR CONFLITO
+    // ==========================================
 
-    const conflito = reservas.some(reserva => {
+    const conflito = reservas.some(function(reserva) {
 
         return (
             reserva.dia === dia &&
@@ -282,8 +317,8 @@ formulario.addEventListener("submit", function(event) {
     if (conflito) {
 
         alert(
-            "Já existe uma solicitação para esse espaço, dia e horário. " +
-            "Escolha outro horário ou espaço."
+            "Já existe uma solicitação ou reserva para esse espaço, " +
+            "dia e horário.\n\nEscolha outro horário ou espaço."
         );
 
         return;
@@ -291,11 +326,20 @@ formulario.addEventListener("submit", function(event) {
     }
 
 
-    // CRIAR RESERVA
+    // ==========================================
+    // CRIAR NOVA RESERVA
+    // ==========================================
+
+    const dataAtual = new Date();
+
+    const dataFormatada = dataAtual.toLocaleDateString("pt-BR");
+
 
     const novaReserva = {
 
         id: Date.now(),
+
+        professor: "Professor",
 
         dia: dia,
 
@@ -309,20 +353,26 @@ formulario.addEventListener("submit", function(event) {
 
         motivo: motivo,
 
-        status: "Pendente"
+        status: "Pendente",
+
+        justificativa: "",
+
+        dataSolicitacao: dataFormatada
 
     };
 
 
+    // ADICIONAR AO ARRAY
+
     reservas.unshift(novaReserva);
 
 
-    // SALVAR
+    // SALVAR NO LOCALSTORAGE
 
     salvarReservas(reservas);
 
 
-    // ATUALIZAR A TELA
+    // ATUALIZAR A LISTAGEM
 
     exibirReservas();
 
@@ -332,13 +382,15 @@ formulario.addEventListener("submit", function(event) {
     formulario.reset();
 
 
+    // MENSAGEM
+
     alert(
-        "Solicitação registrada na demonstração!\n\n" +
-        "Status: Pendente de aprovação."
+        "Solicitação registrada com sucesso!\n\n" +
+        "Status: Pendente de aprovação da coordenação."
     );
 
 
-    // LEVAR ATÉ A LISTA
+    // LEVAR ATÉ A LISTAGEM
 
     document.querySelector(".lista-reservas").scrollIntoView({
 
@@ -359,51 +411,90 @@ function cancelarReserva(id) {
         "Deseja realmente cancelar esta solicitação?"
     );
 
-
     if (!confirmar) {
         return;
     }
 
 
-    let reservas = carregarReservas();
+    const reservas = carregarReservas();
 
 
-    reservas = reservas.filter(reserva => {
+    // LOCALIZAR A SOLICITAÇÃO
 
-        // Só remove a reserva selecionada
-        // se ela ainda estiver pendente.
+    const reserva = reservas.find(function(item) {
 
-        if (
-            reserva.id === id &&
-            reserva.status === "Pendente"
-        ) {
-
-            return false;
-
-        }
-
-        return true;
+        return item.id === id;
 
     });
 
 
-    salvarReservas(reservas);
+    // VERIFICAR SE EXISTE E SE ESTÁ PENDENTE
+
+    if (!reserva) {
+
+        alert("Solicitação não encontrada.");
+
+        return;
+
+    }
+
+
+    if (reserva.status !== "Pendente") {
+
+        alert("Só é possível cancelar solicitações pendentes.");
+
+        return;
+
+    }
+
+
+    // REMOVER A SOLICITAÇÃO
+
+    const novasReservas = reservas.filter(function(item) {
+
+        return item.id !== id;
+
+    });
+
+
+    // SALVAR
+
+    salvarReservas(novasReservas);
+
+
+    // ATUALIZAR TELA
 
     exibirReservas();
 
 
-    alert("Solicitação cancelada na demonstração.");
+    alert("Solicitação cancelada com sucesso.");
 
 }
 
 
 // ==========================================
-// FILTRO
+// FILTRO DE STATUS
 // ==========================================
 
 filtroStatus.addEventListener("change", function() {
 
     exibirReservas();
+
+});
+
+
+// ==========================================
+// ATUALIZAR CASO OUTRA PÁGINA MODIFIQUE
+// O LOCALSTORAGE
+// ==========================================
+
+window.addEventListener("storage", function(event) {
+
+    if (event.key === "reservasAgenda") {
+
+        exibirReservas();
+
+    }
 
 });
 

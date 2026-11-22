@@ -1,3 +1,4 @@
+// ENVIO DO FOMULÁRIO DE CONTATO:
 
 const formContato = document.getElementById("formContato");
 const mensagemContato = document.getElementById("mensagem-contato");

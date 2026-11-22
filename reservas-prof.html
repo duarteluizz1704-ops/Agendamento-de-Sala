@@ -11,8 +11,35 @@
 
 <body>
 
-    <?php include "header-prof.php"?>
+    <header class="header">
 
+        <div class="logo">
+
+            <img src="assets/IMG/logoete.png" alt="Logo ETE">
+
+            <div>
+                <h2>Agendamento</h2>
+                <p>Salas e Laboratórios</p>
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="inicio-prof.html">Início</a>
+
+            <a href="reservas-prof.html" class="ativo">Reservas</a>
+
+            <a href="sobre-prof.html">Sobre</a>
+            
+            <a href="contato-prof.html">Contato</a>
+
+            <a href="login.html">Sair</a>
+            
+        </nav>
+
+    </header>
+    
     <main class="pagina-reservas">
 
         <div class="container-reservas">
@@ -29,7 +56,7 @@
                     </div>
                 </div>
 
-                <a href="inicio-prof.php" class="voltar-reservas">
+                <a href="inicio-prof.html" class="voltar-reservas">
                     ← Voltar ao início
                 </a>
 
@@ -198,9 +225,28 @@
 
     </main>
 
-    <?php include "footer.php"?>
+    <footer class="footer">
 
-    <script src="assets/JS/reservas-prof.js"></script>
+        <div class="footer-info">
+
+            <p>
+                © 2026 - Sistema de Agendamento de Salas e Laboratórios
+            </p>
+
+            <p>
+                ETE - Escola Técnica Estadual
+            </p>
+
+        </div>
+
+        <div class="footer-logo">
+
+            <img src="assets/IMG/logoete.png" alt="Logo ETE">
+
+        </div>
+
+    </footer>
+    <script src="assets/JS/reservas.js"></script>
 
 </body>
 </html>

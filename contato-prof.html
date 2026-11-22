@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Agenda - Contato</title>
+
+    <link rel="stylesheet" href="assets/CSS/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="logo">
+
+            <img src="assets/IMG/logoete.png" alt="Logo ETE">
+
+            <div>
+                <h2>Agendamento</h2>
+                <p>Salas e Laboratórios</p>
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="inicio-prof.html">Início</a>
+
+            <a href="reservas-prof.html">Reservas</a>
+
+            <a href="sobre-prof.html">Sobre</a>
+            
+            <a href="contato-prof.html" class="ativo">Contato</a>
+
+            <a href="login.html">Sair</a>
+            
+        </nav>
+
+    </header>
+
+
+    <main class="area-contato">
+
+        <div class="contato-container">
+
+            <!-- CABEÇALHO -->
+            <section class="titulo-contato">
+
+                <span class="etiqueta-contato">Estamos aqui para ajudar</span>
+
+                <h1>Entre em contato</h1>
+
+                <p class="texto-contato">
+                    Tem alguma dúvida, sugestão ou precisa de ajuda?
+                    Envie uma mensagem para nossa equipe.
+                </p>
+
+            </section>
+
+            <!-- CONTEÚDO -->
+            <section class="contato-conteudo">
+
+                <!-- INFORMAÇÕES -->
+                <div class="info-contato">
+
+                    <div class="icone-contato-principal">
+                        💬
+                    </div>
+
+                    <h2>Fale conosco</h2>
+
+                    <p class="descricao-info-contato">
+                        Caso tenha alguma dúvida sobre o sistema de
+                        agendamento, precise comunicar um problema
+                        ou enviar uma sugestão, entre em contato.
+                    </p>
+
+                    <div class="item-info-contato">
+
+                        <div class="icone-info">✉️</div>
+
+                        <div>
+                            <strong>E-mail</strong>
+                            <span>agendamento@portodigital.com.br</span>
+                        </div>
+
+                    </div>
+
+                    <div class="item-info-contato">
+
+                        <div class="icone-info">📞</div>
+
+                        <div>
+                            <strong>Telefone</strong>
+                            <span>(81) 0000-0000</span>
+                        </div>
+
+                    </div>
+
+                    <div class="item-info-contato">
+
+                        <div class="icone-info">🕒</div>
+
+                        <div>
+                            <strong>Horário de atendimento</strong>
+                            <span>Segunda a sexta, das 08:00 às 21:00</span>
+                        </div>
+
+                    </div>
+
+                    <div class="aviso-info-contato">
+
+                        <strong>📌 Atendimento</strong>
+
+                        <p>
+                            As mensagens serão direcionadas à equipe
+                            responsável pelo sistema e à coordenação.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- FORMULÁRIO -->
+                <div class="form-contato">
+
+                    <h2>Envie uma mensagem</h2>
+
+                    <p class="subtitulo-form-contato">
+                        Preencha os campos abaixo para entrar em contato.
+                    </p>
+
+                    <form id="formContato">
+
+                        <div class="campo-contato">
+
+                            <label for="nome">Nome completo</label>
+
+                            <input
+                                type="text"
+                                id="nome"
+                                name="nome"
+                                placeholder="Digite seu nome"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="campo-contato">
+
+                            <label for="email">E-mail</label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Digite seu e-mail"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="campo-contato">
+
+                            <label for="assunto">Assunto</label>
+
+                            <select id="assunto" name="assunto" required>
+
+                                <option value="">Selecione um assunto</option>
+
+                                <option value="duvida">Dúvida</option>
+
+                                <option value="reserva">Agendamento de sala</option>
+
+                                <option value="problema">Problema no sistema</option>
+
+                                <option value="sugestao">Sugestão</option>
+
+                                <option value="outro">Outro</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="campo-contato">
+
+                            <label for="mensagem">Mensagem</label>
+
+                            <textarea
+                                id="mensagem"
+                                name="mensagem"
+                                placeholder="Descreva como podemos ajudar..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+                        <button type="submit" class="botao-enviar-contato">
+                            Enviar mensagem
+                            <span>→</span>
+                        </button>
+
+                        <div id="mensagem-contato" class="mensagem-contato"></div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer class="footer">
+
+        <div class="footer-info">
+
+            <p>
+                © 2026 - Sistema de Agendamento de Salas e Laboratórios
+            </p>
+
+            <p>
+                ETE - Escola Técnica Estadual
+            </p>
+
+        </div>
+
+        <div class="footer-logo">
+
+            <img src="assets/IMG/logoete.png" alt="Logo ETE">
+
+        </div>
+
+    </footer>
+    
+    <script src="assets/JS/contato.js"></script>
+
+</body>
+
+</html>

@@ -12,8 +12,35 @@
 
 <body>
 
-    <?php include 'header-prof.php'; ?>
+    <header class="header">
 
+        <div class="logo">
+
+            <img src="assets/IMG/logoete.png" alt="Logo ETE">
+
+            <div>
+                <h2>Agendamento</h2>
+                <p>Salas e Laboratórios</p>
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="inicio-prof.html" class="ativo">Início</a>
+
+            <a href="reservas-prof.html">Reservas</a>
+
+            <a href="sobre-prof.html">Sobre</a>
+            
+            <a href="contato-prof.html">Contato</a>
+
+            <a href="login.html">Sair</a>
+            
+        </nav>
+
+    </header>
+    
     <main class="area-prof">
 
         <div class="container-prof">
@@ -39,27 +66,27 @@
             <!-- DIAS DA SEMANA -->
             <section class="dias-prof">
 
-                <div class="dia-prof">
+                <div class="dia-prof" data-dia="segunda" tabindex="0">
                     <strong>Segunda</strong>
                     <span>SEG</span>
                 </div>
 
-                <div class="dia-prof">
+                <div class="dia-prof" data-dia="terca" tabindex="0">
                     <strong>Terça</strong>
                     <span>TER</span>
                 </div>
 
-                <div class="dia-prof">
+                <div class="dia-prof" data-dia="quarta" tabindex="0">
                     <strong>Quarta</strong>
                     <span>QUA</span>
                 </div>
 
-                <div class="dia-prof">
+                <div class="dia-prof" data-dia="quinta" tabindex="0">
                     <strong>Quinta</strong>
                     <span>QUI</span>
                 </div>
 
-                <div class="dia-prof">
+                <div class="dia-prof" data-dia="sexta" tabindex="0">
                     <strong>Sexta</strong>
                     <span>SEX</span>
                 </div>
@@ -133,7 +160,7 @@
 
                             <button
                                 type="button"
-                                class="botao-reserva secundario"
+                                class="botao-reserva"
                                 onclick="selecionarEspaco('sala2')">
 
                                 📅 Solicitar Reserva
@@ -160,7 +187,7 @@
 
                             <button
                                 type="button"
-                                class="botao-reserva secundario"
+                                class="botao-reserva"
                                 onclick="selecionarEspaco('lab1')">
 
                                 📅 Solicitar Reserva
@@ -187,7 +214,7 @@
 
                             <button
                                 type="button"
-                                class="botao-reserva secundario"
+                                class="botao-reserva"
                                 onclick="selecionarEspaco('lab2')">
 
                                 📅 Solicitar Reserva
@@ -352,58 +379,29 @@
 
     </main>
 
-    <?php include 'footer.php'; ?>
+    <footer class="footer">
 
-    <script>
+        <div class="footer-info">
 
-        // Seleciona o espaço ao clicar no botão de uma sala
-        function selecionarEspaco(espaco) {
+            <p>
+                © 2026 - Sistema de Agendamento de Salas e Laboratórios
+            </p>
 
-            document.getElementById("espaco").value = espaco;
+            <p>
+                ETE - Escola Técnica Estadual
+            </p>
 
-            document.getElementById("formulario-reserva").scrollIntoView({
-                behavior: "smooth"
-            });
+        </div>
 
-        }
+        <div class="footer-logo">
 
-        // Demonstração de envio do formulário
-        document.getElementById("formReservaProf").addEventListener("submit", function(event) {
+            <img src="assets/IMG/logoete.png" alt="Logo ETE">
 
-            event.preventDefault();
+        </div>
 
-            const dia = document.getElementById("dia").value;
-            const horario = document.getElementById("horario").value;
-            const turma = document.getElementById("turma").value;
-            const disciplina = document.getElementById("disciplina").value;
-            const espaco = document.getElementById("espaco").value;
+    </footer>
 
-            const mensagem = document.getElementById("mensagem-reserva");
-
-            mensagem.innerHTML = `
-                <strong>Solicitação preenchida com sucesso!</strong>
-                <p>
-                    ${disciplina} - Turma ${turma}<br>
-                    Dia: ${dia}<br>
-                    Horário: ${horario}<br>
-                    Espaço: ${espaco}
-                </p>
-                <small>
-                    Esta é uma demonstração. A solicitação ainda não foi
-                    enviada para a coordenação.
-                </small>
-            `;
-
-            mensagem.style.display = "block";
-
-            mensagem.scrollIntoView({
-                behavior: "smooth",
-                block: "nearest"
-            });
-
-        });
-
-    </script>
+    <script src="assets/JS/salas.js"></script>
 
 </body>
 

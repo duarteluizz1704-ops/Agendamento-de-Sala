@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Solicitações - Coordenação</title>
+
+    <link rel="stylesheet" href="assets/CSS/style.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="header">
+
+        <div class="logo">
+
+            <img src="assets/IMG/logoete.png" alt="Logo ETE">
+
+            <div>
+                <h2>Agendamento</h2>
+                <p>Salas e Laboratórios</p>
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="inicio-coord.html">Início</a>
+
+            <a href="reservas-coord.html" class="ativo">
+                Solicitações
+            </a>
+
+            <a href="sobre-coord.html">Sobre</a>
+
+            <a href="contato-coord.html">Contato</a>
+
+            <a href="login.html">Sair</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="pagina-reservas-coord">
+
+        <div class="container-reservas-coord">
+
+
+            <!-- TÍTULO -->
+            <section class="topo-reservas-coord">
+
+                <div>
+
+                    <h1>Gerenciar Solicitações</h1>
+
+                    <p>
+                        Analise, aprove ou recuse as solicitações
+                        de reserva enviadas pelos professores.
+                    </p>
+
+                </div>
+
+                <a href="inicio-coord.html" class="voltar-coord">
+                    ← Voltar ao início
+                </a>
+
+            </section>
+
+
+            <!-- RESUMO -->
+            <section class="resumo-reservas-coord">
+
+                <div class="resumo-reserva-coord pendentes">
+
+                    <h3>Pendentes</h3>
+
+                    <p id="totalPendentesCoord">0</p>
+
+                </div>
+
+
+                <div class="resumo-reserva-coord aprovadas">
+
+                    <h3>Aprovadas</h3>
+
+                    <p id="totalAprovadasCoord">0</p>
+
+                </div>
+
+
+                <div class="resumo-reserva-coord recusadas">
+
+                    <h3>Recusadas</h3>
+
+                    <p id="totalRecusadasCoord">0</p>
+
+                </div>
+
+
+                <div class="resumo-reserva-coord total">
+
+                    <h3>Total</h3>
+
+                    <p id="totalReservasCoord">0</p>
+
+                </div>
+
+            </section>
+
+
+            <!-- FILTROS -->
+            <section class="filtros-reservas-coord">
+
+                <div class="campo-filtro-coord">
+
+                    <label for="filtroStatusCoord">
+                        Status
+                    </label>
+
+                    <select id="filtroStatusCoord">
+
+                        <option value="Todas">Todas</option>
+
+                        <option value="Pendente">Pendentes</option>
+
+                        <option value="Aprovada">Aprovadas</option>
+
+                        <option value="Recusada">Recusadas</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo-filtro-coord pesquisa">
+
+                    <label for="pesquisaReservaCoord">
+                        Pesquisar solicitação
+                    </label>
+
+                    <input
+                        type="text"
+                        id="pesquisaReservaCoord"
+                        placeholder="Professor, turma, disciplina ou espaço..."
+                    >
+
+                </div>
+
+            </section>
+
+
+            <!-- LISTA DE SOLICITAÇÕES -->
+            <section class="lista-solicitacoes-coord">
+
+                <div class="titulo-lista-coord">
+
+                    <h2>Solicitações</h2>
+
+                    <span id="quantidadeExibidaCoord">
+                        0 solicitações
+                    </span>
+
+                </div>
+
+
+                <div id="listaReservasCoord">
+
+                    <!-- Cards inseridos pelo JavaScript -->
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+
+        <div class="footer-info">
+
+            <p>
+                © 2026 - Sistema de Agendamento de Salas e Laboratórios
+            </p>
+
+            <p>
+                ETE - Escola Técnica Estadual
+            </p>
+
+        </div>
+
+        <div class="footer-logo">
+
+            <img src="assets/IMG/logoete.png" alt="Logo ETE">
+
+        </div>
+
+    </footer>
+
+
+    <script src="assets/JS/reservas-coord.js"></script>
+
+</body>
+</html>

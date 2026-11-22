@@ -1,9 +1,3 @@
-<?php
-
-$perfil = $_GET['perfil'] ?? 'aluno';
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -16,21 +10,37 @@ $perfil = $_GET['perfil'] ?? 'aluno';
     <link rel="stylesheet" href="assets/CSS/style.css">
 </head>
 
-    <body>
+<body>
         
-    <?php
+    <header class="header">
 
-    if ($perfil === 'professor') {
-        include 'header-prof.php';
+        <div class="logo">
 
-    } elseif ($perfil === 'coordenacao') {
-        include 'header-coord.php';
+            <img src="assets/IMG/logoete.png" alt="Logo ETE">
 
-    } else {
-        include 'header-aluno.php';
-    }
+            <div>
+                <h2>Agendamento</h2>
+                <p>Salas e Laboratórios</p>
+            </div>
 
-    ?>
+        </div>
+
+        <nav>
+
+            <a href="inicio-prof.html">Início</a>
+
+            <a href="reservas-prof.html">Reservas</a>
+
+            <a href="sobre-prof.html" class="ativo">Sobre</a>
+            
+            <a href="contato-prof.html">Contato</a>
+
+            <a href="login.html">Sair</a>
+            
+        </nav>
+
+    </header>
+
 
     <main class="area-sobre">
 
@@ -246,7 +256,27 @@ $perfil = $_GET['perfil'] ?? 'aluno';
 
     </main>
 
-    <?php include 'footer.php'; ?>
+    <footer class="footer">
+
+        <div class="footer-info">
+
+            <p>
+                © 2026 - Sistema de Agendamento de Salas e Laboratórios
+            </p>
+
+            <p>
+                ETE - Escola Técnica Estadual
+            </p>
+
+        </div>
+
+        <div class="footer-logo">
+
+            <img src="assets/IMG/logoete.png" alt="Logo ETE">
+
+        </div>
+
+    </footer>
 
 </body>
 

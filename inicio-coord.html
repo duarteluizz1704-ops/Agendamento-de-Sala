@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Início - Coordenação</title>
+
+    <link rel="stylesheet" href="assets/CSS/style.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="header">
+
+        <div class="logo">
+
+            <img src="assets/IMG/logoete.png" alt="Logo ETE">
+
+            <div>
+                <h2>Agendamento</h2>
+                <p>Salas e Laboratórios</p>
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="inicio-coord.html" class="ativo">Início</a>
+
+            <a href="reservas-coord.html">
+                Solicitações
+            </a>
+
+            <a href="sobre-coord.html">Sobre</a>
+            
+            <a href="contato-coord.html">Contato</a>
+
+            <a href="login.html">Sair</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="inicio-coord">
+
+        <!-- BOAS-VINDAS -->
+        <section class="boas-vindas-coord">
+
+            <div>
+                <h1 id="tituloBoasVindas">
+                    Olá, Coordenação!
+                </h1>
+
+                <p>
+                    Gerencie as solicitações de salas e laboratórios
+                    e acompanhe os agendamentos.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- RESUMO -->
+        <section class="resumo-coord">
+
+            <div class="card-resumo-coord pendentes">
+
+                <div class="icone-resumo">⏳</div>
+
+                <div>
+                    <h3>Pendentes</h3>
+                    <p id="totalPendentesCoord">0</p>
+                </div>
+
+            </div>
+
+
+            <div class="card-resumo-coord aprovadas">
+
+                <div class="icone-resumo">✓</div>
+
+                <div>
+                    <h3>Aprovadas</h3>
+                    <p id="totalAprovadasCoord">0</p>
+                </div>
+
+            </div>
+
+
+            <div class="card-resumo-coord recusadas">
+
+                <div class="icone-resumo">✕</div>
+
+                <div>
+                    <h3>Recusadas</h3>
+                    <p id="totalRecusadasCoord">0</p>
+                </div>
+
+            </div>
+
+
+            <div class="card-resumo-coord total">
+
+                <div class="icone-resumo">📋</div>
+
+                <div>
+                    <h3>Total de Solicitações</h3>
+                    <p id="totalReservasCoord">0</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SOLICITAÇÕES RECENTES -->
+        <section class="solicitacoes-recentes-coord">
+
+            <div class="titulo-secao-coord">
+
+                <div>
+                    <h2>Solicitações Recentes</h2>
+
+                    <p>
+                        Acompanhe as últimas solicitações dos professores.
+                    </p>
+                </div>
+
+                <a href="reservas-coord.html" class="botao-ver-todas">
+                    Ver todas →
+                </a>
+
+            </div>
+
+
+            <div id="listaRecentesCoord" class="lista-recentes-coord">
+
+                <!-- As solicitações serão inseridas pelo JavaScript -->
+
+            </div>
+
+        </section>
+
+
+        <!-- ATALHOS -->
+        <section class="atalhos-coord">
+
+            <h2>Acesso rápido</h2>
+
+            <div class="cards-atalhos-coord">
+
+                <a href="reservas-coord.html" class="atalho-coord">
+
+                    <div class="icone-atalho">📋</div>
+
+                    <h3>Gerenciar Solicitações</h3>
+
+                    <p>
+                        Aprovar ou recusar solicitações
+                        enviadas pelos professores.
+                    </p>
+
+                    <span> acessar → </span>
+
+                </a>
+
+
+                <a href="reservas-coord.html" class="atalho-coord">
+
+                    <div class="icone-atalho">📅</div>
+
+                    <h3>Agenda de Reservas</h3>
+
+                    <p>
+                        Consultar os espaços e horários
+                        já aprovados.
+                    </p>
+
+                    <span> acessar → </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ESPAÇOS -->
+        <section class="espacos-coord">
+
+            <div class="titulo-secao-coord">
+
+                <div>
+                    <h2>Espaços Disponíveis</h2>
+
+                    <p>
+                        Salas e laboratórios cadastrados no sistema.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="cards-espacos-coord">
+
+                <div class="card-espaco-coord">
+
+                    <span class="icone-espaco">🏫</span>
+
+                    <div>
+                        <h3>Sala 1</h3>
+                        <p>Sala de aula</p>
+                    </div>
+
+                </div>
+
+
+                <div class="card-espaco-coord">
+
+                    <span class="icone-espaco">🏫</span>
+
+                    <div>
+                        <h3>Sala 2</h3>
+                        <p>Sala de aula</p>
+                    </div>
+
+                </div>
+
+
+                <div class="card-espaco-coord">
+
+                    <span class="icone-espaco">💻</span>
+
+                    <div>
+                        <h3>Laboratório 1</h3>
+                        <p>Laboratório de informática</p>
+                    </div>
+
+                </div>
+
+
+                <div class="card-espaco-coord">
+
+                    <span class="icone-espaco">💻</span>
+
+                    <div>
+                        <h3>Laboratório 2</h3>
+                        <p>Laboratório de informática</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+
+        <div class="footer-info">
+
+            <p>
+                © 2026 - Sistema de Agendamento de Salas e Laboratórios
+            </p>
+
+            <p>
+                ETE - Escola Técnica Estadual
+            </p>
+
+        </div>
+
+        <div class="footer-logo">
+
+            <img src="assets/IMG/logoete.png" alt="Logo ETE">
+
+        </div>
+
+    </footer>
+
+
+    <script src="assets/JS/inicio-coord.js"></script>
+
+
+</body>
+</html>

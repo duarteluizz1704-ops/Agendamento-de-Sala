@@ -4,19 +4,19 @@ const usuarios = {
     "1001": {
         nome: "Luiz Arthur",
         tipo: "aluno",
-        destino: "inicio-aluno.php"
+        destino: "inicio-aluno.html"
     },
 
     "2001": {
         nome: "Pedro Albino",
         tipo: "professor",
-        destino: "inicio-prof.php"
+        destino: "inicio-prof.html"
     },
 
     "3001": {
         nome: "Aline Chagas",
         tipo: "coordenacao",
-        destino: "inicio-coord.php"
+        destino: "inicio-coord.html"
     }
 
 };
