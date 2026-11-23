@@ -37,7 +37,7 @@ if (usuarioLogado && usuarioLogado.tipo === "professor") {
 
 // ==========================================
 // ELEMENTOS DO FORMULÁRIO
-// ==========================================
+//==========================================
 
 const formulario = document.getElementById("formReservaProf");
 
@@ -52,7 +52,7 @@ const botaoEnviar = document.querySelector(".enviar-reserva");
 
 // ==========================================
 // SELECIONAR DIA DA SEMANA
-// ==========================================
+//==========================================
 
 const dias = document.querySelectorAll(".dia-prof");
 
@@ -60,21 +60,18 @@ dias.forEach(function(dia) {
 
     dia.addEventListener("click", function() {
 
-        // Remove a seleção dos outros dias
-        dias.forEach(function(item) {
+    dias.forEach(function(item) {
             item.classList.remove("selecionado");
         });
 
-        // Seleciona o dia clicado
-        dia.classList.add("selecionado");
+    dia.classList.add("selecionado");
 
-        // Atualiza o formulário
-        selectDia.value = dia.dataset.dia;
+    selectDia.value = dia.dataset.dia;
 
     });
 
 
-    // Permite selecionar usando Enter ou espaço
+    // Enter ou espaço
     dia.addEventListener("keydown", function(event) {
 
         if (event.key === "Enter" || event.key === " ") {
@@ -117,11 +114,9 @@ selectDia.addEventListener("change", function() {
 
 function selecionarEspaco(espaco) {
 
-    // Atualiza o select do formulário
-    selectEspaco.value = espaco;
+selectEspaco.value = espaco;
 
-    // Remove seleção de todos os botões
-    const botoes = document.querySelectorAll(".botao-reserva");
+    botoes = document.querySelectorAll(".botao-reserva");
 
     botoes.forEach(function(botao) {
 
@@ -129,8 +124,7 @@ function selecionarEspaco(espaco) {
 
     });
 
-    // Seleciona somente o botão clicado
-    const botaoSelecionado = document.querySelector(
+const botaoSelecionado = document.querySelector(
         `.botao-reserva[onclick="selecionarEspaco('${espaco}')"]`
     );
 
@@ -140,12 +134,9 @@ function selecionarEspaco(espaco) {
 
     }
 
-    // Leva o usuário até o formulário
-    document.getElementById("formulario-reserva").scrollIntoView({
-
+document.getElementById("formulario-reserva").scrollIntoView({
         behavior: "smooth"
-
-    });
+});
 
 }
 
@@ -191,7 +182,8 @@ formulario.addEventListener("submit", function(event) {
 
     event.preventDefault();
 
-    // Verifica o login
+
+    // Verificar login
     if (!usuarioLogado || usuarioLogado.tipo !== "professor") {
 
         alert("Faça login como professor para solicitar uma reserva.");
@@ -203,7 +195,10 @@ formulario.addEventListener("submit", function(event) {
     }
 
 
-    // Guarda os dados antes de limpar o formulário
+    // ==========================================
+    // PEGAR DADOS DO FORMULÁRIO
+    // ==========================================
+
     const dia = selectDia.value;
 
     const horario = document.getElementById("horario").value;
@@ -218,7 +213,7 @@ formulario.addEventListener("submit", function(event) {
 
 
     // ==========================================
-    // CONVERTER OS VALORES PARA EXIBIÇÃO
+    // CONVERTER VALORES
     // ==========================================
 
     const diasFormatados = {
@@ -251,14 +246,12 @@ formulario.addEventListener("submit", function(event) {
 
 
     // ==========================================
-    // CARREGAR RESERVAS EXISTENTES
+    // CARREGAR RESERVAS
     // ==========================================
 
-    const reservasSalvas = JSON.parse(
-
+const reservasSalvas = JSON.parse(
         localStorage.getItem("reservasAgenda") || "[]"
-
-    );
+);
 
 
     // ==========================================
@@ -295,7 +288,7 @@ formulario.addEventListener("submit", function(event) {
 
 
     // ==========================================
-    // CRIAR SOLICITAÇÃO
+    // CRIAR NOVA SOLICITAÇÃO
     // ==========================================
 
     const novaReserva = {
@@ -303,6 +296,8 @@ formulario.addEventListener("submit", function(event) {
         id: Date.now(),
 
         professor: usuarioLogado.nome,
+
+        matriculaProfessor: usuarioLogado.matricula,
 
         dia: diasFormatados[dia],
 
@@ -326,18 +321,15 @@ formulario.addEventListener("submit", function(event) {
 
 
     // ==========================================
-    // SALVAR
+    // SALVAR RESERVA
     // ==========================================
 
-    reservasSalvas.unshift(novaReserva);
+reservasSalvas.unshift(novaReserva);
 
-    localStorage.setItem(
-
-        "reservasAgenda",
-
-        JSON.stringify(reservasSalvas)
-
-    );
+localStorage.setItem(
+    "reservasAgenda",
+    JSON.stringify(reservasSalvas)
+);
 
 
     // ==========================================
@@ -373,32 +365,28 @@ formulario.addEventListener("submit", function(event) {
     formulario.reset();
 
 
-    // Remove seleção dos dias
-    dias.forEach(function(dia) {
+dias.forEach(function(dia) {
 
-        dia.classList.remove("selecionado");
+    dia.classList.remove("selecionado");
 
-    });
+});
 
 
-    // Remove seleção das salas e laboratórios
-    const botoes = document.querySelectorAll(".botao-reserva");
+const botoes = document.querySelectorAll(".botao-reserva");
 
     botoes.forEach(function(botao) {
 
         botao.classList.remove("selecionado");
 
-    });
+});
 
 
-    // Volta o botão de envio ao estado original
-    botaoEnviar.classList.remove("enviado");
+botaoEnviar.classList.remove("enviado");
 
     botaoEnviar.innerHTML = "➤ Enviar Solicitação";
 
 
-    // Mostra a mensagem de sucesso
-    mensagem.scrollIntoView({
+mensagem.scrollIntoView({
 
         behavior: "smooth",
 
@@ -410,19 +398,16 @@ formulario.addEventListener("submit", function(event) {
 
 
 // ==========================================
-// AO ALTERAR O FORMULÁRIO
+// AO ALTERAR FORMULÁRIO
 // ==========================================
 
 function formularioAlterado() {
 
-    // Volta o botão ao estado original
-    botaoEnviar.classList.remove("enviado");
+botaoEnviar.classList.remove("enviado");
 
-    botaoEnviar.innerHTML = "➤ Enviar Solicitação";
+botaoEnviar.innerHTML = "➤ Enviar Solicitação";
 
-
-    // Esconde a mensagem anterior
-    mensagem.style.display = "none";
+mensagem.style.display = "none";
 
 }
 

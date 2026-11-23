@@ -1,15 +1,44 @@
+
+/* ==========================================
+   ELEMENTOS DA PÁGINA
+========================================== */
+
 const formulario = document.getElementById("formReserva");
+
 const listaReservas = document.getElementById("listaReservas");
+
 const filtroStatus = document.getElementById("filtroStatus");
 
 const totalPendentes = document.getElementById("totalPendentes");
+
 const totalAprovadas = document.getElementById("totalAprovadas");
+
 const totalRecusadas = document.getElementById("totalRecusadas");
 
-// Usuário atualmente logado
+
+// ==========================================
+// USUÁRIO LOGADO
+// ==========================================
+
 const usuarioLogadoReserva = JSON.parse(
     localStorage.getItem("usuario") || "null"
 );
+
+
+// ==========================================
+// VERIFICAR LOGIN
+// ==========================================
+
+if (
+    !usuarioLogadoReserva ||
+    usuarioLogadoReserva.tipo !== "professor"
+) {
+
+    alert("Faça login como professor para acessar suas reservas.");
+
+    window.location.href = "login.html";
+
+}
 
 
 // ==========================================
@@ -48,11 +77,13 @@ function escaparHTML(texto) {
     return String(texto ?? "").replace(/[&<>"']/g, function(caractere) {
 
         const caracteres = {
+
             "&": "&amp;",
             "<": "&lt;",
             ">": "&gt;",
             '"': "&quot;",
             "'": "&#039;"
+
         };
 
         return caracteres[caractere];
@@ -80,8 +111,11 @@ function atualizarContadores(reservas) {
         reserva => reserva.status === "Recusada"
     ).length;
 
+
     totalPendentes.textContent = pendentes;
+
     totalAprovadas.textContent = aprovadas;
+
     totalRecusadas.textContent = recusadas;
 
 }
@@ -93,16 +127,46 @@ function atualizarContadores(reservas) {
 
 function exibirReservas() {
 
-    const reservas = carregarReservas();
+    // Todas as reservas
+    const todasReservas = carregarReservas();
 
+
+    // ==========================================
+    // FILTRAR RESERVAS DO PROFESSOR
+    // ==========================================
+
+    const reservas = todasReservas.filter(function(reserva) {
+
+        return (
+
+            reserva.matriculaProfessor === usuarioLogadoReserva.matricula ||
+
+            (
+                !reserva.matriculaProfessor &&
+                reserva.professor === usuarioLogadoReserva.nome
+            )
+
+        );
+
+    });
+
+
+    // Atualizar contadores individuais
     atualizarContadores(reservas);
+
+
+    // ==========================================
+    // FILTRAR STATUS
+    // ==========================================
 
     const filtro = filtroStatus.value;
 
     const reservasFiltradas = reservas.filter(function(reserva) {
 
         if (filtro === "Todas") {
+
             return true;
+
         }
 
         return reserva.status === filtro;
@@ -117,6 +181,7 @@ function exibirReservas() {
     if (reservasFiltradas.length === 0) {
 
         listaReservas.innerHTML = `
+
             <div class="reservas-vazias">
 
                 <div class="icone-reservas-vazias">
@@ -131,6 +196,7 @@ function exibirReservas() {
                 </p>
 
             </div>
+
         `;
 
         return;
@@ -154,16 +220,20 @@ function exibirReservas() {
 
         const podeCancelar = reserva.status === "Pendente";
 
+
         const classeStatus = {
+
             "Pendente": "Pendente",
             "Aprovada": "Aprovada",
             "Recusada": "Recusada"
+
         };
 
         const status = classeStatus[reserva.status] || "Pendente";
 
 
         return `
+
             <article class="reserva-item">
 
                 <div class="reserva-item-topo">
@@ -180,38 +250,46 @@ function exibirReservas() {
                 <div class="dados-reserva">
 
                     <div class="dado-reserva">
+
                         <span>Dia</span>
 
                         <strong>
                             ${escaparHTML(reserva.dia)}
                         </strong>
+
                     </div>
 
 
                     <div class="dado-reserva">
+
                         <span>Horário</span>
 
                         <strong>
                             ${escaparHTML(reserva.horario)}
                         </strong>
+
                     </div>
 
 
                     <div class="dado-reserva">
+
                         <span>Turma</span>
 
                         <strong>
                             ${escaparHTML(reserva.turma)}
                         </strong>
+
                     </div>
 
 
                     <div class="dado-reserva">
+
                         <span>Disciplina</span>
 
                         <strong>
                             ${escaparHTML(reserva.disciplina)}
                         </strong>
+
                     </div>
 
                 </div>
@@ -230,6 +308,7 @@ function exibirReservas() {
                     justificativa
                     ?
                     `
+
                     <div class="motivo-reserva-exibido">
 
                         <strong>Resposta da coordenação:</strong>
@@ -237,6 +316,7 @@ function exibirReservas() {
                         ${justificativa}
 
                     </div>
+
                     `
                     :
                     ""
@@ -244,10 +324,15 @@ function exibirReservas() {
 
 
                 <div class="data-reserva">
+
                     <small>
+
                         Solicitação realizada em:
+
                         ${escaparHTML(reserva.dataSolicitacao || "Não informada")}
+
                     </small>
+
                 </div>
 
 
@@ -255,27 +340,35 @@ function exibirReservas() {
                     podeCancelar
                     ?
                     `
+
                     <button
                         type="button"
                         class="botao-cancelar-reserva"
                         onclick="cancelarReserva(${Number(reserva.id)})"
                     >
+
                         Cancelar solicitação
+
                     </button>
+
                     `
                     :
                     ""
                 }
+
 
                 <button
                     type="button"
                     class="botao-descartar-prof"
                     data-id="${escaparHTML(reserva.id)}"
                 >
+
                     🗑 Descartar do histórico
+
                 </button>
 
             </article>
+
         `;
 
     }).join("");
@@ -293,7 +386,7 @@ formulario.addEventListener("submit", function(event) {
 
 
     // ==========================================
-    // VERIFICAR LOGIN DO PROFESSOR
+    // VERIFICAR LOGIN
     // ==========================================
 
     if (
@@ -311,7 +404,7 @@ formulario.addEventListener("submit", function(event) {
 
 
     // ==========================================
-    // PEGAR OS DADOS DO FORMULÁRIO
+    // PEGAR DADOS
     // ==========================================
 
     const dia = document.getElementById("diaReserva").value;
@@ -337,10 +430,15 @@ formulario.addEventListener("submit", function(event) {
     const conflito = reservas.some(function(reserva) {
 
         return (
+
             reserva.dia === dia &&
+
             reserva.horario === horario &&
+
             reserva.espaco === espaco &&
+
             reserva.status !== "Recusada"
+
         );
 
     });
@@ -359,20 +457,16 @@ formulario.addEventListener("submit", function(event) {
 
 
     // ==========================================
-    // CRIAR NOVA RESERVA
+    // CRIAR RESERVA
     // ==========================================
-
-    const dataAtual = new Date();
-
-    const dataFormatada = dataAtual.toLocaleDateString("pt-BR");
-
 
     const novaReserva = {
 
         id: Date.now(),
 
-        // Salva o nome do professor que está logado
         professor: usuarioLogadoReserva.nome,
+
+        matriculaProfessor: usuarioLogadoReserva.matricula,
 
         dia: dia,
 
@@ -390,27 +484,27 @@ formulario.addEventListener("submit", function(event) {
 
         justificativa: "",
 
-        dataSolicitacao: dataFormatada
+        dataSolicitacao: new Date().toLocaleDateString("pt-BR")
 
     };
 
 
     // ==========================================
-    // ADICIONAR AO ARRAY
+    // ADICIONAR
     // ==========================================
 
     reservas.unshift(novaReserva);
 
 
     // ==========================================
-    // SALVAR NO LOCALSTORAGE
+    // SALVAR
     // ==========================================
 
     salvarReservas(reservas);
 
 
     // ==========================================
-    // ATUALIZAR A LISTAGEM
+    // ATUALIZAR
     // ==========================================
 
     exibirReservas();
@@ -434,7 +528,7 @@ formulario.addEventListener("submit", function(event) {
 
 
     // ==========================================
-    // LEVAR ATÉ A LISTAGEM
+    // ROLAR PARA LISTAGEM
     // ==========================================
 
     document.querySelector(".lista-reservas").scrollIntoView({
@@ -457,7 +551,9 @@ function cancelarReserva(id) {
     );
 
     if (!confirmar) {
+
         return;
+
     }
 
 
@@ -465,7 +561,7 @@ function cancelarReserva(id) {
 
 
     // ==========================================
-    // LOCALIZAR A SOLICITAÇÃO
+    // LOCALIZAR SOLICITAÇÃO
     // ==========================================
 
     const reserva = reservas.find(function(item) {
@@ -474,10 +570,6 @@ function cancelarReserva(id) {
 
     });
 
-
-    // ==========================================
-    // VERIFICAR SE EXISTE
-    // ==========================================
 
     if (!reserva) {
 
@@ -489,7 +581,32 @@ function cancelarReserva(id) {
 
 
     // ==========================================
-    // VERIFICAR SE ESTÁ PENDENTE
+    // VERIFICAR SE PERTENCE AO PROFESSOR
+    // ==========================================
+
+    const pertenceAoProfessor = (
+
+        reserva.matriculaProfessor === usuarioLogadoReserva.matricula ||
+
+        (
+            !reserva.matriculaProfessor &&
+            reserva.professor === usuarioLogadoReserva.nome
+        )
+
+    );
+
+
+    if (!pertenceAoProfessor) {
+
+        alert("Você não pode cancelar uma solicitação de outro professor.");
+
+        return;
+
+    }
+
+
+    // ==========================================
+    // VERIFICAR STATUS
     // ==========================================
 
     if (reserva.status !== "Pendente") {
@@ -502,7 +619,7 @@ function cancelarReserva(id) {
 
 
     // ==========================================
-    // REMOVER A SOLICITAÇÃO
+    // REMOVER SOLICITAÇÃO
     // ==========================================
 
     const novasReservas = reservas.filter(function(item) {
@@ -512,16 +629,7 @@ function cancelarReserva(id) {
     });
 
 
-    // ==========================================
-    // SALVAR
-    // ==========================================
-
     salvarReservas(novasReservas);
-
-
-    // ==========================================
-    // ATUALIZAR TELA
-    // ==========================================
 
     exibirReservas();
 
@@ -543,8 +651,7 @@ filtroStatus.addEventListener("change", function() {
 
 
 // ==========================================
-// ATUALIZAR CASO OUTRA PÁGINA MODIFIQUE
-// O LOCALSTORAGE
+// ATUALIZAR QUANDO OUTRA PÁGINA MODIFICAR
 // ==========================================
 
 window.addEventListener("storage", function(event) {
@@ -559,7 +666,7 @@ window.addEventListener("storage", function(event) {
 
 
 // ==========================================
-// DESCARTAR DO HISTÓRICO - PROFESSOR
+// DESCARTAR DO HISTÓRICO
 // ==========================================
 
 listaReservas.addEventListener("click", function(event) {
@@ -569,16 +676,23 @@ listaReservas.addEventListener("click", function(event) {
     );
 
     if (!botao) {
+
         return;
+
     }
+
 
     const id = botao.dataset.id;
 
     const reservas = carregarReservas();
 
+
     const reserva = reservas.find(function(item) {
+
         return String(item.id) === String(id);
+
     });
+
 
     if (!reserva) {
 
@@ -589,21 +703,59 @@ listaReservas.addEventListener("click", function(event) {
     }
 
 
-    const confirmar = confirm(
-        "Deseja remover esta solicitação do seu histórico?\n\n" +
-        reserva.espaco + "\n" +
-        reserva.dia + "\n" +
-        reserva.horario + "\n" +
-        reserva.status
+    // ==========================================
+    // VERIFICAR SE PERTENCE AO PROFESSOR
+    // ==========================================
+
+    const pertenceAoProfessor = (
+
+        reserva.matriculaProfessor === usuarioLogadoReserva.matricula ||
+
+        (
+            !reserva.matriculaProfessor &&
+            reserva.professor === usuarioLogadoReserva.nome
+        )
+
     );
 
-    if (!confirmar) {
+
+    if (!pertenceAoProfessor) {
+
+        alert("Você não pode descartar reservas de outro professor.");
+
         return;
+
     }
 
 
     // ==========================================
-    // REMOVER RESERVA
+    // CONFIRMAR
+    // ==========================================
+
+    const confirmar = confirm(
+
+        "Deseja remover esta solicitação do seu histórico?\n\n" +
+
+        reserva.espaco + "\n" +
+
+        reserva.dia + "\n" +
+
+        reserva.horario + "\n" +
+
+        reserva.status
+
+    );
+
+
+    if (!confirmar) {
+
+        return;
+
+    }
+
+
+    // ==========================================
+    // REMOVER
     // ==========================================
 
     const reservasAtualizadas = reservas.filter(function(item) {

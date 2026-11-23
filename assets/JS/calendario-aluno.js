@@ -98,9 +98,22 @@ function escaparTextoAluno(texto) {
 
 function criarCardReservaAluno(reserva) {
 
+    // Identifica a cor de acordo com a disciplina
+    let classeCor = "";
+
+    const disciplina = (reserva.disciplina || "").toUpperCase();
+
+    if (disciplina.includes("PNT")) {
+        classeCor = "reserva-pnt";
+    } else if (disciplina.includes("ENG-SOF")) {
+        classeCor = "reserva-eng";
+    } else if (disciplina.includes("CDM") || disciplina.includes("CMD")) {
+        classeCor = "reserva-cdm";
+    }
+
     return `
 
-        <div class="reserva-aprovada-calendario">
+        <div class="reserva-aprovada-calendario ${classeCor}">
 
             <strong class="reserva-calendario-disciplina">
                 ${escaparTextoAluno(reserva.disciplina)}
@@ -140,7 +153,6 @@ function criarCardReservaAluno(reserva) {
     `;
 
 }
-
 
 // ==========================================
 // ATUALIZAR CALENDÁRIO
